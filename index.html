@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A personal shelf of things Brian built for himself.">
+<meta name="color-scheme" content="dark light">
+<title>Cherno — Personal Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0A0C11;
+    --surface:   #11141B;
+    --card:      #141822;
+    --card-hover:#191E2A;
+    --border:    #232A38;
+    --border-sub:#1A202B;
+    --text:      #ECEFF4;
+    --text-2:    #A3ACBB;
+    --text-3:    #808B9C;
+    --bone:      #E7E2D8;
+
+    --dbffl:     #F5C451;  --dbffl-dim: rgba(245,196,81,.12);
+    --edge:      #34D399;  --edge-dim:  rgba(52,211,153,.11);
+    --flame:     #F97316;  --flame-dim: rgba(249,115,22,.11);
+    --ocean:     #5FC4B8;  --ocean-dim: rgba(95,196,184,.11);
+
+    --shadow: 0 1px 2px rgba(0,0,0,.4);
+  }
+  :root[data-theme="light"] {
+    --bg:        #F3F4F7;
+    --surface:   #FFFFFF;
+    --card:      #FFFFFF;
+    --card-hover:#FAFBFD;
+    --border:    #DCE1E9;
+    --border-sub:#E9EDF3;
+    --text:      #11141B;
+    --text-2:    #515D70;
+    --text-3:    #616C7C;
+    --bone:      #3A4356;
+
+    --dbffl:     #8A5E08;  --dbffl-dim: rgba(138,94,8,.10);
+    --edge:      #0E7F5C;  --edge-dim:  rgba(14,127,92,.10);
+    --flame:     #C2410C;  --flame-dim: rgba(194,65,12,.10);
+    --ocean:     #0E6C64;  --ocean-dim: rgba(14,108,100,.10);
+
+    --shadow: 0 1px 2px rgba(16,24,40,.05);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: Inter, 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 15px; line-height: 1.6; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .mono { font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', 'Courier New', monospace; }
+
+  /* ---------- HEADER ---------- */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; background: var(--bg); z-index: 20;
+  }
+  .wordmark {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 26px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; line-height: 1; color: var(--text);
+  }
+  .wordmark i { color: var(--bone); font-style: normal; }
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  .count-pill {
+    font-size: 11px; font-weight: 600; letter-spacing: .06em;
+    padding: 3px 10px; border-radius: 20px;
+    background: var(--border-sub); color: var(--text-2);
+  }
+  .theme-toggle {
+    background: none; border: 1px solid var(--border); color: var(--text-2);
+    cursor: pointer; padding: 5px 12px; font-size: 11px; letter-spacing: .06em;
+    font-family: inherit; border-radius: 4px;
+  }
+  .theme-toggle:hover { border-color: var(--text-2); color: var(--text); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 52px 40px 38px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+  }
+  .hero-left { max-width: 560px; }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: clamp(34px, 5vw, 52px); font-weight: 700; line-height: 1.02;
+    letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance;
+    margin-bottom: 14px;
+  }
+  .hero p { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+  .hero-stats { display: flex; gap: 30px; flex-shrink: 0; }
+  .hero-stat { text-align: right; }
+  .hero-stat-num {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 38px; font-weight: 700; line-height: 1; color: var(--text);
+  }
+  .hero-stat-label {
+    font-size: 10px; color: var(--text-3); letter-spacing: .1em;
+    text-transform: uppercase; margin-top: 5px;
+  }
+  @media (max-width: 720px) {
+    .hero { flex-direction: column; align-items: flex-start; padding: 34px 20px 26px; gap: 26px; }
+    .hero-stats { gap: 26px; }
+    .hero-stat { text-align: left; }
+  }
+
+  /* ---------- GROUPS ---------- */
+  .sites { padding: 0 40px 80px; }
+  @media (max-width: 720px) { .sites { padding: 0 20px 60px; } }
+  .group { margin-top: 42px; }
+  .group-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border-sub);
+  }
+  .group-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+  .group-note { font-size: 11px; color: var(--text-3); margin-left: auto; }
+
+  /* ---------- CARDS ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 11px;
+    position: relative; overflow: hidden; cursor: pointer; box-shadow: var(--shadow);
+    transition: background .15s, border-color .15s, transform .12s;
+  }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); }
+  .card:hover { background: var(--card-hover); transform: translateY(-1px); }
+  .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .card-tag {
+    font-size: 10px; letter-spacing: .11em; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 3px; width: fit-content;
+    color: var(--accent); background: var(--accent-dim);
+  }
+  .card-name {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 24px; font-weight: 700; letter-spacing: .01em; line-height: 1.1;
+    text-transform: uppercase;
+  }
+  .card-desc { font-size: 13px; color: var(--text-2); line-height: 1.7; flex: 1; }
+  .card-meta {
+    font-size: 11px; color: var(--text-3); display: flex; align-items: center; gap: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; }
+  .card-meta.fresh .dot { background: var(--accent); }
+
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding-top: 13px; border-top: 1px solid var(--border-sub); margin-top: auto; flex-wrap: wrap;
+  }
+  .card-cta {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600; letter-spacing: .03em; color: var(--accent);
+  }
+  .card-cta svg { transition: transform .15s; }
+  .card:hover .card-cta svg { transform: translateX(3px); }
+  .sub-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .sub-link {
+    font-size: 11px; color: var(--text-3); padding: 4px 9px; border-radius: 5px;
+    border: 1px solid var(--border-sub); white-space: nowrap;
+  }
+  .sub-link:hover { color: var(--text-2); border-color: var(--border); }
+
+  /* ---------- FOOTER ---------- */
+  .site-footer {
+    border-top: 1px solid var(--border); padding: 22px 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  }
+  .site-footer p { font-size: 12px; color: var(--text-3); }
+  .footer-wordmark {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 15px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--text-3);
+  }
+  @media (max-width: 720px) { .site-header { padding: 0 20px; } .site-footer { padding: 20px; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wordmark">Cherno<i>.</i></div>
+  <div class="header-right">
+    <span class="count-pill" id="count-pill"></span>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle theme</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow mono">Personal Projects</p>
+    <h1>Built for<br>no one but me.</h1>
+    <p>The side of the workbench that has nothing to do with cloud contracts &mdash; a fantasy league's draft order, a betting calibrator that mostly says pass, a glass guide, and a trip guide that has already served its purpose. All static, all on GitHub Pages, all mine to break.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-sites">4</div>
+      <div class="hero-stat-label">Sites live</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" id="stat-groups">3</div>
+      <div class="hero-stat-label">Shelves</div>
+    </div>
+  </div>
+</section>
+
+<section class="sites" id="sites"></section>
+
+<footer class="site-footer">
+  <p>Personal projects &mdash; nothing here is a Proxima tool.</p>
+  <div class="footer-wordmark">Cherno.</div>
+</footer>
+
+<script>
+/* ------------------------------------------------------------------
+   Adding a site means adding one entry here. Everything else is
+   derived: card markup, group order, the header pill, the hero stats.
+------------------------------------------------------------------ */
+const OWNER = 'brianchernauskas';
+
+const SITES = [
+  {
+    group: 'Football',
+    accent: 'dbffl',
+    tag: 'DBFFL · Confidence Pool',
+    name: "Draft Order Pick'em",
+    repo: 'draft-order-pickem',
+    url: 'https://brianchernauskas.github.io/draft-order-pickem/',
+    cta: 'Make picks',
+    desc: "The Degenerate Bourbon league settles its draft order on college football's opening weekend. Ten games against the spread, confidence weights 1–10 used once each, tiebreaker on the Lambeau total. Lines and finals pull themselves in; standings update live.",
+    links: [
+      { label: 'Standings', href: 'https://brianchernauskas.github.io/draft-order-pickem/standings.html' },
+      { label: 'Admin',     href: 'https://brianchernauskas.github.io/draft-order-pickem/admin.html' }
+    ]
+  },
+  {
+    group: 'Football',
+    accent: 'edge',
+    tag: 'Betting · Calibrator',
+    name: 'Gridiron Edge',
+    repo: 'gridiron-edge',
+    url: 'https://brianchernauskas.github.io/gridiron-edge/',
+    cta: 'Open calibrator',
+    desc: "Prices a bet against my own projection instead of handing out picks — de-vigs every book, converts a projected margin into a win probability at that book's own line, and returns edge, EV and a fractional-Kelly stake. Usually the answer is pass. Best Board, situational scoring and a full-slate Kelly planner ride along.",
+    links: []
+  },
+  {
+    group: 'Craft',
+    accent: 'flame',
+    tag: 'Borosilicate · Guide',
+    name: 'Flameworking Guide',
+    repo: 'flameworking-guide',
+    url: 'https://brianchernauskas.github.io/flameworking-guide/',
+    cta: 'Read the guide',
+    desc: 'Thirteen illustrated sections on working COE 33 boro at the torch — heat and flame control, core techniques, color chemistry, annealing schedules keyed for the Sentry Xpress, and a deep run at fuming. Twenty-two hand-drawn diagrams, no photos, no build step.',
+    links: [
+      { label: 'Fuming',    href: 'https://brianchernauskas.github.io/flameworking-guide/#7' },
+      { label: 'Annealing', href: 'https://brianchernauskas.github.io/flameworking-guide/#8' },
+      { label: 'Suppliers', href: 'https://brianchernauskas.github.io/flameworking-guide/#12' }
+    ]
+  },
+  {
+    group: 'Travel',
+    accent: 'ocean',
+    tag: 'Maui · Aug–Sep 2026',
+    name: 'Maui Guide',
+    repo: 'maui-guide',
+    url: 'https://brianchernauskas.github.io/maui-guide/',
+    cta: 'Open guide',
+    desc: 'A phone-first trip guide that reshaped itself day by day: an island map projected straight from coordinates so pins place themselves, a base switcher that re-sorted every drive time between Kāʻanapali and Wailea, and happy hours tagged by how much the sources actually agreed. Works offline; the private details sit behind a real encrypted vault.',
+    links: []
+  }
+];
+
+const GROUP_NOTES = {
+  Football: 'Sept through January, mostly',
+  Craft:    'Torch work',
+  Travel:   'Trip guides'
+};
+
+const ARROW = '<svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+function render() {
+  const groups = [];
+  SITES.forEach(s => {
+    let g = groups.find(x => x.name === s.group);
+    if (!g) groups.push(g = { name: s.group, items: [] });
+    g.items.push(s);
+  });
+
+  document.getElementById('sites').innerHTML = groups.map(g => `
+    <div class="group">
+      <div class="group-header">
+        <span class="group-label mono">${esc(g.name)}</span>
+        <span class="group-note">${esc(GROUP_NOTES[g.name] || '')}</span>
+      </div>
+      <div class="grid">${g.items.map(cardHTML).join('')}</div>
+    </div>`).join('');
+
+  document.getElementById('count-pill').textContent =
+    SITES.length + (SITES.length === 1 ? ' site' : ' sites');
+  document.getElementById('stat-sites').textContent = SITES.length;
+  document.getElementById('stat-groups').textContent = groups.length;
+
+  document.querySelectorAll('.card').forEach(card => {
+    const url = card.dataset.url;
+    const go = () => window.open(url, '_blank', 'noopener');
+    card.addEventListener('click', go);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  });
+  document.querySelectorAll('.sub-link').forEach(a =>
+    a.addEventListener('click', e => e.stopPropagation()));
+}
+
+function cardHTML(s) {
+  const style = `--accent:var(--${s.accent});--accent-dim:var(--${s.accent}-dim)`;
+  const subs = (s.links || []).map(l =>
+    `<a class="sub-link" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`
+  ).join('');
+  return `
+    <div class="card" style="${style}" tabindex="0" role="link"
+         aria-label="${esc(s.name)}" data-url="${esc(s.url)}">
+      <span class="card-tag mono">${esc(s.tag)}</span>
+      <div class="card-name">${esc(s.name)}</div>
+      <p class="card-desc">${esc(s.desc)}</p>
+      <div class="card-meta" data-meta="${esc(s.repo)}"><span class="dot"></span><span>&mdash;</span></div>
+      <div class="card-footer">
+        <span class="card-cta">${esc(s.cta)} ${ARROW}</span>
+        <div class="sub-links">${subs}</div>
+      </div>
+    </div>`;
+}
+
+/* ---- "Updated N ago", read live from the GitHub API (CORS-open, 60 requests
+       an hour unauthenticated). Cached 6h in localStorage so a reload costs
+       nothing, and a card just keeps its em dash if any of it fails. ---- */
+const TTL = 6 * 60 * 60 * 1000;
+const DAY = 86400000;
+
+function ago(iso) {
+  const days = Math.floor((Date.now() - new Date(iso)) / DAY);
+  if (days <= 0)  return 'updated today';
+  if (days === 1) return 'updated yesterday';
+  if (days < 30)  return `updated ${days} days ago`;
+  const months = Math.round(days / 30.44);
+  if (months < 12) return `updated ${months} month${months === 1 ? '' : 's'} ago`;
+  const years = Math.round(months / 12);
+  return `updated ${years} year${years === 1 ? '' : 's'} ago`;
+}
+
+function paint(repo, iso) {
+  const el = document.querySelector(`[data-meta="${repo}"]`);
+  if (!el) return;
+  el.lastElementChild.textContent = ago(iso);
+  el.title = new Date(iso).toLocaleString();
+  if (Date.now() - new Date(iso) < 30 * DAY) el.classList.add('fresh');
+}
+
+function cached(repo) {
+  try {
+    const raw = localStorage.getItem('cherno:' + repo);
+    if (!raw) return null;
+    const v = JSON.parse(raw);
+    return (Date.now() - v.t < TTL) ? v.pushed : null;
+  } catch (e) { return null; }
+}
+
+function loadStamps() {
+  SITES.forEach(s => {
+    const hit = cached(s.repo);
+    if (hit) { paint(s.repo, hit); return; }
+    fetch(`https://api.github.com/repos/${OWNER}/${s.repo}`)
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => {
+        if (!d.pushed_at) return;
+        paint(s.repo, d.pushed_at);
+        try {
+          localStorage.setItem('cherno:' + s.repo,
+            JSON.stringify({ t: Date.now(), pushed: d.pushed_at }));
+        } catch (e) {}
+      })
+      .catch(() => {}); // rate-limited or offline: the em dash stands
+  });
+}
+
+/* ---- theme ---- */
+function toggleTheme() {
+  const root = document.documentElement;
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  try { localStorage.setItem('cherno:theme', next); } catch (e) {}
+}
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem('cherno:theme'); } catch (e) {}
+  if (!saved && window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) {
+    saved = 'light';
+  }
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+render();
+loadStamps();
+</script>
+</body>
+</html>
