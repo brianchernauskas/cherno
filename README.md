@@ -14,6 +14,7 @@ no auth gate and no Proxima branding.
 | Gridiron Edge | [gridiron-edge](https://github.com/brianchernauskas/gridiron-edge) | Football |
 | Flameworking Guide | [flameworking-guide](https://github.com/brianchernauskas/flameworking-guide) | Craft |
 | Maui Guide | [maui-guide](https://github.com/brianchernauskas/maui-guide) | Travel |
+| Europe 2026 | *no repo* — secret gist via htmlpreview | Travel |
 | Brian Saves Billions | *no repo* — Lovable/React on Netlify | Professional |
 
 ## Adding a site
@@ -55,15 +56,25 @@ is hit, the card keeps its em dash and nothing else changes. The dot next to the
 stamp picks up the card's accent colour when the repo was touched in the last 30 days.
 
 Private repos return 404 to an unauthenticated call, so only public repos get a
-stamp. `europetrip` is private with no Pages site and is deliberately not listed.
+stamp. The `europetrip` repo is private with no Pages site, so the Europe card points
+at the gist copy instead.
 
 ## Privacy
 
 `<meta name="robots" content="noindex, nofollow">` rather than a `robots.txt` —
 for a project page under `github.io`, `robots.txt` is only honoured from the
 domain-root repo, and a `Disallow` there would stop crawlers ever reading the
-noindex. The page itself holds nothing sensitive; it links only to sites that are
-already public.
+noindex.
+
+**The Europe 2026 card is a deliberate exception.** It points at a *secret* gist,
+which is unlisted rather than private — the URL is the only thing protecting it.
+Publishing that URL in this public repo means the itinerary (hotels, a confirmation
+number, travel dates, the family surname) is readable by anyone who finds it, and the
+URL is now in git history permanently. Brian was walked through this on 2026-09-11 and
+chose the plain link over the encrypted-vault treatment used in maui-guide, on the
+grounds that the trip is long finished. If that judgement ever changes, revoking it
+takes **both** a history rewrite here and deleting/recreating the gist — rewriting
+history alone does not help, because the URL is the secret.
 
 ## Deploying
 
