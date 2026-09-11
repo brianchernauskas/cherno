@@ -27,6 +27,7 @@
     --edge:      #34D399;  --edge-dim:  rgba(52,211,153,.11);
     --flame:     #F97316;  --flame-dim: rgba(249,115,22,.11);
     --ocean:     #5FC4B8;  --ocean-dim: rgba(95,196,184,.11);
+    --brand:     #60A5FA;  --brand-dim: rgba(96,165,250,.11);
 
     --shadow: 0 1px 2px rgba(0,0,0,.4);
   }
@@ -46,6 +47,7 @@
     --edge:      #0E7F5C;  --edge-dim:  rgba(14,127,92,.10);
     --flame:     #C2410C;  --flame-dim: rgba(194,65,12,.10);
     --ocean:     #0E6C64;  --ocean-dim: rgba(14,108,100,.10);
+    --brand:     #1D4ED8;  --brand-dim: rgba(29,78,216,.10);
 
     --shadow: 0 1px 2px rgba(16,24,40,.05);
   }
@@ -206,7 +208,7 @@
   <div class="hero-left">
     <p class="hero-eyebrow mono">Personal Projects</p>
     <h1>Built for<br>no one but me.</h1>
-    <p>The side of the workbench that has nothing to do with cloud contracts &mdash; a fantasy league's draft order, a betting calibrator that mostly says pass, a glass guide, and a trip guide that has already served its purpose. All static, all on GitHub Pages, all mine to break.</p>
+    <p>Everything built outside the Proxima toolkit &mdash; a fantasy league's draft order, a betting calibrator that mostly says pass, a glass guide, a trip guide that has already served its purpose, and the site with my name on it. Mostly static, mostly on GitHub Pages, all mine to break.</p>
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
@@ -285,13 +287,27 @@ const SITES = [
     cta: 'Open guide',
     desc: 'A phone-first trip guide that reshaped itself day by day: an island map projected straight from coordinates so pins place themselves, a base switcher that re-sorted every drive time between Kāʻanapali and Wailea, and happy hours tagged by how much the sources actually agreed. Works offline; the private details sit behind a real encrypted vault.',
     links: []
+  },
+  {
+    group: 'Professional',
+    accent: 'brand',
+    tag: 'briansavesbillions.com',
+    name: 'Brian Saves Billions',
+    url: 'https://briansavesbillions.com',
+    cta: 'Open site',
+    // Not a GitHub repo — a Lovable-built React site on Netlify, so there is
+    // no pushed_at to read. `note` stands in for the usual "updated N ago".
+    note: 'React · Netlify',
+    desc: 'The public-facing one: IT sourcing and procurement leadership, finance-validated savings, and supplier value transformation across enterprise organizations. The only site here with my actual name on the door.',
+    links: []
   }
 ];
 
 const GROUP_NOTES = {
-  Football: 'Sept through January, mostly',
-  Craft:    'Torch work',
-  Travel:   'Trip guides'
+  Football:     'Sept through January, mostly',
+  Craft:        'Torch work',
+  Travel:       'Trip guides',
+  Professional: 'The one with my name on it'
 };
 
 const ARROW = '<svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -347,7 +363,7 @@ function cardHTML(s) {
       <span class="card-tag mono">${esc(s.tag)}</span>
       <div class="card-name">${esc(s.name)}</div>
       <p class="card-desc">${esc(s.desc)}</p>
-      <div class="card-meta" data-meta="${esc(s.repo)}"><span class="dot"></span><span>&mdash;</span></div>
+      <div class="card-meta"${s.repo ? ` data-meta="${esc(s.repo)}"` : ''}><span class="dot"></span><span>${esc(s.note || '—')}</span></div>
       <div class="card-footer">
         <span class="card-cta">${esc(s.cta)} ${ARROW}</span>
         <div class="sub-links">${subs}</div>
@@ -390,7 +406,7 @@ function cached(repo) {
 }
 
 function loadStamps() {
-  SITES.forEach(s => {
+  SITES.filter(s => s.repo).forEach(s => {
     const hit = cached(s.repo);
     if (hit) { paint(s.repo, hit); return; }
     fetch(`https://api.github.com/repos/${OWNER}/${s.repo}`)

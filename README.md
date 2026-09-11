@@ -14,6 +14,7 @@ no auth gate and no Proxima branding.
 | Gridiron Edge | [gridiron-edge](https://github.com/brianchernauskas/gridiron-edge) | Football |
 | Flameworking Guide | [flameworking-guide](https://github.com/brianchernauskas/flameworking-guide) | Craft |
 | Maui Guide | [maui-guide](https://github.com/brianchernauskas/maui-guide) | Travel |
+| Brian Saves Billions | *no repo* — Lovable/React on Netlify | Professional |
 
 ## Adding a site
 
@@ -35,6 +36,10 @@ derived, never hand-maintained (they drifted out of sync on the Proxima hub once
   links:  [ { label: 'Fuming', href: '...#7' } ]   // optional deep links
 }
 ```
+
+`repo` is optional. A site that doesn't live in a GitHub repo (briansavesbillions.com
+is a Lovable-built React app on Netlify) has no `pushed_at` to read, so give it a
+`note` string instead and that text sits where the "updated N ago" stamp would.
 
 A new accent needs a `--name` / `--name-dim` pair in **both** `:root` and
 `:root[data-theme="light"]` — the light values are darkened so the tag text keeps
