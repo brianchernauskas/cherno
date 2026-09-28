@@ -15,6 +15,7 @@ no auth gate and no Proxima branding.
 | Flameworking Guide | [flameworking-guide](https://github.com/brianchernauskas/flameworking-guide) | Craft |
 | Maui Guide | [maui-guide](https://github.com/brianchernauskas/maui-guide) | Travel |
 | Europe 2026 | *no repo* — secret gist via htmlpreview | Travel |
+| House Buying Playbook | [house-buying-playbook](https://github.com/brianchernauskas/house-buying-playbook) | Home |
 | Brian Saves Billions | *no repo* — Lovable/React on Netlify | Professional |
 
 ## Adding a site
