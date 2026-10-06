@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2F5D46">
+<title>Prescott Home Tour</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F5D46'/%3E%3Cpath d='M6 17 16 8l10 9v8H6z' fill='%23F6F2EA'/%3E%3Crect x='13' y='18' width='6' height='7' fill='%232F5D46'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css?v=202609261400">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div>
+      <p class="eyebrow" id="countdown">Sat Sep 26 · Sun Sep 27</p>
+      <h1>Prescott Home Tour</h1>
+      <p class="sub">Six homes to see · staying at SpringHill Suites downtown · driving up from Chandler</p>
+    </div>
+    <button class="who" id="whoBtn" type="button" aria-label="Change your name"><span class="who-dot"></span><span id="whoName">Who’s this?</span></button>
+  </div>
+</header>
+
+<div class="banner" id="banner" hidden></div>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap tabs-inner">
+    <a href="#plan">Plan</a><a href="#map-sec">Map</a><a href="#homes">Homes</a><a href="#compare">Compare</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- PLAN -->
+  <section id="plan" class="sec">
+    <div class="sec-head">
+      <h2>The route</h2>
+      <p class="lede">Nothing is booked yet, so this is a starting order. Once the agent confirms times, enter them below and the schedule rebuilds. Changes are shared with everyone who has the link.</p>
+    </div>
+
+    <div class="why card">
+      <h3>Why this order</h3>
+      <ol>
+        <li><b>Quintero first.</b> It’s on the north edge of town, so you hit it on the way in from Phoenix without backtracking.</li>
+        <li><b>Idylwild next.</b> It’s downtown, 18 minutes from Quintero.</li>
+        <li><b>Banning Creek, then Lavalley.</b> They’re 4 minutes apart on the south side of downtown, one off White Spar Rd.</li>
+        <li><b>Quartz and Ponderosa Park last.</b> They’re a minute apart in Ponderosa Park, the farthest south. Quartz and Ponderosa Park came from the agent’s list on Sep 26.</li>
+      </ol>
+      <p class="small"><b>Pyrite went under contract on Sep 23</b>, so it’s off the route. It’s still on the Homes and Compare tabs for reference. All six fit on Saturday if you keep visits to about 45 minutes, finishing around 5 PM. Move any to Sunday with its → Sun button. Sunset is about 6:25 PM.</p>
+    </div>
+
+    <div class="controls card">
+      <label>Leave Chandler <input type="time" id="depart" step="300"></label>
+      <label>Minutes per house <input type="number" id="dwell" min="15" max="120" step="5" inputmode="numeric"></label>
+      <label>Sunday start (hotel) <input type="time" id="sunStart" step="300"></label>
+      <label class="check"><input type="checkbox" id="lunch"> Lunch break (45 min)</label>
+      <button type="button" class="ghost" id="resetPlan">Reset to recommended</button>
+    </div>
+
+    <div class="days">
+      <div class="day">
+        <h3>Saturday <span class="muted">Sep 26</span></h3>
+        <ol class="timeline" id="tlSat"></ol>
+      </div>
+      <div class="day">
+        <h3>Sunday <span class="muted">Sep 27</span></h3>
+        <ol class="timeline" id="tlSun"></ol>
+      </div>
+    </div>
+    <p class="small muted">Drive times are from OpenStreetMap routing, padded 10% for traffic and parking. A booked time holds the house to that slot, and anything before it waits.</p>
+  </section>
+
+  <!-- MAP -->
+  <section id="map-sec" class="sec">
+    <div class="sec-head">
+      <h2>Map</h2>
+      <p class="lede">Numbered in visit order. Tap a pin for details. Choose a home below to see its nearest grocery store, gas station and restaurant on the map.</p>
+    </div>
+    <div id="map" class="map" role="region" aria-label="Map of the four homes"></div>
+    <div class="legend">
+      <span><i class="lg sat"></i>Saturday</span><span><i class="lg sun"></i>Sunday</span>
+      <span><i class="lg hotel"></i>Hotel</span><span><i class="lg star"></i>Whiskey Row</span><span><i class="lg poi"></i>Nearby for selected home</span>
+    </div>
+  </section>
+
+  <!-- HOMES -->
+  <section id="homes" class="sec">
+    <div class="sec-head"><h2>The homes</h2></div>
+    <div class="picker" id="picker" role="tablist"></div>
+    <article id="house" class="house"></article>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="sec">
+    <div class="sec-head">
+      <h2>Side by side</h2>
+      <p class="lede">Scores update as each of you rates the homes. Swipe sideways on a phone.</p>
+    </div>
+    <div class="table-wrap"><table class="cmp" id="cmp"></table></div>
+  </section>
+
+  <footer class="foot">
+    <p>Listing data from realtor.com, pulled Sep 21, 2026. Check price and status with the agent. Wildfire hazard from the USDA Forest Service <a href="https://wildfirerisk.org/" target="_blank" rel="noopener">Wildfire Risk to Communities</a> (2024 data). Nearby places and routing from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors. Listing photos belong to their brokerages and are linked from realtor.com, not copied.</p>
+  </footer>
+</main>
+
+<dialog id="whoDlg" class="dlg">
+  <form method="dialog">
+    <h3>Who’s taking notes?</h3>
+    <p class="small muted">Your name goes on your notes, photos and scores so you can tell them apart. It’s saved on this device.</p>
+    <input id="whoInput" type="text" maxlength="24" autocomplete="given-name" placeholder="First name" required>
+    <div class="dlg-actions"><button value="cancel" type="button" class="ghost" id="whoCancel">Cancel</button><button value="ok" class="primary" id="whoOk">Save</button></div>
+  </form>
+</dialog>
+
+<div class="lightbox" id="lightbox" hidden><button type="button" class="lb-close" aria-label="Close photo">×</button><img alt=""><p></p></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="module" src="app.js?v=202609261400"></script>
+</body>
+</html>

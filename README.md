@@ -4,7 +4,7 @@ A dashboard for the personal (non-Proxima) sites — the counterpart to
 [proxima-tools-hub](https://github.com/brianchernauskas/proxima-tools-hub), with
 no auth gate and no Proxima branding.
 
-**Live:** https://brianchernauskas.github.io/cherno/
+**Live:** https://cherno.briansavesbillions.com/
 
 ## What's on it
 
@@ -32,7 +32,7 @@ derived, never hand-maintained (they drifted out of sync on the Proxima hub once
   tag:    'Borosilicate · Guide',
   name:   'Flameworking Guide',
   repo:   'flameworking-guide',    // used for the "updated N ago" stamp
-  url:    'https://brianchernauskas.github.io/flameworking-guide/',
+  url:    'https://cherno.briansavesbillions.com/flameworking-guide/',
   cta:    'Read the guide',
   desc:   '...',
   links:  [ { label: 'Fuming', href: '...#7' } ]   // optional deep links

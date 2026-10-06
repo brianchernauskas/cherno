@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maui — Aug 28 to Sep 5</title>
+<meta name="description" content="Mobile trip guide for Maui: itinerary, both hotels, drive times to every spot, happy hours with pricing, and the sunset sail.">
+<!-- Keep this page out of search results. It is a personal itinerary on a public
+     URL: reachable by anyone given the link, but not something to be indexed
+     against a real name. noindex is the mechanism that actually works here -
+     see the note in README about why robots.txt does not. -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="theme-color" content="#0a3143" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#071b25" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">Aug 28 – Sep 5, 2026 · Brian &amp; Amanda</div>
+    <h1>Maui</h1>
+    <p class="hero-sub">Two hotels, nine days, one boat. Everything in one place.</p>
+    <div id="countdown"></div>
+  </div>
+</header>
+
+<div class="baseswitch">
+  <div class="wrap">
+    <span class="bs-label">Base</span>
+    <div class="bs-track" role="group" aria-label="Which hotel are you at">
+      <button class="bs-btn" data-base="kaanapali" aria-pressed="true">Kāʻanapali</button>
+      <button class="bs-btn" data-base="wailea" aria-pressed="false">Wailea</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="today">
+    <div class="sec-head">
+      <h2>Today</h2>
+      <div class="sec-note">Hawaii time</div>
+    </div>
+    <div id="todayBody"></div>
+  </section>
+
+  <section id="map-sec">
+    <div class="sec-head">
+      <h2>The island</h2>
+      <div class="sec-note">Tap any dot</div>
+    </div>
+    <div class="card mapcard" id="map"></div>
+  </section>
+
+  <section id="hotels-sec">
+    <div class="sec-head"><h2>Where you're staying</h2></div>
+    <div class="hotelgrid" id="hotels"></div>
+  </section>
+
+  <section id="itinerary">
+    <div class="sec-head">
+      <h2>Itinerary</h2>
+      <div class="sec-note">Solid dots are booked<br>Dashed are ideas</div>
+    </div>
+    <div id="itineraryBody"></div>
+  </section>
+
+  <section id="sail-sec">
+    <div class="sec-head"><h2>Sunset sail</h2></div>
+    <div id="sailWrap"></div>
+  </section>
+
+  <section id="spots">
+    <div class="sec-head">
+      <h2>Spots</h2>
+      <div class="sec-note" id="spotsNote"></div>
+    </div>
+    <div id="spotsBody"></div>
+  </section>
+
+  <section id="happy">
+    <div class="sec-head">
+      <h2>Happy hours</h2>
+      <div class="sec-note" id="happyNote"></div>
+    </div>
+    <div id="happyBody"></div>
+  </section>
+
+  <section id="eats">
+    <div class="sec-head">
+      <h2>Restaurants</h2>
+      <div class="sec-note" id="eatsNote"></div>
+    </div>
+    <div id="eatsBody"></div>
+  </section>
+
+  <section id="pack">
+    <div class="sec-head"><h2>Packing</h2></div>
+    <div id="packBody"></div>
+  </section>
+
+  <section id="notes-sec">
+    <div class="sec-head"><h2>Worth knowing</h2></div>
+    <div class="notegrid" id="notes"></div>
+  </section>
+
+  <section id="vault">
+    <div class="card vault">
+      <div class="vault-head">
+        <div class="vault-lock">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="10" width="16" height="11" rx="2.5"/>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        </div>
+        <div>
+          <h2>Confirmation numbers</h2>
+          <div class="vault-sub" id="vaultSub">Encrypted. Enter your passphrase.</div>
+        </div>
+      </div>
+
+      <form class="vault-form" id="vaultForm">
+        <label class="sr" for="vaultPass">Passphrase</label>
+        <input id="vaultPass" type="password" inputmode="text" autocomplete="off"
+               autocapitalize="off" spellcheck="false" placeholder="Passphrase">
+        <button class="btn btn-primary" type="submit">Unlock</button>
+      </form>
+      <div class="vault-msg" id="vaultMsg" role="status" aria-live="polite"></div>
+      <div class="vault-out" id="vaultOut"></div>
+    </div>
+
+    <p class="foot">
+      This is real AES-256-GCM encryption, not a JavaScript password check — the ciphertext
+      on this page is meaningless without the passphrase. It is still published, so a determined
+      attacker with the URL could try passphrases offline. Card numbers are not in here at all.
+    </p>
+  </section>
+
+  <footer class="foot">
+    <p><b>Sources.</b> Itinerary from the Costco Travel final documents, the OpenTable
+    confirmation, and the Kai Kanani booking. Drive times are curated estimates, cross-checked
+    against published Maui driving-time tables — not live routing. Happy hour prices are what
+    published guides reported in 2026; call ahead before you plan around one.</p>
+    <p style="margin-top:10px">Works offline once loaded. Add to your home screen for the full-screen version.</p>
+  </footer>
+
+</main>
+
+<nav class="nav">
+  <a href="#today" class="is-on">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>Today</a>
+  <a href="#itinerary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Days</a>
+  <a href="#spots">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Spots</a>
+  <a href="#happy">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14l-6 8v7M13 18h3M13 18h-3"/></svg>Drinks</a>
+  <a href="#eats">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v7a3 3 0 0 0 6 0V3M6 10v11M17 3c-1.5 1.5-2 3.5-2 6s.5 3 2 3 2-.5 2-3-.5-4.5-2-6ZM17 12v9"/></svg>Eat</a>
+  <a href="#vault">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Codes</a>
+</nav>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://firestore.googleapis.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Ledger</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141822'/%3E%3Cpath d='M9 8v16h14' fill='none' stroke='%23F08BA8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="lock" id="lock">
+  <form class="card" id="lock-form" autocomplete="off">
+    <div class="mark">Led<i>ger</i></div>
+    <p>Private. Your numbers are encrypted in this browser before anything is saved, and only your passphrase can open them.</p>
+    <div class="field"><label for="pass">Passphrase</label><input type="password" id="pass" autocomplete="off" spellcheck="false"></div>
+    <div class="field hide" id="create-fields" style="margin-top:10px"><label for="pass2">Repeat passphrase</label><input type="password" id="pass2" autocomplete="off" spellcheck="false"></div>
+    <div class="row" style="margin-top:14px"><button class="btn primary" id="lock-go" type="submit">Unlock</button></div>
+    <div class="msg" id="lock-msg" role="status"></div>
+  </form>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">Led<i>ger</i></div>
+    <span class="sub">Household planner</span>
+    <span class="grow"></span>
+    <span class="pill" id="status"><span class="dot"></span><span id="status-text">Locked</span></span>
+    <button class="btn small" id="lock-btn">Lock</button>
+    <button class="btn small ghost" id="theme" aria-label="Toggle light and dark">◐</button>
+  </div>
+</header>
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <button data-tab="scenarios" aria-selected="true">Scenarios</button>
+  <button data-tab="inputs" aria-selected="false">Inputs</button>
+  <button data-tab="spending" aria-selected="false">Spending</button>
+  <button data-tab="vault" aria-selected="false">Vault</button>
+</div></nav>
+<main><div class="wrap" id="view"></div></main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

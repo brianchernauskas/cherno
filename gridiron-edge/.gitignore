@@ -1,0 +1,12 @@
+# Never commit API keys or local config.
+# The Odds API key lives in browser localStorage only — it must never enter this repo.
+.env
+.env.*
+*.key
+secrets.json
+
+# Local tooling
+.netlify
+.vscode
+.DS_Store
+Thumbs.db

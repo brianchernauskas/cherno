@@ -1,0 +1,5 @@
+starter-inputs.json
+*.plain.json
+ledger-plain-*.json
+ledger-backup-*.json
+.DS_Store

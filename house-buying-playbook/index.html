@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>The House Buying Playbook</title>
+<meta name="description" content="A personal field guide to buying a house in 2026 — budget, loans, agents, offers, inspections, closing, second homes and ownership.">
+<style>
+  :root{
+    --ink:#0f1b2d; --ink2:#334155; --muted:#64748b; --line:#e2e8f0;
+    --bg:#f6f8fb; --card:#ffffff;
+    --aws:#ff9900; --aws-d:#c77700;
+    --azure:#0089d6; --azure-d:#005ba1;
+    --gcp:#ea4335; --gcp-d:#b5261a;
+    --accent:#0f766e; --accent-d:#115e59;
+    --green:#16a34a; --amber:#d97706; --red:#dc2626;
+    --inform:#2563eb; --optimize:#16a34a; --operate:#0e7490;
+    --shadow:0 1px 3px rgba(15,27,45,.08),0 8px 24px rgba(15,27,45,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Layout */
+  .wrap{display:flex;min-height:100vh}
+  nav.side{width:270px;flex:0 0 270px;background:#0f1b2d;color:#cbd5e1;position:sticky;top:0;height:100vh;
+    overflow-y:auto;padding:22px 0}
+  nav.side .brand{padding:0 22px 16px;border-bottom:1px solid #1e293b;margin-bottom:10px}
+  nav.side .brand h1{font-size:16px;margin:0 0 4px;color:#fff;line-height:1.3}
+  nav.side .brand span{font-size:12px;color:#7c8aa5;letter-spacing:.03em}
+  nav.side button{display:block;width:100%;text-align:left;background:none;border:none;color:#cbd5e1;
+    padding:10px 22px;font-size:14px;cursor:pointer;border-left:3px solid transparent;font-family:inherit}
+  nav.side button:hover{background:#16233a;color:#fff}
+  nav.side button.active{background:#16233a;color:#fff;border-left-color:var(--accent)}
+  nav.side .num{display:inline-block;width:22px;color:#5b6b86;font-variant-numeric:tabular-nums}
+  nav.side button.active .num{color:var(--accent)}
+  nav.side .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b86;padding:16px 22px 6px}
+
+  main{flex:1;min-width:0;max-width:1000px;margin:0 auto;padding:40px 48px 120px}
+  section.page{display:none;animation:fade .25s ease}
+  section.page.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h2.title{font-size:30px;line-height:1.2;margin:0 0 6px}
+  .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:8px}
+  .lede{font-size:18px;color:var(--ink2);margin:0 0 28px;max-width:70ch}
+  h3{font-size:21px;margin:34px 0 12px;padding-top:6px}
+  h4{font-size:16px;margin:22px 0 8px;color:var(--ink)}
+  p{margin:0 0 14px;max-width:74ch}
+  ul,ol{max-width:74ch;padding-left:22px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  .muted{color:var(--muted)}
+
+  /* Cards & callouts */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0;box-shadow:var(--shadow)}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+  .coach{border-left:4px solid var(--accent);background:linear-gradient(90deg,#e6f6f3,#fff 60%);
+    border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .coach .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-d);display:block;margin-bottom:4px}
+  .analogy{border-left:4px solid var(--amber);background:linear-gradient(90deg,#fffbeb,#fff 60%);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .analogy .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:4px}
+  .warn{border-left:4px solid var(--red);background:linear-gradient(90deg,#fef2f2,#fff 60%);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .warn .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:4px}
+  .keyterm{background:#e6f6f3;border-radius:6px;padding:1px 6px;font-weight:600;color:var(--accent-d);white-space:nowrap}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#0f1b2d;color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:#f8fafc}
+  td.aws{color:var(--aws-d);font-weight:600}
+  td.azure{color:var(--azure-d);font-weight:600}
+  td.gcp{color:var(--gcp-d);font-weight:600}
+  .scroller{overflow-x:auto}
+
+  /* Pills */
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin:2px 4px 2px 0}
+  .pill.aws{background:#fff3e0;color:var(--aws-d)}
+  .pill.azure{background:#e3f2fd;color:var(--azure-d)}
+  .pill.gcp{background:#fdecea;color:var(--gcp-d)}
+  .pill.g{background:#dcfce7;color:#166534}
+  .pill.inform{background:#dbeafe;color:#1d4ed8}
+  .pill.optimize{background:#dcfce7;color:#166534}
+  .pill.operate{background:#ede9fe;color:#5b21b6}
+
+  /* Infographic pieces */
+  .pyramid{display:flex;flex-direction:column;align-items:center;gap:6px;margin:18px 0}
+  .pyramid .row{color:#fff;border-radius:8px;padding:12px 16px;text-align:center;font-weight:600;box-shadow:var(--shadow)}
+  .pyramid .r1{width:55%;background:#0e7490}
+  .pyramid .r2{width:72%;background:#0f766e}
+  .pyramid .r3{width:88%;background:#2563eb}
+  .pyramid .r4{width:100%;background:#0f1b2d}
+  .pyramid small{display:block;font-weight:400;opacity:.85;font-size:12px}
+
+  .stack{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+  .stack .lvl{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px;box-shadow:var(--shadow)}
+  .stack .pct{flex:0 0 88px;font-weight:800;font-size:20px;color:var(--accent)}
+  .stack .bar{flex:1;height:14px;background:#e6f6f3;border-radius:999px;overflow:hidden}
+  .stack .bar i{display:block;height:100%;background:linear-gradient(90deg,#0f766e,#0e7490)}
+  @media(max-width:560px){.stack .lvl{flex-wrap:wrap}.stack .bar{flex:1 1 100%;order:3}}
+
+  .timeline{position:relative;margin:22px 0 22px 8px;padding-left:26px;border-left:2px solid var(--line)}
+  .timeline .step{position:relative;margin-bottom:20px}
+  .timeline .step::before{content:"";position:absolute;left:-33px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}
+  .timeline .step h4{margin:0 0 3px}
+  .timeline .when{font-size:12px;color:var(--accent-d);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+  @media(max-width:820px){.statrow{grid-template-columns:1fr 1fr}}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+  .stat .big{font-size:30px;font-weight:800;line-height:1}
+  .stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+  .matrix{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border-radius:12px;overflow:hidden;margin:18px 0;box-shadow:var(--shadow)}
+  .matrix .q{background:#fff;padding:16px}
+  .matrix .q h4{margin:0 0 4px}
+  .matrix .q.hi{background:#f0fdf4}
+  .matrix .q.lo{background:#fef2f2}
+  @media(max-width:560px){.matrix{grid-template-columns:1fr}}
+
+  .checklist{list-style:none;padding-left:0;max-width:74ch}
+  .checklist li{padding-left:30px;position:relative;margin:8px 0}
+  .checklist li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--green);font-weight:800;
+    background:#dcfce7;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px}
+
+  .glossary dt{font-weight:700;margin-top:14px;color:var(--ink)}
+  .glossary dd{margin:2px 0 0;color:var(--ink2)}
+  .glossary dl{max-width:78ch}
+
+  /* The FinOps lifecycle: three phases */
+  .cycle{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:10px;margin:20px 0}
+  .cycle .ph{border-radius:14px;padding:18px;color:#fff;box-shadow:var(--shadow)}
+  .cycle .ph h4{margin:0 0 4px;color:#fff;font-size:18px}
+  .cycle .ph p{margin:0;font-size:14px;opacity:.92}
+  .cycle .ph .q{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+  .cycle .inf{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+  .cycle .opt{background:linear-gradient(135deg,#16a34a,#15803d)}
+  .cycle .ope{background:linear-gradient(135deg,#0e7490,#5b21b6)}
+  .cycle .arrow{display:grid;place-items:center;color:var(--muted);font-size:22px;font-weight:700}
+  .cycle-back{text-align:center;font-size:13px;color:var(--muted);margin:-8px 0 18px}
+  @media(max-width:820px){.cycle{grid-template-columns:1fr}.cycle .arrow{transform:rotate(90deg);height:18px}}
+
+  /* Allocation spectrum */
+  .spectrum{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:20px 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .spectrum div{padding:14px 14px 16px;background:#fff;border-right:1px solid var(--line)}
+  .spectrum div:last-child{border-right:none}
+  .spectrum b{display:block;font-size:14px;margin-bottom:4px}
+  .spectrum span{font-size:13px;color:var(--ink2);display:block}
+  .spectrum .s1{border-top:5px solid #cbd5e1}
+  .spectrum .s2{border-top:5px solid #99f6e4}
+  .spectrum .s3{border-top:5px solid #14b8a6}
+  .spectrum .s4{border-top:5px solid #115e59}
+  @media(max-width:820px){.spectrum{grid-template-columns:1fr 1fr}.spectrum div{border-bottom:1px solid var(--line)}}
+  @media(max-width:480px){.spectrum{grid-template-columns:1fr}}
+
+  .formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0f1b2d;color:#e2e8f0;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:14.5px;overflow-x:auto;white-space:nowrap}
+  .formula b{color:#5eead4;font-weight:600}
+
+  .pagenav{display:flex;justify-content:space-between;margin-top:48px;padding-top:20px;border-top:1px solid var(--line);gap:12px}
+  .pagenav button{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;cursor:pointer;
+    font-family:inherit;font-size:14px;color:var(--ink2);box-shadow:var(--shadow);max-width:48%}
+  .pagenav button:hover{border-color:var(--accent);color:var(--accent)}
+  .pagenav button b{display:block;color:var(--ink);font-size:14px}
+  .pagenav button span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+
+  .mobilebar{display:none}
+  @media(max-width:820px){
+    nav.side{display:none}
+    main{padding:20px 18px 100px}
+    .mobilebar{display:block;position:sticky;top:0;background:#0f1b2d;padding:12px 16px;z-index:20;margin:-20px -18px 18px}
+    .mobilebar select{width:100%;padding:10px;border-radius:8px;border:none;font-size:15px}
+  }
+  .fn{font-size:12.5px;color:var(--muted);margin-top:8px}
+  /* House-guide additions */
+  .pill.money{background:#dbeafe;color:#1d4ed8}
+  .pill.hunt{background:#fef3c7;color:#92400e}
+  .pill.deal{background:#ccfbf1;color:#115e59}
+  .pill.own{background:#ede9fe;color:#5b21b6}
+  .cycle .c1{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+  .cycle .c2{background:linear-gradient(135deg,#d97706,#b45309)}
+  .cycle .c3{background:linear-gradient(135deg,#0f766e,#115e59)}
+  .calc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+  .calc h4{margin:0 0 12px}
+  .calc .in{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 16px}
+  .calc label{font-size:12.5px;color:var(--muted);font-weight:600;display:block}
+  .calc input,.calc select{width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:15px;color:var(--ink);background:#f8fafc}
+  .calc input:focus,.calc select:focus{outline:2px solid var(--accent);outline-offset:1px;background:#fff}
+  .calc .outs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px}
+  .calc .o{background:#f0fdfa;border-radius:10px;padding:12px 14px}
+  .calc .o b{display:block;font-size:22px;color:var(--accent-d);font-variant-numeric:tabular-nums}
+  .calc .o span{font-size:12px;color:var(--muted)}
+  .calc .note{font-size:13px;color:var(--ink2);margin:12px 0 0}
+  .flag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:#fef3c7;color:#92400e;margin-left:6px;vertical-align:middle}
+  .flag.new{background:#dcfce7;color:#166534}
+  @media print{nav.side,.mobilebar,.pagenav{display:none}section.page{display:block!important;page-break-after:always}main{padding:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="side">
+    <div class="brand">
+      <h1>The House Buying Playbook</h1>
+      <span>A PERSONAL FIELD GUIDE • 2026 EDITION</span>
+    </div>
+    <div class="grp">Foundations</div>
+    <button data-p="0" class="active"><span class="num">00</span>Start Here: What's Changed</button>
+    <button data-p="1"><span class="num">01</span>The Game Plan &amp; Your Team</button>
+    <div class="grp">The Money</div>
+    <button data-p="2"><span class="num">02</span>Affordability &amp; True Cost</button>
+    <button data-p="3"><span class="num">03</span>Credit &amp; Pre-Approval</button>
+    <button data-p="4"><span class="num">04</span>Choosing a Loan</button>
+    <button data-p="5"><span class="num">05</span>Rates, Points &amp; Lender Shopping</button>
+    <div class="grp">The Hunt</div>
+    <button data-p="6"><span class="num">06</span>Agents &amp; the New Commission Rules</button>
+    <button data-p="7"><span class="num">07</span>Finding &amp; Judging a House</button>
+    <div class="grp">The Deal</div>
+    <button data-p="8"><span class="num">08</span>Making the Offer</button>
+    <button data-p="9"><span class="num">09</span>Inspections &amp; Due Diligence</button>
+    <button data-p="10"><span class="num">10</span>Appraisal, Underwriting &amp; Closing</button>
+    <div class="grp">Special Situations</div>
+    <button data-p="11"><span class="num">11</span>Second Homes &amp; Tapping Equity</button>
+    <button data-p="12"><span class="num">12</span>Arizona Field Notes</button>
+    <button data-p="13"><span class="num">13</span>Prescott Field Notes</button>
+    <div class="grp">Ownership</div>
+    <button data-p="14"><span class="num">14</span>After the Keys</button>
+    <div class="grp">Reference</div>
+    <button data-p="15"><span class="num">15</span>Checklists, Glossary &amp; Cheat Sheet</button>
+  </nav>
+
+  <main>
+    <div class="mobilebar">
+      <select id="msel" aria-label="Jump to section"></select>
+    </div>
+
+    <!-- ============ 0 START HERE ============ -->
+    <section class="page show" id="p0">
+      <div class="kicker">Welcome back to the market</div>
+      <h2 class="title">Buying a house is a negotiation with six counterparties at once</h2>
+      <p class="lede">The seller, the lender, the agent, the inspector's findings, the appraiser and the insurer each get a vote on price and terms. This guide walks the whole process in order, explains it plainly, and flags where the rules have changed since the last time you did this.</p>
+
+      <div class="coach">
+        <span class="tag">Coach's opening note</span>
+        <p style="margin:0">Housing is a <strong>rate × price</strong> problem, much like cloud is rate × usage. The purchase price is negotiated once; the mortgage rate compounds for thirty years. Buyers obsess over the first and accept the second from whichever lender their agent suggested. On a $500k loan, the gap between the best and the worst lender quote on the same day is routinely <strong>$40–80k of interest over the life of the loan</strong>. Shop the money as hard as you shop the house.</p>
+      </div>
+
+      <h3>What's changed since you last bought</h3>
+      <div class="grid g2">
+        <div class="card"><h4>🤝 Agent commissions are unbundled <span class="flag">Aug 2024</span></h4><p style="margin:0">After the NAR settlement you sign a <strong>written buyer agreement before touring</strong>, and the seller's MLS listing can no longer promise your agent a fee. What your agent earns, and who pays it, is now a line you negotiate. <a href="#" data-goto="6">§06</a></p></div>
+        <div class="card"><h4>📈 Money costs more <span class="flag">7.03% · Sept 24 2026</span></h4><p style="margin:0">Freddie Mac's 30-year average crossed 7% in late September 2026 for the first time since January 2025. Most sellers are sitting on 3–4% loans, which keeps inventory tight and makes <strong>assumable loans</strong> and <strong>seller-paid buydowns</strong> worth real money. <a href="#" data-goto="5">§05</a></p></div>
+        <div class="card"><h4>🔥 Insurance can kill a deal</h4><p style="margin:0">Premiums have jumped sharply, and in wildfire, hurricane and hail country some carriers have stopped writing new policies. Get a <strong>bindable quote during the inspection period</strong>, not the week before closing. <a href="#" data-goto="9">§09</a></p></div>
+        <div class="card"><h4>🎣 Wire fraud is the #1 closing risk</h4><p style="margin:0">Criminals watch real-estate email threads and send "updated wiring instructions" hours before closing. That money is almost never recovered. <strong>Call a number you already know to verify every wire.</strong> <a href="#" data-goto="10">§10</a></p></div>
+        <div class="card"><h4>📵 Fewer spam calls after you apply <span class="flag new">Mar 2026</span></h4><p style="margin:0">The Homebuyers Privacy Protection Act largely ended "trigger leads", where credit bureaus sold the news of your mortgage inquiry to competing lenders. Shopping several lenders no longer brings on a flood of calls.</p></div>
+        <div class="card"><h4>🧾 Tax rules settled <span class="flag new">2025 law</span></h4><p style="margin:0">The 2025 tax act made the <strong>$750k mortgage-interest cap permanent</strong>, brought back the <strong>PMI deduction from 2026</strong>, and raised the SALT cap to $40k through 2029 (phased down at high incomes). <a href="#" data-goto="14">§14</a></p></div>
+      </div>
+
+      <h3>The process in one glance</h3>
+      <div class="cycle">
+        <div class="ph c1"><span class="q">Weeks −12 to −4</span><h4>The Money</h4><p>Budget, credit, loan type, pre-approval, lender shopping.</p></div>
+        <div class="arrow">→</div>
+        <div class="ph c2"><span class="q">Weeks −6 to 0</span><h4>The Hunt</h4><p>Agent agreement, search, tours, comps, due diligence on the area.</p></div>
+        <div class="arrow">→</div>
+        <div class="ph c3"><span class="q">Days 0 to ~35</span><h4>The Deal</h4><p>Offer, inspection, appraisal, underwriting, insurance, closing.</p></div>
+      </div>
+      <p class="cycle-back">…then <span class="pill own">Ownership</span>: records, taxes, maintenance, PMI removal and watching for a refinance window.</p>
+
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--accent)">~35</div><div class="lbl">Days, contract to close (financed)</div></div>
+        <div class="stat"><div class="big" style="color:#2563eb">2–5%</div><div class="lbl">Closing costs, as % of price</div></div>
+        <div class="stat"><div class="big" style="color:var(--amber)">1–2%</div><div class="lbl">Yearly upkeep, as % of value</div></div>
+        <div class="stat"><div class="big" style="color:#7c3aed">$832,750</div><div class="lbl">2026 conforming loan limit</div></div>
+      </div>
+
+      <h3>How to use this guide</h3>
+      <p>Sections run in the order you'll hit them, with Arizona-specific rules in <a href="#" data-goto="12">§12</a> and Prescott-area notes in <a href="#" data-goto="13">§13</a>. Skim <a href="#" data-goto="1">§01</a> for the whole timeline, then dive in where you are. Three signposts recur throughout:</p>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">What to actually do: the move an experienced buyer makes.</p></div>
+      <div class="analogy"><span class="tag">Analogy</span><p style="margin:0">A plain-English comparison, often to procurement and contract negotiation.</p></div>
+      <div class="warn"><span class="tag">Watch out</span><p style="margin:0">A trap where buyers lose money, leverage or the house.</p></div>
+      <p class="fn">Figures are US-centric and current as of September 2026: rates from Freddie Mac PMMS, loan limits from FHFA, and tax items from the 2025 budget act as written. Rules vary by state and change often. Treat this as a map, not legal or tax advice, and confirm anything load-bearing with your lender, a local real-estate attorney or a tax professional.</p>
+
+      <div class="pagenav">
+        <span></span>
+        <button data-goto="1"><span>Next</span><b>01 · The Game Plan &amp; Your Team →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 1 GAME PLAN ============ -->
+    <section class="page" id="p1">
+      <div class="kicker">Foundations</div>
+      <h2 class="title">The game plan &amp; your team</h2>
+      <p class="lede">A purchase is a relay race with handoffs between six or seven professionals. Most delays and blown deals happen at the handoffs, so know who holds the baton at each stage.</p>
+
+      <h3>The master timeline</h3>
+      <div class="timeline">
+        <div class="step"><div class="when">3+ months out</div><h4>Get the money straight</h4><p>Pull all three credit reports, fix errors, and stop opening new credit. Decide your all-in monthly ceiling (<a href="#" data-goto="2">§02</a>). Gather two years of tax returns, W-2s and statements. Park your down payment somewhere safe and liquid.</p></div>
+        <div class="step"><div class="when">6–10 weeks out</div><h4>Pre-approval &amp; lender shortlist</h4><p>Get a fully documented pre-approval from one lender, plus same-day Loan Estimates from 2–3 others so you know the market (<a href="#" data-goto="5">§05</a>).</p></div>
+        <div class="step"><div class="when">4–8 weeks out</div><h4>Pick your agent, sign the buyer agreement</h4><p>Interview two or three. Negotiate the fee, the term and the exit clause <em>before</em> you sign (<a href="#" data-goto="6">§06</a>).</p></div>
+        <div class="step"><div class="when">Search</div><h4>Tour, compare, research the area</h4><p>Pull comps, insurance history and flood and fire maps for any serious candidate (<a href="#" data-goto="7">§07</a>).</p></div>
+        <div class="step"><div class="when">Day 0</div><h4>Offer accepted: under contract</h4><p>Earnest money goes to escrow within 1–3 business days. The contingency clocks start now (<a href="#" data-goto="8">§08</a>).</p></div>
+        <div class="step"><div class="when">Days 1–10</div><h4>Inspection period</h4><p>Inspections, HOA documents, insurance quote, title commitment review, then a repair request (<a href="#" data-goto="9">§09</a>).</p></div>
+        <div class="step"><div class="when">Days 7–21</div><h4>Appraisal &amp; underwriting</h4><p>The lender orders the appraisal. Underwriting asks for more documents, called "conditions". Lock your rate if you haven't already.</p></div>
+        <div class="step"><div class="when">≥3 business days before close</div><h4>Closing Disclosure</h4><p>Compare it line by line with your Loan Estimate. Verify the wire instructions by phone.</p></div>
+        <div class="step"><div class="when">Closing day</div><h4>Final walk-through, sign, fund, record</h4><p>You get keys once the deed records with the county, sometimes the same afternoon and sometimes the next day (<a href="#" data-goto="10">§10</a>).</p></div>
+      </div>
+
+      <h3>Your team: who does what and who pays them</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Role</th><th>Works for</th><th>Paid by / how</th><th>What to look for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Buyer's agent</strong></td><td>You, under a written agreement</td><td>Negotiated. Seller concession, your cash, or both.</td><td>Local volume in your price band, responsiveness, a comps-first approach to pricing</td></tr>
+          <tr><td><strong>Loan officer / broker</strong></td><td>The lender (a broker shops several lenders)</td><td>Origination fee or rate markup (yield spread)</td><td>Transparent Loan Estimates, on-time closing record, in-house underwriting</td></tr>
+          <tr><td><strong>Home inspector</strong></td><td>You</td><td>You, typically $400–800 for the general inspection</td><td>State license or ASHI/InterNACHI membership, sample reports, willingness to have you attend</td></tr>
+          <tr><td><strong>Specialty inspectors</strong></td><td>You</td><td>You, $100–600 each</td><td>Sewer scope, roof, HVAC, radon, pest, septic and well as the house warrants</td></tr>
+          <tr><td><strong>Title / escrow company</strong></td><td>Neutral: holds money, clears title, runs closing</td><td>Split by local custom</td><td>In many states the buyer may choose; the choice can save hundreds</td></tr>
+          <tr><td><strong>Real-estate attorney</strong></td><td>You</td><td>Flat fee, often $800–2,000</td><td>Required in some states (NY, MA, GA, the Carolinas and others); worth it anywhere for odd deals</td></tr>
+          <tr><td><strong>Insurance agent</strong></td><td>You (an independent agent quotes many carriers)</td><td>Commission from the carrier</td><td>Independent broker with access to the surplus market in fire or flood areas</td></tr>
+          <tr><td><strong>Appraiser</strong></td><td>The lender, legally insulated from everyone</td><td>You, through closing costs</td><td>You don't choose them. You can supply comps through your lender.</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="analogy"><span class="tag">Analogy: the deal team</span><p style="margin:0">Think of it like running an RFP with outside advisors. The agent is your deal lead, the lender is your financing partner, the inspector is technical due diligence, and title/escrow is the paying agent. Every one of them is paid when the deal <em>closes</em>, not when it closes <em>well</em>. You're the only person at the table paid by a good outcome, so you own the decision rights.</p></div>
+
+      <div class="warn"><span class="tag">Watch out: the steered team</span><p style="margin:0">"Preferred" lenders, inspectors and title companies are sometimes a referral relationship or an affiliated business (disclosed on an Affiliated Business Arrangement form). They may still be good, but pick an inspector who has <strong>no reason to keep the agent happy</strong>, and always get outside lender quotes to compare.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="0"><span>Previous</span><b>← 00 · Start Here</b></button>
+        <button data-goto="2"><span>Next</span><b>02 · Affordability &amp; True Cost →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 2 AFFORDABILITY ============ -->
+    <section class="page" id="p2">
+      <div class="kicker"><span class="pill money">The Money</span></div>
+      <h2 class="title">Affordability &amp; the true cost of owning</h2>
+      <p class="lede">Lenders tell you the most you can borrow. That's a ceiling, not a target. Decide your own number first, from what you'd spend each month, and work backward to a price.</p>
+
+      <h3>PITI: the payment lenders underwrite</h3>
+      <div class="formula"><b>Monthly housing</b> = <b>P</b>rincipal + <b>I</b>nterest + <b>T</b>axes + <b>I</b>nsurance + HOA + mortgage insurance</div>
+      <p>The lender collects taxes and insurance monthly into an <span class="keyterm">escrow account</span> (also called "impound") and pays the bills for you. Escrow is why your payment changes every year even on a fixed-rate loan: taxes and premiums move.</p>
+
+      <h3>The ratios lenders use</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Front-end ratio (housing ÷ gross income)</h4><p style="margin:0">Classic guideline <strong>28%</strong>. Automated underwriting often ignores it for conventional loans. It's still a good personal sanity check.</p></div>
+        <div class="card"><h4>Back-end DTI (all debts ÷ gross income)</h4><p style="margin:0">Housing plus car, student and card minimums plus any other mortgage or HELOC. Conventional loans go to <strong>45–50%</strong> with strong files. FHA can stretch past 50%. VA uses <strong>residual income</strong> as well.</p></div>
+      </div>
+      <div class="coach"><span class="tag">Coach's note: set your own ceiling</span><p style="margin:0">A comfortable number for most households: total housing at or below <strong>25% of gross</strong>, or about <strong>35% of take-home</strong>. Being approved at 45% DTI means the lender is comfortable, not you. Build the budget from your real spending, not from the pre-approval letter.</p></div>
+
+      <h3>Payment estimator</h3>
+      <div class="calc" id="calcPiti">
+        <h4>🧮 What will this house cost per month?</h4>
+        <div class="in">
+          <label>Price ($)<input type="number" id="c_price" value="500000" step="5000" min="0"></label>
+          <label>Down payment (%)<input type="number" id="c_down" value="20" step="1" min="0" max="100"></label>
+          <label>Rate (%)<input type="number" id="c_rate" value="7.0" step="0.125" min="0"></label>
+          <label>Term (years)<select id="c_term"><option>30</option><option>20</option><option>15</option></select></label>
+          <label>Property tax (%/yr)<input type="number" id="c_tax" value="0.9" step="0.05" min="0"></label>
+          <label>Insurance ($/yr)<input type="number" id="c_ins" value="2400" step="100" min="0"></label>
+          <label>HOA ($/mo)<input type="number" id="c_hoa" value="0" step="10" min="0"></label>
+          <label>Gross income ($/yr)<input type="number" id="c_inc" value="180000" step="5000" min="0"></label>
+        </div>
+        <div class="outs">
+          <div class="o"><b id="o_pi">—</b><span>Principal &amp; interest</span></div>
+          <div class="o"><b id="o_pmi">—</b><span>Est. PMI (if &lt;20% down)</span></div>
+          <div class="o"><b id="o_total">—</b><span>Total monthly (PITI + HOA)</span></div>
+          <div class="o"><b id="o_ratio">—</b><span>Housing ÷ gross income</span></div>
+          <div class="o"><b id="o_cash">—</b><span>Cash to close (down + ~3%)</span></div>
+        </div>
+        <p class="note">PMI is estimated at 0.5%/yr of the loan, a rough mid-range for good credit; real pricing runs about 0.2–1.5% by score and down payment. Everything stays in your browser.</p>
+      </div>
+
+      <h3>Everything the monthly payment leaves out</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Cost</th><th>Typical size</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Closing costs</strong></td><td>2–5% of price</td><td>Lender fees, title insurance, escrow, recording, transfer taxes where they apply, prepaid interest, and initial escrow deposits</td></tr>
+          <tr><td><strong>Reserves</strong></td><td>2–6 months of PITI</td><td>Often required after closing, and more for second homes and jumbo loans. Retirement accounts usually count at a discount.</td></tr>
+          <tr><td><strong>Maintenance &amp; repair</strong></td><td>1–2% of value per year</td><td>Budget more for older homes. A roof, HVAC or water heater are known big-ticket items; check their ages.</td></tr>
+          <tr><td><strong>Move-in</strong></td><td>$5–20k+</td><td>Movers, window coverings, appliances, re-keying, paint, the first Home Depot run (and the second)</td></tr>
+          <tr><td><strong>Utilities delta</strong></td><td>Varies</td><td>Ask for 12 months of bills. Well, septic, propane and pool each add their own costs.</td></tr>
+          <tr><td><strong>Property-tax reset</strong></td><td>Varies widely</td><td>In many states the assessment resets to your purchase price. <strong>Don't budget off the seller's current tax bill.</strong></td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="warn"><span class="tag">Watch out: the reassessment surprise</span><p style="margin:0">A seller who bought 15 years ago may pay half the tax you will, because many states cap assessment growth for existing owners, then reset it at sale. Some states send a supplemental tax bill months after closing. Ask the lender to escrow using the <strong>post-sale estimate</strong>, or keep a cushion yourself. (Arizona is an exception: its cap doesn't reset on sale, see <a href="#" data-goto="12">§12</a>.)</p></div>
+
+      <h3>Rent vs. buy: the honest version</h3>
+      <p>Buying wins when you stay long enough for appreciation and principal paydown to outrun the <span class="keyterm">unrecoverable costs</span>: interest, property tax, insurance, maintenance, and the 6–10% round-trip cost of buying and later selling. At 7% rates, break-even is often <strong>5–7+ years</strong>. Renting's unrecoverable costs are rent plus renter's insurance. The fair comparison sets unrecoverable cost against unrecoverable cost, not rent against the full mortgage payment.</p>
+      <div class="formula"><b>Annual unrecoverable cost of owning</b> ≈ price × (<b>interest rate</b> × LTV + <b>tax rate</b> + <b>~1% maintenance</b> + <b>cost of capital on equity</b>)</div>
+
+      <div class="pagenav">
+        <button data-goto="1"><span>Previous</span><b>← 01 · The Game Plan</b></button>
+        <button data-goto="3"><span>Next</span><b>03 · Credit &amp; Pre-Approval →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 3 CREDIT & PREAPPROVAL ============ -->
+    <section class="page" id="p3">
+      <div class="kicker"><span class="pill money">The Money</span></div>
+      <h2 class="title">Credit &amp; pre-approval</h2>
+      <p class="lede">Your credit score sets your rate tier and your mortgage-insurance price. A documented pre-approval tells sellers you can actually close. Do both before you tour a single house.</p>
+
+      <h3>Credit: what moves the price</h3>
+      <div class="stack">
+        <div class="lvl"><div class="pct">780+</div><div class="bar"><i style="width:100%"></i></div><div><strong>Best pricing tier.</strong> Above this there's usually little extra to gain.</div></div>
+        <div class="lvl"><div class="pct">740–779</div><div class="bar"><i style="width:85%"></i></div><div><strong>Near-best.</strong> Small loan-level price adjustments (LLPAs).</div></div>
+        <div class="lvl"><div class="pct">680–739</div><div class="bar"><i style="width:65%"></i></div><div><strong>Noticeably costlier</strong> conventional pricing and PMI.</div></div>
+        <div class="lvl"><div class="pct">620–679</div><div class="bar"><i style="width:42%"></i></div><div><strong>Conventional floor ~620.</strong> FHA often prices better here.</div></div>
+        <div class="lvl"><div class="pct">&lt;620</div><div class="bar"><i style="width:20%"></i></div><div><strong>FHA (580+ for 3.5% down)</strong>, VA or non-QM.</div></div>
+      </div>
+      <p class="fn">Lenders traditionally use the middle of three bureau scores, using older "classic" FICO models. FHFA has approved FICO 10T and VantageScore 4.0 for Fannie and Freddie loans and is phasing them in, so your lender's model may differ from the score in your banking app.</p>
+
+      <ul class="checklist">
+        <li><strong>Pull all three reports free</strong> at AnnualCreditReport.com and dispute errors now. Disputes can take 30+ days, and an open dispute can stall underwriting.</li>
+        <li><strong>Pay card balances down before the statement date</strong>, not the due date. Reported utilization under ~10% scores best.</li>
+        <li><strong>Rate-shop in a tight window.</strong> Mortgage inquiries within 14–45 days (by scoring model) count as one.</li>
+        <li><strong>Open nothing new</strong>: no new cards, car loans or co-signing until after closing. Lenders re-pull credit or monitor it right up to funding.</li>
+        <li><strong>If your credit is frozen</strong>, temporarily lift the freeze at all three bureaus before you apply.</li>
+      </ul>
+
+      <h3>Pre-qualified vs. pre-approved vs. underwritten</h3>
+      <div class="spectrum">
+        <div class="s1"><b>Pre-qualification</b><span>Self-reported numbers, maybe a soft pull. A marketing letter. Sellers discount it.</span></div>
+        <div class="s2"><b>Pre-approval</b><span>Hard pull, income and asset documents reviewed by a loan officer, automated-underwriting finding. The standard.</span></div>
+        <div class="s3"><b>Underwritten pre-approval</b><span>A human underwriter has cleared the file, leaving only the property. Nearly as strong as cash.</span></div>
+        <div class="s4"><b>Cash / proof of funds</b><span>No financing contingency. Strongest, but you should still get inspections.</span></div>
+      </div>
+
+      <h3>The document pack to assemble now</h3>
+      <div class="grid g2">
+        <div class="card"><h4>📄 Income</h4><p style="margin:0">30 days of pay stubs, 2 years of W-2s and full tax returns (all schedules), 1099s. Self-employed: 2 years of business returns plus a year-to-date P&amp;L. Bonus or RSU income usually needs a 2-year history to count. VA disability award letter if applicable (it's non-taxable, and lenders may "gross it up" by 25%).</p></div>
+        <div class="card"><h4>🏦 Assets</h4><p style="margin:0">Two months of complete statements (every page, even the blank ones) for every account you'll use. Explain any large non-payroll deposit. A gift needs a signed gift letter and a paper trail.</p></div>
+        <div class="card"><h4>🏠 Existing property</h4><p style="margin:0">Current mortgage statement, HELOC statement, homeowner's declarations page, tax bill, HOA statement. The lender counts your full current housing cost in DTI.</p></div>
+        <div class="card"><h4>🪪 Identity &amp; history</h4><p style="margin:0">ID, Social Security number, 2 years of address and employment history, divorce decree and child-support orders if relevant.</p></div>
+      </div>
+
+      <div class="warn"><span class="tag">Watch out: "seasoned" money</span><p style="margin:0">Lenders need to source any large deposit in the last 60 days. Moving money between your own accounts is fine but creates paperwork. Selling stock or crypto for a down payment needs a clean trail showing the sale and the transfer. <strong>Move funds early and in as few hops as possible</strong>, ideally before the two statement months the lender will review.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="2"><span>Previous</span><b>← 02 · Affordability</b></button>
+        <button data-goto="4"><span>Next</span><b>04 · Choosing a Loan →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 4 LOAN TYPES ============ -->
+    <section class="page" id="p4">
+      <div class="kicker"><span class="pill money">The Money</span></div>
+      <h2 class="title">Choosing a loan</h2>
+      <p class="lede">Loan type decides your down payment, your mortgage insurance and how your offer reads to a seller. Choose it on purpose rather than by default.</p>
+
+      <h3>The menu</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Loan</th><th>Min. down</th><th>Mortgage insurance</th><th>Best for</th><th>Catches</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Conventional (conforming)</strong></td><td>3–5% (primary)<br>10% (second home)</td><td>PMI under 20% down; drops at 78% LTV automatically, or 80% on request</td><td>Good credit; the default for most buyers</td><td>Price adjusts by score and LTV. Loan ≤ $832,750 in 2026 (higher in high-cost counties).</td></tr>
+          <tr><td><strong>Jumbo</strong></td><td>10–20%</td><td>Usually none; priced into the rate</td><td>Loans above the conforming limit</td><td>Stricter DTI and reserves (often 6–12 months); rates sometimes <em>below</em> conforming</td></tr>
+          <tr><td><strong>FHA</strong></td><td>3.5% (580+ score)</td><td>1.75% upfront plus ~0.5–0.55%/yr. For life if under 10% down, else 11 years.</td><td>Lower scores, higher DTI</td><td>Stricter property condition. Sellers sometimes see it as the weaker offer. Primary residence only.</td></tr>
+          <tr><td><strong>VA</strong></td><td>0%</td><td>None. Funding fee 2.15% on first use (under 5% down), <strong>waived for veterans receiving VA disability compensation</strong>.</td><td>Eligible veterans and service members</td><td>Primary residence only (occupy within ~60 days). VA appraisal has minimum property requirements. No loan cap with full entitlement.</td></tr>
+          <tr><td><strong>USDA</strong></td><td>0%</td><td>1% upfront + 0.35%/yr</td><td>Eligible rural and suburban areas under income limits</td><td>Location and income eligibility; slower processing</td></tr>
+          <tr><td><strong>ARM (5/6, 7/6, 10/6)</strong></td><td>Same as conventional or jumbo</td><td>Same</td><td>You expect to sell or refi within the fixed window</td><td>After the fixed period it resets every 6 months off SOFR, within caps (often 2/1/5)</td></tr>
+          <tr><td><strong>Non-QM (bank-statement, asset-depletion, DSCR)</strong></td><td>10–25%</td><td>None</td><td>Self-employed, asset-rich, or investors</td><td>Rates 0.5–2% higher, prepayment penalties on some</td></tr>
+          <tr><td><strong>Assumption</strong></td><td>Cover the seller's equity</td><td>Inherits the seller's terms</td><td>Taking over a seller's 2–4% FHA or VA loan</td><td>Needs cash or a second loan for the equity gap, lender approval, 45–90+ days</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="coach"><span class="tag">Coach's note: the assumable-loan play</span><p style="margin:0">FHA, VA and USDA loans are <strong>assumable</strong>. A seller with a 2.75% VA loan from 2021 is sitting on a financing asset worth tens of thousands of dollars. Search listings for "assumable". The gap between price and loan balance has to be covered in cash or with a second lien. If a <em>non-veteran</em> assumes a VA loan, the seller's VA entitlement stays tied up, so veteran sellers often prefer a veteran buyer who can substitute their own entitlement.</p></div>
+
+      <h3>Fixed vs. adjustable in a 7% world</h3>
+      <div class="matrix">
+        <div class="q hi"><h4>Choose a 30-year fixed when…</h4><p style="margin:0">You might stay 8+ years, you value certainty, or you'd struggle if the payment rose. You keep the option to refinance if rates fall, and pay nothing for it except closing costs.</p></div>
+        <div class="q"><h4>Consider a 7/6 or 10/6 ARM when…</h4><p style="margin:0">The ARM is priced 0.5%+ below the fixed rate, and you're confident you'll sell, pay down or refinance inside the fixed window. Stress-test the payment at the <strong>lifetime cap</strong>.</p></div>
+        <div class="q"><h4>Choose a 15-year when…</h4><p style="margin:0">You can comfortably handle the bigger payment and want the lower rate (often 0.5–0.75% below the 30). Or take a 30 and prepay voluntarily, which keeps the flexibility.</p></div>
+        <div class="q lo"><h4>Avoid…</h4><p style="margin:0">Interest-only or negative-amortization products, and prepayment penalties on a home you live in. Also avoid stretching to a price where only an ARM makes the payment work.</p></div>
+      </div>
+
+      <div class="analogy"><span class="tag">Analogy: the fixed rate is a free option</span><p style="margin:0">A fixed-rate mortgage is a one-way contract in your favor. If rates rise you keep your rate forever. If they fall you refinance and walk away. The lender can't do either. That's why today's sellers won't give up their 3% loans, and why "marry the house, date the rate" is only half-right: the date comes with closing costs of 1–3%.</p></div>
+
+      <div class="warn"><span class="tag">Watch out: occupancy fraud</span><p style="margin:0">Primary, second-home and investment loans are priced differently, and you sign an occupancy affidavit. Calling a rental a "second home" to get the better rate is mortgage fraud, a federal crime, even when "everyone does it". Pick the loan that matches how you'll actually use the house. <a href="#" data-goto="11">§11</a> covers the line between a second home and an investment property.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="3"><span>Previous</span><b>← 03 · Credit &amp; Pre-Approval</b></button>
+        <button data-goto="5"><span>Next</span><b>05 · Rates, Points &amp; Lender Shopping →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 5 RATES & LENDERS ============ -->
+    <section class="page" id="p5">
+      <div class="kicker"><span class="pill money">The Money</span></div>
+      <h2 class="title">Rates, points &amp; lender shopping</h2>
+      <p class="lede">This is the part of the deal most like your day job. The price is a rate-and-fee pair, quotes vary widely for the same borrower on the same day, and the standard disclosure form makes like-for-like comparison possible.</p>
+
+      <h3>Read the Loan Estimate like a bid sheet</h3>
+      <p>Every lender must give you a standardized 3-page <span class="keyterm">Loan Estimate</span> within 3 business days of an application (name, income, SSN, address, price and loan amount). Page 2 is where the money is.</p>
+      <div class="scroller"><table>
+        <thead><tr><th>Section</th><th>What it is</th><th>Negotiable?</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A · Origination charges</strong></td><td>Lender's fee, points, underwriting and processing</td><td><strong>Yes, the main lever.</strong> Compare A alongside the rate.</td></tr>
+          <tr><td><strong>B · Services you cannot shop for</strong></td><td>Appraisal, credit report, flood certification</td><td>Little. Mostly pass-through.</td></tr>
+          <tr><td><strong>C · Services you can shop for</strong></td><td>Title, settlement and survey fees</td><td>Yes. Shop title where your state allows.</td></tr>
+          <tr><td><strong>E · Taxes &amp; government fees</strong></td><td>Recording, transfer taxes</td><td>No. Fixed by law.</td></tr>
+          <tr><td><strong>F / G · Prepaids &amp; initial escrow</strong></td><td>First-year insurance, prepaid interest, escrow cushion</td><td>No. Identical across lenders, so <strong>ignore them when comparing</strong>.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="coach"><span class="tag">Coach's note: running the competitive bid</span><p style="margin:0">Request Loan Estimates from <strong>3–4 lenders on the same morning</strong> with the same lock period (say 45 days) and the same loan type. Include one big bank, one credit union, one online lender and one local broker. Compare <strong>rate + Section A</strong>. Then tell your favorite what the best competing quote was and send the PDF. Lenders price-match regularly, and a written competing quote does more than any verbal "can you do better?"</p></div>
+
+      <h3>Points: buying down the rate</h3>
+      <div class="formula"><b>1 point</b> = 1% of the loan amount · <b>Break-even months</b> = cost of points ÷ monthly payment savings</div>
+      <p>One point typically lowers the rate by roughly 0.125–0.25%, though it varies daily by lender. Points pay off only if you keep the loan past break-even, and in a 7% market many people will refinance within a few years. <strong>Lender credits</strong> run the other way: a higher rate in exchange for cash toward closing costs.</p>
+
+      <div class="calc" id="calcPts">
+        <h4>🧮 Are the points worth it?</h4>
+        <div class="in">
+          <label>Loan amount ($)<input type="number" id="p_loan" value="400000" step="5000" min="0"></label>
+          <label>Rate without points (%)<input type="number" id="p_r0" value="7.0" step="0.125" min="0"></label>
+          <label>Rate with points (%)<input type="number" id="p_r1" value="6.75" step="0.125" min="0"></label>
+          <label>Points paid<input type="number" id="p_pts" value="1" step="0.125" min="0"></label>
+          <label>Years you'll keep the loan<input type="number" id="p_yrs" value="5" step="1" min="1" max="30"></label>
+        </div>
+        <div class="outs">
+          <div class="o"><b id="p_cost">—</b><span>Cost of points</span></div>
+          <div class="o"><b id="p_save">—</b><span>Monthly P&amp;I savings</span></div>
+          <div class="o"><b id="p_be">—</b><span>Break-even</span></div>
+          <div class="o"><b id="p_net">—</b><span>Net gain over your horizon</span></div>
+        </div>
+        <p class="note">Simple break-even ignores the time value of the upfront cash and the slightly faster principal paydown at a lower rate. Both roughly offset over short horizons.</p>
+      </div>
+
+      <h3>Rate locks</h3>
+      <ul class="checklist">
+        <li><strong>Lock once you're under contract</strong> for a lock period that clears your closing date with a week to spare. 30/45/60-day locks cost progressively more.</li>
+        <li><strong>Get the lock confirmation in writing</strong>: rate, points or credits, expiry, loan amount and program.</li>
+        <li><strong>Ask about a float-down</strong>, a one-time re-price if rates drop more than a threshold. It's sometimes free and sometimes 0.25–0.5 point.</li>
+        <li><strong>Know the extension cost</strong>. Closing delays happen, and extensions are commonly priced per day.</li>
+        <li><strong>A lock is tied to the file.</strong> Changing loan amount, program, occupancy or credit can change the price.</li>
+      </ul>
+
+      <h3>Seller-paid buydowns: the concession that beats a price cut</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Temporary buydown (2-1, 1-0)</h4><p style="margin:0">The seller funds an escrow that cuts your rate by 2% in year 1 and 1% in year 2, before it returns to the note rate. You still <strong>qualify at the full note rate</strong>. Useful if you expect to refinance within two years anyway.</p></div>
+        <div class="card"><h4>Permanent buydown</h4><p style="margin:0">Seller credit used to buy discount points on your loan. It lasts the life of the loan, or until you refinance.</p></div>
+      </div>
+      <div class="analogy"><span class="tag">Analogy: price vs. terms</span><p style="margin:0">It's the same move as trading list-price discount for payment terms in a vendor deal. A $15k price cut on a $500k house with 20% down trims the loan by $12k and saves about <strong>$80/month</strong> at 7%. The same $15k as a permanent buydown can cut the rate by roughly 0.5–0.75%, around <strong>$130–200/month</strong> on a $400k loan. The seller's net is identical. Run both before you counter.</p></div>
+      <div class="warn"><span class="tag">Watch out: concession caps</span><p style="margin:0">Seller credits are capped as a percentage of price. Conventional primary: <strong>3%</strong> under 10% down, 6% with 10–25% down, 9% above 25%. <strong>Second homes and investment properties: 2%.</strong> FHA 6%. VA 4% plus normal closing costs. A credit can't exceed your actual closing costs, and anything over the cap is lost.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="4"><span>Previous</span><b>← 04 · Choosing a Loan</b></button>
+        <button data-goto="6"><span>Next</span><b>06 · Agents &amp; Commission Rules →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 6 AGENTS ============ -->
+    <section class="page" id="p6">
+      <div class="kicker"><span class="pill hunt">The Hunt</span></div>
+      <h2 class="title">Agents &amp; the new commission rules</h2>
+      <p class="lede">The biggest change since you last bought. Your agent's pay used to arrive invisibly from the seller's side. Now it's a contract you sign and a number you negotiate.</p>
+
+      <h3>What the 2024 NAR settlement changed</h3>
+      <div class="grid g2">
+        <div class="card"><h4>✍️ Written agreement before touring</h4><p style="margin:0">MLS-participating agents must have a signed agreement with you <strong>before you tour a home</strong>, in person or virtually. It must state the compensation as a specific amount or rate, not "whatever the seller offers", and the agent can't collect more than that.</p></div>
+        <div class="card"><h4>🚫 No compensation offers on the MLS</h4><p style="margin:0">Listings can't advertise what the seller pays the buyer's agent. Sellers can still agree to pay it, negotiated directly or requested in your offer as a concession.</p></div>
+        <div class="card"><h4>💵 Who pays is now a term of the deal</h4><p style="margin:0">Your agent's fee might come from the seller (via concession or listing-agent split), from you at closing, or both. Your offer should say what you're asking for.</p></div>
+        <div class="card"><h4>🔍 Everything is negotiable, always was</h4><p style="margin:0">The fee rate, a flat fee, the term, which homes it covers, and how you can cancel.</p></div>
+      </div>
+
+      <h3>Negotiating the buyer agreement</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Term</th><th>Their default</th><th>What to ask for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Compensation</strong></td><td>~2.5–3% of price</td><td>A rate that reflects the work: a flat fee, a lower rate above a price threshold, or a reduction if the seller pays some of it</td></tr>
+          <tr><td><strong>Who pays if the seller won't</strong></td><td>You pay the full difference</td><td>Cap your out-of-pocket, or let the agent accept whatever the seller contributes</td></tr>
+          <tr><td><strong>Term</strong></td><td>3–6 months</td><td>30–60 days, renewable. Or a <strong>single-property touring agreement</strong> while you're still testing the fit.</td></tr>
+          <tr><td><strong>Scope</strong></td><td>All homes, whole metro</td><td>Named area or property type only</td></tr>
+          <tr><td><strong>Exit</strong></td><td>No early termination</td><td>Cancel on written notice, with a short protection period only for homes they actually showed you</td></tr>
+          <tr><td><strong>Dual agency</strong></td><td>Allowed, with consent</td><td>Decide up front whether you'll accept the listing agent's brokerage representing both sides</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="coach"><span class="tag">Coach's note: interview like it's an RFP</span><p style="margin:0">Ask each candidate: <em>How many buyers did you close in this area and price band last year? Walk me through how you'd price the last house you lost to another offer. What's your fee, and what do I get at a lower one? Who covers showings when you're away?</em> Good agents answer with comps and specifics. Weak ones answer with enthusiasm.</p></div>
+
+      <h3>Alternatives to the full-service agent</h3>
+      <div class="grid g3">
+        <div class="card"><h4>Flat-fee / discount</h4><p style="margin:0">A lower fixed fee, sometimes with less hands-on touring. Works well if you do your own search and comps.</p></div>
+        <div class="card"><h4>Rebate brokerages</h4><p style="margin:0">Refund part of their fee to you at closing (lender approval required). Some states restrict or ban rebates, so check yours.</p></div>
+        <div class="card"><h4>Unrepresented + attorney</h4><p style="margin:0">Deal directly with the listing agent and hire a real-estate attorney for the contract. Cheapest. The listing agent is <strong>not</strong> working for you.</p></div>
+      </div>
+
+      <div class="warn"><span class="tag">Watch out: the listing agent is the seller's advocate</span><p style="margin:0">Anything you tell a listing agent, like your maximum, your timeline or how much you love the kitchen, can reach the seller. When you're unrepresented, act as if every call is on speakerphone with the seller.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="5"><span>Previous</span><b>← 05 · Rates &amp; Lenders</b></button>
+        <button data-goto="7"><span>Next</span><b>07 · Finding &amp; Judging a House →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 7 FINDING ============ -->
+    <section class="page" id="p7">
+      <div class="kicker"><span class="pill hunt">The Hunt</span></div>
+      <h2 class="title">Finding &amp; judging a house</h2>
+      <p class="lede">Fall for the location, fix the house. A dated kitchen is a weekend of quotes; a floodplain, a failing HOA or an uninsurable fire zone are permanent.</p>
+
+      <h3>Write the scorecard before you tour</h3>
+      <div class="grid g3">
+        <div class="card"><h4>Non-negotiables</h4><p style="margin:0">Location limits, bedrooms, single-level or not, lot size, commute, insurability. Houses that fail these don't get toured.</p></div>
+        <div class="card"><h4>Weighted wants</h4><p style="margin:0">Garage, view, office, yard, updated systems. Give each a weight and score every tour the same evening.</p></div>
+        <div class="card"><h4>Fixables</h4><p style="margin:0">Paint, floors, fixtures, landscaping. Price them in; don't let them decide for you.</p></div>
+      </div>
+
+      <h3>Reading a listing between the lines</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Signal</th><th>What it often means</th><th>Leverage</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Days on market &gt; area median</strong></td><td>Overpriced or a known problem</td><td>High. Ask your agent for the full price and status history.</td></tr>
+          <tr><td><strong>One or more price cuts</strong></td><td>Seller is chasing the market</td><td>High. Anchor to comps, not the list price.</td></tr>
+          <tr><td><strong>Back on market</strong></td><td>A prior deal failed on financing, inspection or appraisal</td><td>Ask the listing agent why, and ask for the prior inspection report.</td></tr>
+          <tr><td><strong>"As-is", "cash only", "investor special"</strong></td><td>Condition issue that won't pass FHA or VA appraisal</td><td>Inspect harder; price the fix plus a risk premium.</td></tr>
+          <tr><td><strong>Vacant / estate / relocation</strong></td><td>Motivated seller carrying costs</td><td>Speed and certainty may beat price.</td></tr>
+          <tr><td><strong>Offer deadline set on day 1</strong></td><td>Agent expects, or wants to manufacture, multiple offers</td><td>Low. Decide your walk-away number in advance.</td></tr>
+          <tr><td><strong>Wide-angle photos only, no floor plan</strong></td><td>Small or awkward rooms</td><td>Tour in person before bidding.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Build your own comps</h3>
+      <div class="formula"><b>Comparable</b> = sold (not listed) · within ~0.5 mi or same subdivision · last 3–6 months · ±20% sq ft · same era and style</div>
+      <p>Take 3–6 comps, adjust for real differences (garage, pool, updated kitchen, lot, view), and compare <strong>price per square foot</strong> as a check rather than the answer. The appraiser will do almost exactly this, so your comps predict whether the house will appraise.</p>
+
+      <h3>Area due diligence, before you offer</h3>
+      <ul class="checklist">
+        <li><strong>Visit at 7:30am on a weekday, 9pm on a Friday and Saturday midday.</strong> Traffic, noise, trains, parking, barking dogs.</li>
+        <li><strong>Flood:</strong> FEMA flood map (msc.fema.gov) plus a risk-score site like First Street. Lenders require flood insurance in high-risk zones, and NFIP policies have a 30-day wait.</li>
+        <li><strong>Wildfire:</strong> state fire-hazard maps and the US Forest Service's Wildfire Risk to Communities. Ask an insurance broker whether they can write it <em>before</em> you offer.</li>
+        <li><strong>Insurance history:</strong> ask the seller for a CLUE report showing prior claims on the property. Prior water claims raise premiums.</li>
+        <li><strong>Permits:</strong> check the city or county permit portal. Unpermitted additions or garage conversions can mean re-work, appraisal problems and insurance gaps.</li>
+        <li><strong>What's coming:</strong> the planning department's agenda for rezoning, road widening or large developments nearby.</li>
+        <li><strong>HOA health</strong> (<a href="#" data-goto="9">§09</a>): reserves, special assessments, litigation, rental caps, rules on RVs, paint and short-term rentals.</li>
+        <li><strong>Utilities &amp; services:</strong> internet providers and speeds at the address, sewer or septic, city water or well, trash, propane.</li>
+      </ul>
+
+      <h3>House-era red flags</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Era</th><th>Watch for</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Pre-1978</td><td>Lead paint, asbestos (flooring, popcorn ceilings, duct wrap)</td><td>Disclosure required; costly abatement if disturbed in a remodel</td></tr>
+          <tr><td>Pre-1960s</td><td>Galvanized supply pipes, cast-iron or clay sewer lines, knob-and-tube wiring</td><td>Corrosion, root intrusion, insurability</td></tr>
+          <tr><td>1965–1973</td><td>Aluminum branch wiring</td><td>Fire risk at connections; some insurers decline</td></tr>
+          <tr><td>1970s–80s</td><td>Federal Pacific (Stab-Lok) and Zinsco panels</td><td>Breakers that fail to trip; many insurers require replacement</td></tr>
+          <tr><td>1978–1995</td><td>Polybutylene ("poly") supply pipes</td><td>Failure-prone; often uninsurable until replumbed</td></tr>
+          <tr><td>1990s–2000s</td><td>EIFS synthetic stucco, early OSB siding; imported drywall (2001–08)</td><td>Hidden moisture damage; corrosive off-gassing</td></tr>
+          <tr><td>Any</td><td>Roof &gt;15–20 yrs, HVAC &gt;15, water heater &gt;10, sewer never scoped</td><td>Big near-term capital costs, and insurers may limit roof coverage by age</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="pagenav">
+        <button data-goto="6"><span>Previous</span><b>← 06 · Agents</b></button>
+        <button data-goto="8"><span>Next</span><b>08 · Making the Offer →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 8 OFFER ============ -->
+    <section class="page" id="p8">
+      <div class="kicker"><span class="pill deal">The Deal</span></div>
+      <h2 class="title">Making the offer</h2>
+      <p class="lede">An offer is a contract term sheet, not just a price. Sellers weigh price against certainty, speed and hassle, and you can trade in all of them.</p>
+
+      <h3>Anatomy of a purchase contract</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Term</th><th>Typical</th><th>What it does for you</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Price</strong></td><td>—</td><td>Anchor to your comps, not to the list price</td></tr>
+          <tr><td><strong>Earnest money (EMD)</strong></td><td>1–3% of price, deposited in escrow within 1–3 business days</td><td>Shows commitment. <strong>Refundable if you cancel within a contingency</strong>, at risk if you default outside one.</td></tr>
+          <tr><td><strong>Inspection / due-diligence period</strong></td><td>7–10 days (varies by state)</td><td>Your broadest exit. In many contracts you can cancel for any reason within it.</td></tr>
+          <tr><td><strong>Financing contingency</strong></td><td>17–21 days, or until loan approval</td><td>Protects your EMD if the loan falls through</td></tr>
+          <tr><td><strong>Appraisal contingency</strong></td><td>Tied to financing</td><td>Lets you renegotiate or exit if it appraises low</td></tr>
+          <tr><td><strong>Insurance contingency</strong></td><td>Within the inspection period</td><td>Exit if you can't get coverage at a reasonable price. Increasingly important.</td></tr>
+          <tr><td><strong>Home-sale contingency</strong></td><td>30–60 days</td><td>Buy only if yours sells. Weakens the offer a lot; a HELOC or bridge loan can replace it (<a href="#" data-goto="11">§11</a>).</td></tr>
+          <tr><td><strong>Seller concessions</strong></td><td>0–3% (capped by loan type)</td><td>Closing costs, a rate buydown or your agent's fee</td></tr>
+          <tr><td><strong>Closing date &amp; possession</strong></td><td>30–45 days</td><td>A seller rent-back or flexible date can be worth more to them than money</td></tr>
+          <tr><td><strong>Personal property</strong></td><td>Appliances, window coverings</td><td>Name it or it isn't included. Don't let the lender see a price allocated to furniture.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>The negotiator's corner</h3>
+      <div class="grid g2">
+        <div class="card"><h4>🧭 Know your walk-away before you see the house again</h4><p style="margin:0">Set three numbers: <strong>opening</strong>, <strong>target</strong> and <strong>walk-away</strong>. Write the walk-away down. Emotional overbidding happens in the 20 minutes after your agent says "there's another offer".</p></div>
+        <div class="card"><h4>🎯 Anchor with evidence</h4><p style="margin:0">A below-list offer with a one-page comps sheet attached reads as a serious buyer. Without the comps it reads as a lowball.</p></div>
+        <div class="card"><h4>🔁 Trade, don't concede</h4><p style="margin:0">Every give should get something back: a higher price for a seller-paid buydown, a faster close for a lower price, or a rent-back for dropped repair requests.</p></div>
+        <div class="card"><h4>📉 Your BATNA is the market</h4><p style="margin:0">Keep touring until you're under contract, and let the listing agent see that you have other options. Stale listings (<a href="#" data-goto="7">§07</a>) are where leverage lives.</p></div>
+      </div>
+
+      <h3>Competing offers: tools, and what they really cost</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Tactic</th><th>How it works</th><th>The real risk</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Escalation clause</strong></td><td>Beat the best bona fide offer by $X, up to a cap</td><td>It shows your cap. Require a copy of the competing offer.</td></tr>
+          <tr><td><strong>Appraisal gap coverage</strong></td><td>You pay up to $X over a low appraisal in cash</td><td>That cash goes into the house and doesn't reduce your loan. Only offer what you'd pay anyway.</td></tr>
+          <tr><td><strong>Shorter inspection period</strong></td><td>5 days instead of 10</td><td>Book the inspector <em>before</em> you offer.</td></tr>
+          <tr><td><strong>Waiving the inspection</strong></td><td>No inspection contingency</td><td><strong>Don't.</strong> At most, do an "informational only" inspection that you won't use to ask for repairs.</td></tr>
+          <tr><td><strong>Larger EMD</strong></td><td>3–5% deposit</td><td>Safe only while contingencies are open. Know the exact dates.</td></tr>
+          <tr><td><strong>Flexible close / rent-back</strong></td><td>Seller stays 1–60 days after closing</td><td>Use a written rent-back agreement with a deposit. Check lender occupancy rules (often ≤60 days).</td></tr>
+          <tr><td><strong>Personal letter</strong></td><td>"We love your home"</td><td>Many agents now avoid them because of fair-housing risk. Let the terms speak.</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="warn"><span class="tag">Watch out: contingency deadlines are hard dates</span><p style="margin:0">Most contracts treat deadlines as strict. Miss the inspection-period deadline by a day and your earnest money may be at risk if you later walk away. Put every date in your calendar the day you go under contract. Send notices <strong>in writing, the way the contract specifies</strong>, and keep proof of delivery.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="7"><span>Previous</span><b>← 07 · Finding a House</b></button>
+        <button data-goto="9"><span>Next</span><b>09 · Inspections &amp; Due Diligence →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 9 INSPECTIONS ============ -->
+    <section class="page" id="p9">
+      <div class="kicker"><span class="pill deal">The Deal</span></div>
+      <h2 class="title">Inspections &amp; due diligence</h2>
+      <p class="lede">Ten days to find everything that matters about a house someone else has lived in for years. Spend a few hundred dollars more here; it's the cheapest insurance in the whole transaction.</p>
+
+      <h3>The inspection menu</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Inspection</th><th>When</th><th>Cost (typ.)</th><th>Finds</th></tr></thead>
+        <tbody>
+          <tr><td><strong>General home inspection</strong></td><td>Always</td><td>$400–800</td><td>Visual survey of structure, roof, systems, attic and crawlspace</td></tr>
+          <tr><td><strong>Sewer scope</strong></td><td>Any house over ~20 yrs, or with mature trees</td><td>$150–350</td><td>Root intrusion, bellies, broken or collapsed lines. Repairs run $3–25k+ and aren't covered by insurance.</td></tr>
+          <tr><td><strong>Roof (specialist)</strong></td><td>Roof over ~12 yrs, tile, or steep</td><td>$150–400</td><td>Remaining life, underlayment. Your insurer may ask for this.</td></tr>
+          <tr><td><strong>HVAC service inspection</strong></td><td>System over ~10 yrs</td><td>$100–250</td><td>Cracked heat exchangers (a CO risk), refrigerant type, remaining life</td></tr>
+          <tr><td><strong>Radon</strong></td><td>EPA zones 1–2, or any basement</td><td>$150–250</td><td>Radioactive gas, the #2 cause of lung cancer. Mitigation ~$1–2.5k.</td></tr>
+          <tr><td><strong>Wood-destroying insects</strong></td><td>Required by some loans; common in the South and West</td><td>$75–150</td><td>Termites and damage</td></tr>
+          <tr><td><strong>Septic</strong></td><td>Any septic system</td><td>$300–700 (pump + inspect)</td><td>Tank, baffles, leach field. Replacing a field runs $10–30k+.</td></tr>
+          <tr><td><strong>Well</strong></td><td>Any private well</td><td>$300–800</td><td>Flow rate, water quality (bacteria, arsenic, nitrates, uranium), pump age. Check shared-well agreements.</td></tr>
+          <tr><td><strong>Structural engineer</strong></td><td>Cracks, sloping floors, retaining walls, expansive soil</td><td>$400–900</td><td>Whether the "settling" is cosmetic or a foundation repair</td></tr>
+          <tr><td><strong>Chimney (Level 2)</strong></td><td>Any wood-burning fireplace</td><td>$200–500</td><td>Flue cracks, creosote, liner condition</td></tr>
+          <tr><td><strong>Mold / pool / solar / electrical</strong></td><td>If signs, or if present</td><td>Varies</td><td>Solar: <strong>owned, leased or financed?</strong> Leases and UCC liens transfer to you.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="coach"><span class="tag">Coach's note: attend the inspection</span><p style="margin:0">Spend the last hour with the inspector. Ask "what would you fix first if this were your house?" and "which of these is normal for a house this age?" The written report lists everything with equal weight, and 40 pages of findings can make a good house look scary. The conversation tells you which three items actually matter.</p></div>
+
+      <h3>The repair request: repair, credit or price?</h3>
+      <div class="grid g3">
+        <div class="card"><h4>💵 Credit at closing</h4><p style="margin:0"><strong>Usually best.</strong> You control the contractor and the quality. Limited by the concession caps (<a href="#" data-goto="5">§05</a>) and your actual closing costs.</p></div>
+        <div class="card"><h4>📉 Price reduction</h4><p style="margin:0">Lowers the loan, taxes and down payment slightly. Good when the credit would exceed the cap. Requires a contract amendment, and the lender will update.</p></div>
+        <div class="card"><h4>🔧 Seller repairs</h4><p style="margin:0">The seller picks the cheapest contractor. If you go this way, require licensed trades, permits where required and receipts, and re-inspect at the walk-through.</p></div>
+      </div>
+      <p>Ask for <strong>safety, structure, water and big-system items</strong> with contractor quotes attached. Don't ask for cosmetics or routine maintenance: that burns goodwill and invites a "no" on everything.</p>
+
+      <h3>The paperwork diligence running in parallel</h3>
+      <ul class="checklist">
+        <li><strong>Seller disclosure</strong>: read every "yes" and every "unknown". Ask what was done about each.</li>
+        <li><strong>Title commitment</strong>: review exceptions such as easements, CC&amp;Rs and encroachments. Ask title about anything odd and order a survey if boundaries matter.</li>
+        <li><strong>HOA packet</strong>: budget, <strong>reserve study</strong> (under ~70% funded is a warning), 12 months of minutes, special assessments, litigation, rental restrictions, transfer fees.</li>
+        <li><strong>Insurance</strong>: a <strong>bindable</strong> quote, not a ballpark. Confirm roof age limits, wind/hail deductible, wildfire exclusions and whether flood coverage is required.</li>
+        <li><strong>Permits</strong>: compare permitted square footage and additions against the listing.</li>
+        <li><strong>Leases, solar and service contracts</strong> that transfer to you: propane tank lease, security system, solar PPA.</li>
+      </ul>
+
+      <div class="warn"><span class="tag">Watch out: insurance is now a deal-breaker, not a formality</span><p style="margin:0">In wildfire, coastal and hail-heavy markets, standard carriers may decline based on fire score, roof age or claims history. The fallback is a surplus-lines carrier or the state FAIR plan, often at 2–4× the cost with thinner coverage. Get the quote <strong>during the inspection period</strong> so you can still exit. Premium swings of several thousand dollars a year change what you can afford (<a href="#" data-goto="2">§02</a>).</p></div>
+
+      <div class="pagenav">
+        <button data-goto="8"><span>Previous</span><b>← 08 · Making the Offer</b></button>
+        <button data-goto="10"><span>Next</span><b>10 · Appraisal, Underwriting &amp; Closing →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 10 CLOSING ============ -->
+    <section class="page" id="p10">
+      <div class="kicker"><span class="pill deal">The Deal</span></div>
+      <h2 class="title">Appraisal, underwriting &amp; closing</h2>
+      <p class="lede">The home stretch is mostly waiting and answering document requests quickly. Three things can still go wrong: a low appraisal, a change in your finances, and wire fraud.</p>
+
+      <h3>The appraisal</h3>
+      <p>The lender lends on the <strong>lower of price or appraised value</strong>. If a $500k contract appraises at $480k, your 20%-down math now runs off $480k, and the $20k gap has to be bridged.</p>
+      <div class="grid g2">
+        <div class="card"><h4>Options on a low appraisal</h4><p style="margin:0">(1) Seller cuts the price. (2) You cover the gap in cash. (3) Split it. (4) Challenge it with a <strong>Reconsideration of Value</strong> (ROV) through the lender, with better comps. (5) Exit under the appraisal contingency.</p></div>
+        <div class="card"><h4>Appraisal waivers</h4><p style="margin:0">Fannie and Freddie sometimes offer to skip the appraisal (or accept a property data collection) on low-LTV loans. That saves time and fee, but you lose the independent value check.</p></div>
+      </div>
+
+      <h3>Underwriting: the do-not list</h3>
+      <div class="warn"><span class="tag">Watch out: freeze your financial life until funding</span><p style="margin:0">Until the loan funds, <strong>don't</strong> change jobs or pay structure, open or close credit, finance furniture, co-sign, make large undocumented deposits, move money between accounts without a paper trail, or pay off debts without asking your loan officer first. Lenders re-verify employment and often re-pull credit days before closing.</p></div>
+      <p>Expect a list of "conditions": explain a deposit, re-send a statement page, sign a letter about a credit inquiry. Turn each around the same day. Most late closings are waiting on the borrower, not the lender.</p>
+
+      <h3>The Closing Disclosure (CD)</h3>
+      <p>You must receive the CD <strong>at least 3 business days before closing</strong>. Compare it with your final Loan Estimate:</p>
+      <ul class="checklist">
+        <li><strong>Rate, loan amount, term, loan type</strong> match your lock.</li>
+        <li><strong>Section A (origination)</strong> has not increased. Lender fees have zero tolerance.</li>
+        <li><strong>Section B plus recording fees</strong> have not risen more than 10% in total, if you used the lender's providers.</li>
+        <li><strong>Credits</strong> are all there: seller concessions, lender credits, repair credits, earnest money.</li>
+        <li><strong>Cash to close</strong> matches your own estimate within a few hundred dollars (prorations of tax and HOA explain the rest).</li>
+      </ul>
+      <p class="fn">A new 3-day wait is triggered only if the APR rises beyond tolerance, the loan product changes, or a prepayment penalty is added. Other corrections just produce a revised CD.</p>
+
+      <h3>Moving the money safely</h3>
+      <div class="warn"><span class="tag">Watch out: wire fraud (read this twice)</span><p style="margin:0">Criminals compromise agent, title or buyer email and send convincing "updated wiring instructions", often the day before closing. <strong>Before any wire</strong>: call the title company at a phone number from its official website or your original contract, <em>never</em> one in the email, and read back the account and routing numbers. Title companies don't change wire instructions by email. If money goes to the wrong place, call your bank to recall the wire <strong>within minutes</strong> and file at ic3.gov. Ask about a cashier's check or an ACH/escrow portal if they're offered.</p></div>
+
+      <h3>Closing day</h3>
+      <div class="timeline">
+        <div class="step"><div class="when">24 hrs before (or the morning of)</div><h4>Final walk-through</h4><p>Agreed repairs done (with receipts), included items present, no new damage, systems running, seller's belongings gone. Run every faucet and appliance.</p></div>
+        <div class="step"><div class="when">Signing</div><h4>Sign the note, deed of trust or mortgage, and disclosures</h4><p>About an hour. In-person, hybrid, or fully remote online notarization (RON) where your state and lender allow. Bring ID and ask about anything you don't understand.</p></div>
+        <div class="step"><div class="when">Funding</div><h4>Lender wires the loan; escrow disburses</h4><p>Sometimes same day. In "dry funding" states, funding and keys can come a day or two after signing.</p></div>
+        <div class="step"><div class="when">Recording</div><h4>Deed recorded with the county → keys</h4><p>Get digital copies of the full signed package and the final settlement statement. You'll need them at tax time and when you sell.</p></div>
+      </div>
+
+      <div class="analogy"><span class="tag">Analogy: escrow states vs. attorney states</span><p style="margin:0">Western states (AZ, CA, NV, WA and others) mostly close through a neutral <strong>escrow officer</strong> at a title company, and you may never sit at the same table as the seller. Much of the East uses <strong>attorney closings</strong>, where a lawyer conducts the signing. Same outcome, different conductor. Know which one your state uses so you know who to call.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="9"><span>Previous</span><b>← 09 · Inspections</b></button>
+        <button data-goto="11"><span>Next</span><b>11 · Second Homes &amp; Tapping Equity →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 11 SECOND HOMES ============ -->
+    <section class="page" id="p11">
+      <div class="kicker">Special situations</div>
+      <h2 class="title">Second homes &amp; tapping equity</h2>
+      <p class="lede">Buying while you already own changes almost everything: which loan you qualify for, how you fund the down payment, what's tax-deductible and how the house gets insured. Most of the expensive mistakes here are structural, not about price.</p>
+
+      <h3>Second home or investment property? The lender decides by use</h3>
+      <div class="grid g2">
+        <div class="card"><h4>🏔 Second home</h4><p style="margin:0">A one-unit home you occupy for part of the year, suitable for year-round use, under your exclusive control. No rental-pool or management agreement that dictates occupancy. Occasional rental is generally tolerated, but <strong>rental income can't be used to qualify</strong>. Down payment <strong>10%+</strong>, seller concessions capped at <strong>2%</strong>, pricing slightly above primary, reserves required.</p></div>
+        <div class="card"><h4>🏘 Investment property</h4><p style="margin:0">Bought mainly to rent. Down payment <strong>15–25%</strong>, noticeably higher rate, more reserves. Projected rent (appraiser's rent schedule, or DSCR loans) can help you qualify.</p></div>
+      </div>
+      <div class="warn"><span class="tag">Watch out: VA and FHA loans don't fit here</span><p style="margin:0">Both are for <strong>primary residences</strong>. A vacation or weekend home needs conventional, jumbo or portfolio financing, or cash. (VA can finance a <em>new primary</em> while you keep and rent out the old one, if you have remaining entitlement. That's a relocation, not a second home.)</p></div>
+
+      <h3>Funding the purchase: the options side by side</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Structure</th><th>How it works</th><th>Strengths</th><th>Watch-outs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>New second-home mortgage</strong></td><td>10–25% down from savings; loan secured by the new house</td><td>Fixed rate available. <strong>Interest is deductible</strong> as acquisition debt. Leaves your primary untouched.</td><td>Both housing payments count in DTI; reserves required</td></tr>
+          <tr><td><strong>HELOC on your primary</strong></td><td>Revolving line, often up to 80–90% combined LTV; variable (prime ± margin); ~10-yr draw, then ~20-yr repayment</td><td>Keeps a low-rate first mortgage intact. Draw only what you need. Lets you offer <strong>as cash</strong>.</td><td>Variable rate. The line can be frozen in a downturn. Interest-only draw period invites drift. <strong>Interest generally not deductible</strong> when spent on a different house.</td></tr>
+          <tr><td><strong>Home-equity loan</strong></td><td>Fixed-rate lump-sum second lien on your primary</td><td>Payment certainty; keeps your first mortgage</td><td>Higher rate than a first lien; same deductibility problem as a HELOC</td></tr>
+          <tr><td><strong>Cash-out refinance of primary</strong></td><td>Replace your first mortgage with a larger one</td><td>One fixed payment</td><td><strong>Reprices your whole balance</strong> at today's rate. Rarely makes sense if your current rate is far below market.</td></tr>
+          <tr><td><strong>Cash now, finance later</strong></td><td>Buy with cash (or HELOC cash), then take a mortgage on the new house within months (Fannie's "delayed financing" exception)</td><td>Cash-strength offer, then permanent fixed financing on the right house. Can repay the HELOC.</td><td>Needs a paper trail of the source of funds. Time limits apply. Confirm the loan qualifies before you rely on it.</td></tr>
+          <tr><td><strong>Bridge loan</strong></td><td>Short-term loan against the home you're selling</td><td>Buy before selling</td><td>Expensive; 6–12 month term</td></tr>
+          <tr><td><strong>Securities-backed line</strong></td><td>Borrow against a brokerage account</td><td>Fast, low paperwork; no sale means no capital-gains event</td><td>Margin-call risk if markets fall, at the worst moment</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>The blended-rate test</h3>
+      <p>When you have a cheap first mortgage, compare the <strong>blended cost</strong> of keeping it plus a second lien against the single rate of a cash-out refi:</p>
+      <div class="formula"><b>Blended rate</b> = (balance₁ × rate₁ + balance₂ × rate₂) ÷ (balance₁ + balance₂)</div>
+      <p>Example with round numbers: $250k at 3.0% plus a $150k HELOC at 8.0% blends to <strong>4.88%</strong>, far below a 7% cash-out refi on the full $400k. Flip the proportions, with a small cheap first mortgage and a large new need, and the blend climbs toward the second-lien rate while the HELOC still floats. Run the numbers rather than assuming.</p>
+
+      <div class="calc" id="calcBlend">
+        <h4>🧮 Keep the first mortgage, or refinance it?</h4>
+        <div class="in">
+          <label>First mortgage balance ($)<input type="number" id="b_b1" value="250000" step="5000" min="0"></label>
+          <label>First mortgage rate (%)<input type="number" id="b_r1" value="3.0" step="0.125" min="0"></label>
+          <label>New money needed ($)<input type="number" id="b_b2" value="150000" step="5000" min="0"></label>
+          <label>HELOC / 2nd-lien rate (%)<input type="number" id="b_r2" value="8.0" step="0.125" min="0"></label>
+          <label>Cash-out refi rate (%)<input type="number" id="b_r3" value="7.0" step="0.125" min="0"></label>
+        </div>
+        <div class="outs">
+          <div class="o"><b id="b_blend">—</b><span>Blended rate (keep + 2nd lien)</span></div>
+          <div class="o"><b id="b_int1">—</b><span>Year-1 interest, keep + 2nd lien</span></div>
+          <div class="o"><b id="b_int2">—</b><span>Year-1 interest, cash-out refi</span></div>
+          <div class="o"><b id="b_diff">—</b><span>Difference</span></div>
+        </div>
+        <p class="note">Interest-only comparison on current balances, ignoring closing costs (refis often run 2–3%, HELOCs far less) and rate changes on the variable line. A directional test, not a quote.</p>
+      </div>
+
+      <h3>Taxes: where second homes differ</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Interest follows the money <em>and</em> the collateral</h4><p style="margin:0">Mortgage interest is deductible only on debt used to <strong>buy, build or substantially improve the home that secures it</strong>, up to $750k of combined acquisition debt across your main and second home. A HELOC on house A spent on house B generally <strong>doesn't qualify</strong>. IRS rules let a mortgage taken on house B within <strong>90 days after purchase</strong> count as acquisition debt (to the extent of the purchase cost), which is one more reason the "cash now, finance later" route can beat a long-lived HELOC.</p></div>
+        <div class="card"><h4>No $250k/$500k exclusion on sale</h4><p style="margin:0">The home-sale gain exclusion applies to your main home (lived in 2 of the last 5 years). A second home's gain is taxable. Converting it to your primary later only partly helps, because "nonqualified use" periods since 2009 are prorated out.</p></div>
+        <div class="card"><h4>Property tax classification</h4><p style="margin:0">Many states give primary residences a homestead exemption, assessment cap or rebate that a second home doesn't get. Arizona's homeowner rebate on school taxes is one example (<a href="#" data-goto="12">§12</a>). Budget the second home's taxes at the non-primary rate.</p></div>
+        <div class="card"><h4>Renting it out</h4><p style="margin:0">Rent it <strong>14 days or fewer</strong> a year and the income is tax-free (and unreported). More than that, and expenses split between personal and rental days, with loss limits if your personal use exceeds 14 days or 10% of rental days.</p></div>
+      </div>
+      <p class="fn">Tax treatment depends on facts: how funds are traced, when debt was incurred, rental days. Confirm your structure with a CPA before you close, not at filing time.</p>
+
+      <h3>Owning from a distance</h3>
+      <ul class="checklist">
+        <li><strong>Short-term rental rules</strong>: city permits, state lodging or sales-tax licenses (Arizona requires a TPT license, for example, see <a href="#" data-goto="12">§12</a>), HOA bans, and whether your loan allows it. Check before you buy, not after.</li>
+        <li><strong>Insurance</strong>: tell the insurer it's a secondary or seasonal home. Standard policies can restrict coverage after 30–60 days of vacancy, and short-term rental needs its own endorsement or policy.</li>
+        <li><strong>Water is the #1 remote-owner loss</strong>: leak sensors, an automatic main shut-off valve, a smart thermostat with freeze alerts, and winterizing if you're in freeze country.</li>
+        <li><strong>A local bench</strong>: handyman, HVAC company, plumber, and someone to check the house after storms. Line them up at the inspection.</li>
+        <li><strong>Wildfire country</strong>: defensible space (0–5 ft ember-resistant, 5–30 ft lean and clean), ember-resistant vents, and Firewise community status can make the difference to insurability and premium.</li>
+      </ul>
+
+      <div class="pagenav">
+        <button data-goto="10"><span>Previous</span><b>← 10 · Closing</b></button>
+        <button data-goto="12"><span>Next</span><b>12 · Arizona Field Notes →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 12 ARIZONA ============ -->
+    <section class="page" id="p12">
+      <div class="kicker">Special situations · State notes</div>
+      <h2 class="title">Arizona field notes</h2>
+      <p class="lede">Arizona does several things differently from the national defaults in this guide. Some help you: no transfer tax, and a property-tax cap that doesn't reset when you buy. Others can sink a deal: a fast inspection clock, water rights, no insurer of last resort, and septic and well paperwork that falls on the buyer.</p>
+
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--accent)">10</div><div class="lbl">Day default inspection period</div></div>
+        <div class="stat"><div class="big" style="color:#2563eb">$0</div><div class="lbl">Real-estate transfer tax (constitutional ban)</div></div>
+        <div class="stat"><div class="big" style="color:var(--amber)">5%</div><div class="lbl">Yearly cap on taxable value growth</div></div>
+        <div class="stat"><div class="big" style="color:var(--red)">0</div><div class="lbl">State FAIR plans for homeowners</div></div>
+      </div>
+
+      <h3>How the Arizona contract runs</h3>
+      <p>Most resale deals use the <strong>Arizona Association of REALTORS® (AAR) Residential Resale Real Estate Purchase Contract</strong>. It's an escrow state: a title company's escrow officer holds the earnest money, clears title and runs a closing where buyer and seller usually sign separately. No attorney is required. Many buyers hire one anyway for rural land, well-share agreements or odd title.</p>
+      <div class="timeline">
+        <div class="step"><div class="when">Day 0</div><h4>Acceptance</h4><p>Earnest money (often 1–2%) goes to escrow. The seller owes you the <strong>SPDS</strong> (Seller's Property Disclosure Statement) and a <strong>5-year insurance claims history</strong> within days, so read both inside your inspection period.</p></div>
+        <div class="step"><div class="when">Days 1–10</div><h4>Inspection period (the "10" in 10/5/5)</h4><p>You can cancel for essentially any reason by delivering a <strong>BINSR</strong> (Buyer's Inspection Notice and Seller's Response) before day 10. Book inspectors <em>before</em> you offer. Aim to send the BINSR by day 6–7.</p></div>
+        <div class="step"><div class="when">+5 days</div><h4>Seller responds</h4><p>The seller agrees, refuses or counters on your repair list. Silence counts as a refusal.</p></div>
+        <div class="step"><div class="when">+5 days</div><h4>Your decision</h4><p>If the seller didn't agree to everything, you can accept what was offered or cancel with your earnest money. Miss this window and you've accepted what's on the table.</p></div>
+        <div class="step"><div class="when">Day ~10 onward</div><h4>Loan Status Update, appraisal, HOA docs</h4><p>Your lender sends an LSU form to the seller's side. There's a short window to cancel after a <strong>low appraisal</strong> notice, and after receiving the HOA resale disclosure.</p></div>
+        <div class="step"><div class="when">Close of escrow (COE)</div><h4>Walk-through, sign, record</h4><p>Keys at recording, often the same day. Arizona uses <strong>deeds of trust</strong>.</p></div>
+      </div>
+      <div class="warn"><span class="tag">Watch out: the clock doesn't wait for your inspector</span><p style="margin:0">Deadlines in the AAR contract are strict, and "I was waiting on the roofer" doesn't extend them. In a busy season good inspectors book a week out. If the calendar is tight, write a longer inspection period (14 days) into your offer rather than hoping.</p></div>
+
+      <h3>Money: what's cheaper, and what's different</h3>
+      <div class="grid g2">
+        <div class="card"><h4>🚫 No transfer tax</h4><p style="margin:0">The Arizona Constitution bans real-estate transfer taxes. You pay a nominal recording fee and file an <strong>Affidavit of Property Value</strong>. Closing costs run lighter than in the Northeast.</p></div>
+        <div class="card"><h4>🧾 Who pays for what (custom)</h4><p style="margin:0">Seller usually pays the <strong>owner's title policy</strong>. Buyer pays the <strong>lender's policy</strong>. Escrow fees are commonly split 50/50. All of it is negotiable in the contract.</p></div>
+        <div class="card"><h4>📊 Property tax: the cap travels with the house</h4><p style="margin:0">Tax is levied on the <strong>Limited Property Value</strong>, which can rise at most <strong>5% a year</strong> and <strong>doesn't reset when the house sells</strong>. That's the opposite of the reassessment warning in <a href="#" data-goto="2">§02</a>. The seller's current bill is a fair guide, unless the house was remodeled or changes use.</p></div>
+        <div class="card"><h4>🏠 Primary vs. second home classification</h4><p style="margin:0">Owner-occupied homes are <strong>Class 3</strong> and get the state's <strong>Homeowner Rebate</strong> on school taxes (up to $600/yr), with primary taxes capped at 1% of LPV. Second homes and rentals are <strong>Class 4</strong> and get neither. Tick the right box on the Affidavit of Property Value. Rentals must also be registered with the county assessor.</p></div>
+        <div class="card"><h4>📅 Taxes are paid in arrears</h4><p style="margin:0">First half is due Oct 1 (delinquent after Nov 1), second half Mar 1 (delinquent after May 1). At closing the seller credits you for their share of the bill you'll pay later. Check the proration on your Closing Disclosure.</p></div>
+        <div class="card"><h4>💍 Community property state</h4><p style="margin:0">If you're married, a spouse generally has to sign on the purchase, loan and deed even if only one of you is on the loan. Ask escrow about vesting as <strong>"community property with right of survivorship"</strong>, which avoids probate on the first death and has tax-basis advantages. Worth a quick question to an estate attorney.</p></div>
+      </div>
+
+      <h3>Water: the Arizona question nobody asks until too late</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Water source</th><th>What to check</th></tr></thead>
+        <tbody>
+          <tr><td><strong>City or private water company</strong></td><td>Provider, rates, and for newer subdivisions in an <strong>Active Management Area</strong> (Phoenix, Tucson, Prescott, Pinal, Santa Cruz), the developer's Certificate of Assured Water Supply. Outside AMAs, subdivision public reports can legally disclose an <strong>"inadequate"</strong> water supply. Read that line.</td></tr>
+          <tr><td><strong>Private (exempt) well</strong></td><td>Flow test, water quality (arsenic, uranium, nitrates, bacteria), pump and pressure tank age, well depth vs. recent static level. After closing, file ADWR form <strong>55-71A</strong> to move the well registration into your name, because recording the deed doesn't do it.</td></tr>
+          <tr><td><strong>Shared well</strong></td><td>A <strong>recorded</strong> shared-well agreement covering cost splits, repairs, access and what happens if a neighbor stops paying. No recorded agreement is a serious red flag, and some lenders won't lend.</td></tr>
+          <tr><td><strong>Hauled water</strong></td><td>Parts of rural Arizona have no water service at all. Know the hauler, the cost per load, the cistern size, and whether the hauler's source is secure.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Septic: the seller inspects, the buyer files</h3>
+      <p>For a home on septic, Arizona requires the <strong>seller</strong> to have a certified inspector perform a <strong>transfer-of-ownership inspection</strong> within 6 months before transfer and give you the Report of Inspection. The <strong>buyer</strong> must file ADEQ's <strong>Notice of Transfer</strong> (online, with a fee) within <strong>15 days after closing</strong>. Some counties run this through their own environmental office. Read the report inside your inspection period: tank condition, baffles, and whether the system matches the permitted bedroom count.</p>
+
+      <h3>Arizona-flavored inspection list</h3>
+      <div class="grid g2">
+        <div class="card"><h4>🔥 Wildfire &amp; insurance</h4><p style="margin:0">Arizona has <strong>no FAIR plan</strong> for homes, so there's no state insurer of last resort. In forested areas like Prescott, Payson and Flagstaff, if admitted carriers decline, the fallback is the <strong>excess &amp; surplus lines</strong> market at a higher price. Get a bindable quote in the first days of the inspection period. Defensible space and Firewise community status help.</p></div>
+        <div class="card"><h4>🐜 Termites &amp; scorpions</h4><p style="margin:0">Subterranean termites are common, and a WDIIR (wood-destroying insect inspection report) is standard and required by FHA and VA. Ask about bark scorpions in the desert; quarterly pest control is normal.</p></div>
+        <div class="card"><h4>🏚 Roofs, heat &amp; cooling</h4><p style="margin:0">Tile roofs look fine for decades while the underlayment beneath fails (often at 20–25 years), so get it looked at. Foam flat roofs need recoating every few years. Desert heat shortens HVAC life. At elevation, check for evaporative coolers and pipe freeze protection.</p></div>
+        <div class="card"><h4>⛰ Soil, fissures &amp; washes</h4><p style="margin:0">Expansive clay soils crack slabs and stucco, so call a structural engineer on cracks. In parts of Maricopa, Pinal and Cochise counties, check the Arizona Geological Survey <strong>earth fissure</strong> maps. Monsoon storms send water down dry washes, so check FEMA maps and drainage around the house.</p></div>
+        <div class="card"><h4>☀️ Solar</h4><p style="margin:0">Very common, and often <strong>leased or financed</strong>. Get the contract, transfer terms, remaining payments and any UCC filing early, because the solar company's approval can take weeks.</p></div>
+        <div class="card"><h4>🏊 Pools</h4><p style="margin:0">Sellers must give you the state's pool-safety notice. Check the barrier (fence and gate) rules if kids will visit, along with equipment age and resurfacing.</p></div>
+      </div>
+
+      <h3>Rural land, HOAs &amp; renting it out</h3>
+      <ul class="checklist">
+        <li><strong>Unincorporated parcels:</strong> sellers of land outside city limits owe an <strong>Affidavit of Disclosure</strong> covering legal access, road maintenance, utilities, flood zone and septic suitability. Legal access is not the same as a dirt road that happens to exist.</li>
+        <li><strong>HOA resale disclosure:</strong> the association must deliver its disclosure packet (fees, assessments, violations, litigation) within about 10 days. You get a short window to cancel after receiving it.</li>
+        <li><strong>Short-term rentals:</strong> state law bars cities from banning STRs outright, but since 2022 cities can require permits, emergency contacts and neighbor notification (Sedona, Prescott, Phoenix and others do). Every STR needs a state <strong>TPT license</strong> shown on its listings. <strong>HOA CC&amp;Rs can still prohibit them</strong>, so read those first.</li>
+        <li><strong>Contractors:</strong> check licenses at the <strong>Registrar of Contractors</strong> (ROC). Licensed contractors are backed by a state recovery fund, and unlicensed handyman work is limited to small jobs.</li>
+      </ul>
+
+      <h3>Protections worth knowing</h3>
+      <div class="grid g2">
+        <div class="card"><h4>🛡 Homestead exemption (creditor)</h4><p style="margin:0">Arizona automatically protects roughly <strong>$400k</strong> of equity in your primary residence from most creditors. No filing needed. It covers your primary home only, not a second home.</p></div>
+        <div class="card"><h4>⚖️ Anti-deficiency rules</h4><p style="margin:0">A purchase-money loan on a one- or two-family home on 2.5 acres or less is generally protected from a deficiency judgment after foreclosure. Refinances and HELOCs can lose that protection. It's fact-specific, so ask an attorney if it affects your financing choice.</p></div>
+      </div>
+
+      <div class="coach"><span class="tag">Coach's note: the Arizona short list</span><p style="margin:0">Before you offer on anything outside a city: <strong>(1)</strong> where does the water come from and is it documented, <strong>(2)</strong> can an admitted carrier insure it, <strong>(3)</strong> what does the septic report say, and <strong>(4)</strong> is there recorded legal access. Before you close: tick primary vs. second home correctly on the affidavit, and calendar the ADEQ and ADWR filings for the week after. Buying around Prescott? The local layer is in <a href="#" data-goto="13">§13</a>.</p></div>
+      <p class="fn">Arizona notes reflect the AAR contract, ADEQ, ADWR and state property-tax rules as of September 2026. Contract forms are revised periodically, and county practice varies. Confirm deadlines against the actual contract you sign.</p>
+
+      <div class="pagenav">
+        <button data-goto="11"><span>Previous</span><b>← 11 · Second Homes</b></button>
+        <button data-goto="13"><span>Next</span><b>13 · Prescott Field Notes →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 13 PRESCOTT ============ -->
+    <section class="page" id="p13">
+      <div class="kicker">Special situations · Local notes</div>
+      <h2 class="title">Prescott field notes</h2>
+      <p class="lede">The Prescott area (Prescott, Prescott Valley, Chino Valley and Dewey-Humboldt) sits around 5,400 feet in ponderosa pine and granite, with real winters and a summer monsoon. Three questions decide most deals here: <strong>how the house is protected from fire and insured</strong>, <strong>where the water comes from</strong>, and <strong>which jurisdiction the parcel is in</strong>.</p>
+
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--accent)">~5,400′</div><div class="lbl">Elevation: snow, freezes, pines</div></div>
+        <div class="stat"><div class="big" style="color:#2563eb">~$600k</div><div class="lbl">Prescott median, mid-2026 (sources vary)</div></div>
+        <div class="stat"><div class="big" style="color:var(--amber)">55–100</div><div class="lbl">Days on market, up year over year</div></div>
+        <div class="stat"><div class="big" style="color:var(--red)">1999</div><div class="lbl">Year the Prescott AMA was declared out of safe yield</div></div>
+      </div>
+
+      <div class="coach"><span class="tag">Coach's note: 2026 is a buyer's negotiating year here</span><p style="margin:0">Through mid-2026, Prescott values drifted down (Zillow shows roughly −5% year over year), homes sat longer, and many sold with a single offer. That's the setting for the tactics in <a href="#" data-goto="8">§08</a>: anchor to sold comps, ask for price history on anything past 60 days, and ask for a <strong>seller-paid rate buydown</strong> (<a href="#" data-goto="5">§05</a>) rather than only a price cut. The exceptions are well-priced, low-fire-risk homes in town, which still move quickly.</p></div>
+
+      <h3>The area at a glance</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Area</th><th>Character</th><th>Water / sewer</th><th>Watch for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Downtown &amp; historic Prescott</strong></td><td>Victorians and 1900s–1940s bungalows near the Courthouse Plaza and Whiskey Row, walkable</td><td>City water and sewer</td><td>Old-house systems (<a href="#" data-goto="7">§07</a>): knob-and-tube wiring, galvanized pipe, clay sewer lines, so get a sewer scope. Historic-district rules on exterior changes. Small lots and street parking.</td></tr>
+          <tr><td><strong>Forested south &amp; west</strong> (Groom Creek, Ponderosa Park, Timber Ridge, Forest Highlands, Hassayampa and similar)</td><td>Pines, views, steep lots, cooler summers</td><td>Mixed. Some city service, some wells and septic.</td><td><strong>Highest wildfire exposure and the hardest insurance.</strong> North-facing driveways ice up. Check the evacuation routes out.</td></tr>
+          <tr><td><strong>Northeast &amp; Granite Dells</strong> (Prescott Lakes, Yavapai Hills, the Ranch at Prescott and similar)</td><td>1980s–2000s homes, HOAs, granite boulders, golf</td><td>Mostly city water and sewer</td><td>Lighter fuel than the pines. HOA reserves, dues and STR rules (<a href="#" data-goto="9">§09</a>).</td></tr>
+          <tr><td><strong>Williamson Valley, Skyline &amp; Chino Valley</strong></td><td>Acreage, horse property, open grassland, big skies</td><td>Mostly <strong>private wells and septic</strong></td><td>Water-table trends, well depth, shared wells, dirt-road maintenance agreements, county permits. Grass fire moves fast in wind.</td></tr>
+          <tr><td><strong>Prescott Valley</strong></td><td>Newer tract and HOA homes from the 1990s to 2020s, generally more house for the money</td><td>Town water and sewer</td><td>Wind, grass-fire exposure at the edges, HOA rules. It's a separate town, so its own STR code applies.</td></tr>
+          <tr><td><strong>Dewey-Humboldt</strong></td><td>Rural, lower density, a bit warmer</td><td>Wells and septic</td><td>Same diligence as any rural parcel (<a href="#" data-goto="12">§12</a>): legal access, water and septic reports.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="fn">Neighborhood labels are rough. Fire risk, water source and jurisdiction change parcel by parcel, so check each address rather than relying on the neighborhood name.</p>
+
+      <h3>Jurisdiction decides the rules</h3>
+      <p>The same street name can run through the City of Prescott, unincorporated Yavapai County and another town. The parcel's jurisdiction decides:</p>
+      <div class="grid g2">
+        <div class="card"><h4>🏛 Permits &amp; septic</h4><p style="margin:0">Building permits come from the city or town, or from Yavapai County Development Services if unincorporated. Septic records and the <strong>Notice of Transfer</strong> go through the county's Environmental Services Unit via its online portal, within 15 days of closing (<a href="#" data-goto="12">§12</a>).</p></div>
+        <div class="card"><h4>🚒 Fire service &amp; insurance class</h4><p style="margin:0">Inside the city it's Prescott Fire; much of the surrounding area is covered by the regional fire authority. Insurers price partly on the ISO <strong>Public Protection Class</strong>, and much of rural Yavapai rates <strong>9 or 10</strong> (far from a station or a hydrant). That can move a premium as much as the fire score does.</p></div>
+        <div class="card"><h4>🏘 Short-term rentals</h4><p style="margin:0">Each city and town has its own code: City of Prescott, Prescott Valley, and county rules elsewhere. See below.</p></div>
+        <div class="card"><h4>💧 Water provider</h4><p style="margin:0">City of Prescott, Town of Prescott Valley, a private water company, or your own well. Each has a different long-term supply story.</p></div>
+      </div>
+
+      <h3>Wildfire &amp; insurance: do this first</h3>
+      <div class="warn"><span class="tag">Watch out: this is fire country</span><p style="margin:0">The area has lived through the 2013 Yarnell Hill fire (19 of Prescott's Granite Mountain Hotshots died), the 2013 Doce fire and the 2017 Goodwin fire. Insurers price that history in. Premiums in the wildland-urban interface have kept climbing, carriers have non-renewed policies in higher-risk ZIPs, and Arizona has no FAIR plan (<a href="#" data-goto="12">§12</a>). <strong>Get a bindable quote for the specific address before you offer, or in the first two days of the inspection period at the latest.</strong></p></div>
+      <ul class="checklist">
+        <li><strong>Ask the broker for the carrier's wildfire score</strong> on the address, not only the premium. It tells you whether renewal is at risk.</li>
+        <li><strong>Check USFS Wildfire Risk to Communities</strong> and the parcel's distance to continuous pine. The <a href="https://cherno.briansavesbillions.com/prescott-homes/">Prescott Home Tour</a> planner already shows Forest Service wildfire hazard for each house on the tour.</li>
+        <li><strong>Look at the house the way an ember would</strong>: Class A roof, needles in gutters, wood decks and fences touching the house, unscreened vents, junipers against the walls.</li>
+        <li><strong>Firewise community?</strong> Yavapai Firewise works with neighborhood associations on fuel reduction. Membership and recent mitigation help with some insurers. Prescott Fire's wildfire risk program has guidance for homeowners.</li>
+        <li><strong>Two ways out.</strong> Drive the evacuation route from a cul-de-sac in the pines and time it. Sign up for Yavapai County emergency alerts at the address.</li>
+      </ul>
+
+      <h3>Water in the Prescott AMA</h3>
+      <div class="grid g2">
+        <div class="card"><h4>City of Prescott water</h4><p style="margin:0">The Prescott Active Management Area was declared <strong>out of safe yield in 1999</strong>, meaning groundwater pumping exceeds recharge. The City of Prescott holds a 100-year <strong>assured water supply designation</strong>, the only provider in the AMA with one. More supply depends on importing Big Chino groundwater, which needs a pipeline not yet built. For an existing home with a city meter, that's context. For a <strong>vacant lot or a split</strong>, confirm water service before you buy.</p></div>
+        <div class="card"><h4>Private wells (Chino, Williamson Valley, Dewey-Humboldt)</h4><p style="margin:0">Pull the well log from ADWR's well registry (<strong>Wells55</strong>) for drilled depth, original static water level and pump setting, and compare with today's reading from the well inspection. A falling level in a shallow well is a future re-drill. Test for <strong>arsenic and uranium/radium</strong>, which occur naturally in the area's granite. Then file ADWR form 55-71A after closing (<a href="#" data-goto="12">§12</a>).</p></div>
+      </div>
+
+      <h3>Building for 5,400 feet</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Issue</th><th>What to check</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Freeze</strong></td><td>Pipes in exterior walls and crawlspaces, frost-free hose bibs, heat tape, where the main shut-off is. A vacant second home needs a heat setpoint and leak sensors (<a href="#" data-goto="11">§11</a>).</td></tr>
+          <tr><td><strong>Snow &amp; ice</strong></td><td>Driveway slope and orientation (north-facing stays icy), roof snow load, ice dams on low-slope roofs</td></tr>
+          <tr><td><strong>Monsoon (roughly July–September)</strong></td><td>Lightning (whole-house surge protection), wind, flash flooding in washes and along Granite Creek, drainage away from the foundation. Check FEMA maps.</td></tr>
+          <tr><td><strong>Heating &amp; cooling</strong></td><td>Natural gas in town, <strong>propane</strong> outside it (owned or leased tank?). Many older homes rely on evaporative coolers or have no AC. Summers are mild but not cool. Wood stoves need a chimney inspection and your insurer's approval.</td></tr>
+          <tr><td><strong>Radon</strong></td><td>EPA Zone 2, and some local homes test above the 4 pCi/L action level. Test any house with a basement or slab on granite.</td></tr>
+          <tr><td><strong>Wildlife</strong></td><td>Javelina, deer and elk eat landscaping. Rattlesnakes. Pack rats nest in engines and chew wiring, so ask about garages and vehicle storage.</td></tr>
+          <tr><td><strong>Internet</strong></td><td>Cable in town. Outside it, fixed wireless or satellite. Check real providers <em>at the address</em> if you work remotely.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Renting it out in the Prescott area</h3>
+      <div class="grid g2">
+        <div class="card"><h4>City of Prescott (stays of 29 days or less)</h4><p style="margin:0">Register with the city before listing. The initial fee is about <strong>$95</strong> (including a one-time <strong>$65 safety inspection</strong> that must pass), then about $30 a year. You also need a state <strong>TPT license</strong>, a <strong>24/7 local contact who can be on site within 45 minutes</strong>, neighbor notification, and occupancy of 2 per bedroom plus 2.</p></div>
+        <div class="card"><h4>Elsewhere</h4><p style="margin:0">Prescott Valley has its own vacation-rental code, and unincorporated parcels follow county and state rules. Many subdivisions' <strong>CC&amp;Rs</strong> restrict or ban short-term rentals regardless, so read them in the HOA packet before counting on rental income.</p></div>
+      </div>
+
+      <h3>Living there</h3>
+      <div class="grid g3">
+        <div class="card"><h4>✈️ Getting in &amp; out</h4><p style="margin:0">Prescott Regional Airport (PRC) has United Express service to <strong>Denver</strong> (twice daily from late Oct 2026) and <strong>Los Angeles</strong> (a few times a week). Phoenix Sky Harbor is about 1¾–2 hours by car.</p></div>
+        <div class="card"><h4>🏥 Health care</h4><p style="margin:0">The <strong>Bob Stump VA Medical Center</strong> is in Prescott (Northern Arizona VA Health Care System). Dignity Health's Yavapai Regional Medical Center has campuses in Prescott and Prescott Valley.</p></div>
+        <div class="card"><h4>🧾 Property tax</h4><p style="margin:0">Effective rates are low by national standards. Look up the parcel on the Yavapai County Assessor and Treasurer sites. A second home is Class 4 and gets no homeowner rebate (<a href="#" data-goto="12">§12</a>).</p></div>
+      </div>
+
+      <div class="coach"><span class="tag">Coach's note: the Prescott pre-offer list</span><p style="margin:0"><strong>(1)</strong> Insurance quote and wildfire score for the address. <strong>(2)</strong> City, town or county, and which fire service. <strong>(3)</strong> Water source, plus the well log and a flow and quality test if private. <strong>(4)</strong> Septic report if not on sewer. <strong>(5)</strong> Drive the road in (and out) as if it were January and as if there were smoke. <strong>(6)</strong> HOA rules if you might rent it.</p></div>
+      <p class="fn">Market figures blend mid-2026 Zillow, Redfin and local-brokerage data, which disagree. Treat them as direction, not a price. STR fees and codes are from the City of Prescott and Prescott Valley as of 2026. Air service changes seasonally.</p>
+
+      <div class="pagenav">
+        <button data-goto="12"><span>Previous</span><b>← 12 · Arizona</b></button>
+        <button data-goto="14"><span>Next</span><b>14 · After the Keys →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 14 AFTER THE KEYS ============ -->
+    <section class="page" id="p14">
+      <div class="kicker"><span class="pill own">Ownership</span></div>
+      <h2 class="title">After the keys</h2>
+      <p class="lede">Closing ends the transaction, not the job. The first 90 days set up your records, your protections and your maintenance habits.</p>
+
+      <h3>First week</h3>
+      <ul class="checklist">
+        <li><strong>Re-key or replace every exterior lock</strong>; reset garage openers, keypad codes and any smart locks, cameras and thermostats (remove the seller's accounts).</li>
+        <li><strong>Find the main water shut-off, gas shut-off and electrical panel</strong>, and label the breakers.</li>
+        <li><strong>Test or replace smoke and CO detectors</strong>, change HVAC filters and note the water-heater date.</li>
+        <li><strong>Transfer utilities</strong>, internet, trash and propane; set up mail forwarding.</li>
+        <li><strong>Make a home file</strong> (digital and paper): closing package, deed, inspection report, warranties, manuals, paint colors, receipts for improvements.</li>
+      </ul>
+
+      <h3>First 90 days</h3>
+      <ul class="checklist">
+        <li><strong>File for any homestead exemption</strong> or primary-residence classification your state offers. It's often not automatic, and deadlines are strict.</li>
+        <li><strong>Sign up for your county recorder's property-fraud alert</strong> (free in many counties). It emails you if any document is recorded against your property.</li>
+        <li><strong>Watch for your loan being sold.</strong> Servicing transfers are normal and come with official notices from both the old and new servicer. Verify the new servicer independently before sending payments.</li>
+        <li><strong>Ignore the scam mail</strong>: "certified deed copy" offers for $80+, "mortgage protection" life insurance, and fake "escrow shortage" notices. Your deed is free or a few dollars from the county.</li>
+        <li><strong>Check your first escrow statement</strong>, especially if taxes will reset to your purchase price (<a href="#" data-goto="2">§02</a>).</li>
+      </ul>
+
+      <h3>Taxes in your first year</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Item</th><th>Treatment</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mortgage interest</strong></td><td>Deductible if you itemize, on up to $750k of acquisition debt (main + second home). Form 1098 from your servicer.</td></tr>
+          <tr><td><strong>Points on a purchase loan (main home)</strong></td><td>Generally deductible in the year paid, including seller-paid points</td></tr>
+          <tr><td><strong>PMI / mortgage insurance</strong> <span class="flag new">2026+</span></td><td>Deductible again from tax year 2026 as mortgage interest (itemizers)</td></tr>
+          <tr><td><strong>Property taxes</strong></td><td>Within the SALT cap: $40k for 2025, rising ~1% a year through 2029 and phased down for high incomes, then back to $10k in 2030</td></tr>
+          <tr><td><strong>Closing costs</strong></td><td>Most aren't deductible. Many are <strong>added to your cost basis</strong> (title, recording, transfer taxes), so keep the settlement statement.</td></tr>
+          <tr><td><strong>Improvements</strong></td><td>Not deductible, but they raise basis and reduce future taxable gain. Keep receipts forever.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Shrinking the payment later</h3>
+      <div class="grid g3">
+        <div class="card"><h4>Drop PMI</h4><p style="margin:0">Request removal at <strong>80% of original value</strong>. It ends automatically at 78%. With appreciation, a new appraisal can get you there sooner (typically 75% LTV after 2 years, 80% after 5).</p></div>
+        <div class="card"><h4>Recast</h4><p style="margin:0">Pay a lump sum, and many servicers re-amortize to a lower payment for a small fee (~$250), keeping your rate. Not available on FHA or VA.</p></div>
+        <div class="card"><h4>Refinance</h4><p style="margin:0">Worth a look when rates fall ~0.75–1%+ below yours. Check break-even with the points formula (<a href="#" data-goto="5">§05</a>) and include the cost of restarting the term.</p></div>
+      </div>
+
+      <h3>The maintenance calendar</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>When</th><th>Task</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Monthly</strong></td><td>Test GFCI outlets; check under sinks for leaks; clean disposal and range-hood filters</td></tr>
+          <tr><td><strong>Quarterly</strong></td><td>HVAC filter (monthly with pets or wildfire smoke); test smoke and CO detectors</td></tr>
+          <tr><td><strong>Spring</strong></td><td>AC service; clean gutters; check roof and flashing; irrigation start-up; clear defensible space</td></tr>
+          <tr><td><strong>Fall</strong></td><td>Furnace service; gutters again; winterize hose bibs and irrigation; chimney sweep; seal gaps</td></tr>
+          <tr><td><strong>Yearly</strong></td><td>Flush water heater; re-caulk tubs and exterior penetrations; dryer vent clean; review insurance coverage limits</td></tr>
+          <tr><td><strong>Every 3–5 yrs</strong></td><td>Pump septic; reseal deck, grout and driveway; exterior paint and stain touch-ups</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="coach"><span class="tag">Coach's note: fund it like a sinking fund</span><p style="margin:0">Set aside 1–2% of the home's value each year into a separate account, weighted by the ages of the roof, HVAC and water heater from your inspection report. When the water heater dies in year four, it becomes a withdrawal instead of an emergency. Home warranties rarely beat this: they cap payouts, exclude "pre-existing" and "improper maintenance" failures, and choose the contractor.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="13"><span>Previous</span><b>← 13 · Prescott</b></button>
+        <button data-goto="15"><span>Next</span><b>15 · Checklists, Glossary &amp; Cheat Sheet →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 15 REFERENCE ============ -->
+    <section class="page" id="p15">
+      <div class="kicker">Reference</div>
+      <h2 class="title">Checklists, glossary &amp; cheat sheet</h2>
+      <p class="lede">The one-page versions. Print this section, or keep it open on your phone at showings.</p>
+
+      <h3>The 60-second cheat sheet</h3>
+      <div class="grid g3">
+        <div class="card"><h4 style="color:#1d4ed8">The Money</h4><p style="margin:0"><strong>Budget:</strong> housing ≤ ~25% of gross<br><strong>Cash:</strong> down + 3% + reserves<br><strong>Shop:</strong> 3–4 Loan Estimates, same day<br><strong>Compare:</strong> rate + Section A</p></div>
+        <div class="card"><h4 style="color:#92400e">The Hunt</h4><p style="margin:0"><strong>Agent:</strong> negotiate fee, term, exit<br><strong>Comps:</strong> sold, ≤6 mo, ≤0.5 mi<br><strong>Leverage:</strong> DOM, price cuts<br><strong>Kill checks:</strong> flood, fire, insurance</p></div>
+        <div class="card"><h4 style="color:#115e59">The Deal</h4><p style="margin:0"><strong>Keep:</strong> inspection &amp; financing contingencies<br><strong>Ask:</strong> credits over repairs<br><strong>Verify:</strong> every wire by phone<br><strong>Compare:</strong> CD vs. LE, line by line</p></div>
+      </div>
+
+      <h3>Master checklist</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Before you search</h4><ul class="checklist" style="margin:0">
+          <li>Credit reports pulled; errors disputed</li>
+          <li>Personal monthly ceiling set</li>
+          <li>Down payment + closing + reserves parked, seasoned</li>
+          <li>Document pack assembled</li>
+          <li>Documented pre-approval in hand</li>
+          <li>Loan Estimates from 3–4 lenders</li>
+          <li>Agent interviewed; buyer agreement negotiated</li>
+        </ul></div>
+        <div class="card"><h4>Before you offer</h4><ul class="checklist" style="margin:0">
+          <li>Comps pulled; walk-away number written down</li>
+          <li>Flood zone, fire risk, CLUE report checked</li>
+          <li>Insurance broker says it's writable</li>
+          <li>Permit history matches the listing</li>
+          <li>HOA rules fit your use (rentals, RVs, pets)</li>
+          <li>Inspector tentatively booked</li>
+        </ul></div>
+        <div class="card"><h4>Under contract</h4><ul class="checklist" style="margin:0">
+          <li>Earnest money wired (verified by phone)</li>
+          <li>All deadlines in your calendar</li>
+          <li>Inspections done; repair request sent in writing</li>
+          <li>Title commitment and HOA packet reviewed</li>
+          <li>Rate locked, confirmation in writing</li>
+          <li>Bindable insurance quote accepted</li>
+          <li>Appraisal back at or above price</li>
+        </ul></div>
+        <div class="card"><h4>Closing week</h4><ul class="checklist" style="margin:0">
+          <li>CD received ≥3 business days out; matches the LE</li>
+          <li>Cash-to-close wire verified by phone</li>
+          <li>Insurance bound, evidence sent to lender</li>
+          <li>Utilities scheduled to transfer</li>
+          <li>Final walk-through done; repairs receipted</li>
+          <li>Full signed package saved</li>
+        </ul></div>
+      </div>
+
+      <h3>Formulas</h3>
+      <div class="formula"><b>Monthly P&amp;I</b> = L × r(1+r)ⁿ ÷ ((1+r)ⁿ − 1) &nbsp;·&nbsp; r = annual rate ÷ 12, n = months</div>
+      <div class="formula"><b>DTI</b> = all monthly debt payments (incl. new PITI) ÷ gross monthly income</div>
+      <div class="formula"><b>LTV</b> = loan ÷ lower of price or appraisal &nbsp;·&nbsp; <b>CLTV</b> = all liens ÷ value</div>
+      <div class="formula"><b>Points break-even (months)</b> = points cost ÷ monthly P&amp;I savings</div>
+      <div class="formula"><b>Blended rate</b> = Σ(balance × rate) ÷ Σ balance</div>
+      <div class="formula"><b>Rule of thumb</b>: every $1,000 borrowed at 7% for 30 yrs ≈ $6.65/month</div>
+
+      <h3>Glossary</h3>
+      <div class="glossary"><dl>
+        <dt>Amortization</dt><dd>Paying a loan down on a schedule; early payments are mostly interest, later ones mostly principal.</dd>
+        <dt>APR</dt><dd>Annual percentage rate: the interest rate plus certain fees, expressed as a yearly rate. Useful for comparison when the loan is held to term.</dd>
+        <dt>Appraisal gap</dt><dd>The difference between contract price and a lower appraised value, which someone has to cover or negotiate away.</dd>
+        <dt>ARM</dt><dd>Adjustable-rate mortgage. "7/6" means fixed for 7 years, then adjusting every 6 months, bounded by caps.</dd>
+        <dt>Assumable loan</dt><dd>A mortgage (FHA, VA, USDA) a qualified buyer can take over with its existing rate and balance.</dd>
+        <dt>BATNA</dt><dd>Best alternative to a negotiated agreement: in house hunting, the next-best house or simply waiting.</dd>
+        <dt>Bindable quote</dt><dd>An insurance quote the carrier will actually issue on, as opposed to an estimate.</dd>
+        <dt>Buyer representation agreement</dt><dd>The written contract with your agent (required before touring since August 2024) that sets their duties and pay.</dd>
+        <dt>Buydown</dt><dd>Paying upfront to reduce the interest rate, temporarily (2-1, 1-0) or permanently (discount points).</dd>
+        <dt>Cash to close</dt><dd>Down payment plus closing costs and prepaids, minus deposits and credits: the final wire.</dd>
+        <dt>CC&amp;Rs</dt><dd>Covenants, conditions and restrictions: rules recorded against the property, usually enforced by an HOA.</dd>
+        <dt>Closing Disclosure (CD)</dt><dd>The 5-page final statement of loan terms and costs, due at least 3 business days before closing.</dd>
+        <dt>CLUE report</dt><dd>A database record of insurance claims on a property over the past 5–7 years.</dd>
+        <dt>Conforming loan</dt><dd>A loan within FHFA limits ($832,750 baseline in 2026) that Fannie Mae or Freddie Mac can buy.</dd>
+        <dt>Contingency</dt><dd>A contract condition that lets you exit (usually with your deposit) if something doesn't happen: inspection, financing, appraisal, insurance, sale.</dd>
+        <dt>Delayed financing</dt><dd>Taking a mortgage shortly after buying with cash, treated like a purchase loan.</dd>
+        <dt>DTI</dt><dd>Debt-to-income ratio. Monthly debt payments divided by gross monthly income.</dd>
+        <dt>Earnest money (EMD)</dt><dd>The good-faith deposit held in escrow and credited at closing.</dd>
+        <dt>Escrow</dt><dd>(1) A neutral party holding funds and documents until closing. (2) The account your servicer uses to pay taxes and insurance.</dd>
+        <dt>Escalation clause</dt><dd>An offer term that automatically beats competing offers by a set amount, up to a cap.</dd>
+        <dt>FAIR plan</dt><dd>A state-sponsored insurer of last resort for properties the regular market won't cover.</dd>
+        <dt>HELOC</dt><dd>Home equity line of credit: a revolving, usually variable-rate, second lien.</dd>
+        <dt>Homestead exemption</dt><dd>A state property-tax reduction or protection for a primary residence.</dd>
+        <dt>LLPA</dt><dd>Loan-level price adjustment: Fannie and Freddie pricing add-ons for credit score, LTV, occupancy and more.</dd>
+        <dt>Loan Estimate (LE)</dt><dd>The standardized 3-page quote a lender must give within 3 business days of application.</dd>
+        <dt>LTV / CLTV</dt><dd>Loan-to-value / combined loan-to-value (all liens).</dd>
+        <dt>PITI</dt><dd>Principal, interest, taxes and insurance: the full housing payment.</dd>
+        <dt>PMI / MIP</dt><dd>Private mortgage insurance (conventional) or mortgage insurance premium (FHA), protecting the lender on low-down-payment loans.</dd>
+        <dt>Points</dt><dd>Upfront interest; each point is 1% of the loan amount.</dd>
+        <dt>Rate lock</dt><dd>A lender's commitment to a rate and price for a set period.</dd>
+        <dt>Recording</dt><dd>Filing the deed and mortgage with the county, which makes the transfer official.</dd>
+        <dt>Reserves</dt><dd>Liquid assets left after closing, measured in months of PITI.</dd>
+        <dt>ROV</dt><dd>Reconsideration of value: a formal request to revisit an appraisal with better data.</dd>
+        <dt>Seller concession</dt><dd>Money the seller credits toward your costs, capped by loan type and occupancy.</dd>
+        <dt>Title insurance</dt><dd>A one-time premium covering defects in ownership history. The lender's policy protects the lender, and a separate owner's policy protects you.</dd>
+        <dt>TRID</dt><dd>The federal "Know Before You Owe" disclosure rule behind the LE and CD.</dd>
+        <dt>Wire fraud</dt><dd>Diversion of closing funds using spoofed instructions. Always verify by phone.</dd>
+      </dl></div>
+
+      <div class="coach"><span class="tag">Final word from your coach</span><p style="margin:0">Three things to remember: <strong>shop the money as hard as the house</strong>, <strong>protect your exits</strong> (contingencies and deadlines), and <strong>verify every wire</strong>. Do those three and the rest is paperwork.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="14"><span>Previous</span><b>← 14 · After the Keys</b></button>
+        <button data-goto="0"><span>Back to</span><b>00 · Start Here ↑</b></button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  var pages = document.querySelectorAll('section.page');
+  var btns = document.querySelectorAll('nav.side button[data-p]');
+  var labels = ["00 · Start Here: What's Changed","01 · The Game Plan & Your Team","02 · Affordability & True Cost","03 · Credit & Pre-Approval","04 · Choosing a Loan","05 · Rates, Points & Lender Shopping","06 · Agents & the New Commission Rules","07 · Finding & Judging a House","08 · Making the Offer","09 · Inspections & Due Diligence","10 · Appraisal, Underwriting & Closing","11 · Second Homes & Tapping Equity","12 · Arizona Field Notes","13 · Prescott Field Notes","14 · After the Keys","15 · Checklists, Glossary & Cheat Sheet"];
+
+  var msel = document.getElementById('msel');
+  labels.forEach(function(l,i){var o=document.createElement('option');o.value=i;o.textContent=l;msel.appendChild(o);});
+  msel.addEventListener('change',function(){go(parseInt(this.value));});
+
+  function go(n, noScroll){
+    if(isNaN(n)||n<0||n>=pages.length) n=0;
+    pages.forEach(function(p){p.classList.remove('show');});
+    document.getElementById('p'+n).classList.add('show');
+    btns.forEach(function(b){b.classList.toggle('active', b.getAttribute('data-p')==String(n));});
+    if(msel) msel.value = n;
+    if(location.hash!=='#'+n) history.replaceState(null,'','#'+n);
+    if(!noScroll) window.scrollTo({top:0,behavior:'smooth'});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){go(parseInt(b.getAttribute('data-p')));});});
+  document.querySelectorAll('[data-goto]').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();go(parseInt(b.getAttribute('data-goto')));});
+  });
+  if(location.hash) go(parseInt(location.hash.slice(1)), true);
+  window.addEventListener('hashchange',function(){var n=parseInt(location.hash.slice(1));if(!document.getElementById('p'+n)||!document.getElementById('p'+n).classList.contains('show'))go(n);});
+
+  // ---- Calculators ----
+  function $(id){return document.getElementById(id);}
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)?v:0;}
+  function usd(x){return (x<0?'−$':'$')+Math.round(Math.abs(x)).toLocaleString('en-US');}
+  function pmt(L,ratePct,years){var r=ratePct/1200,n=years*12;if(n<=0)return 0;if(r===0)return L/n;return L*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);}
+
+  function calcPiti(){
+    var price=num('c_price'),down=Math.min(Math.max(num('c_down'),0),100),rate=num('c_rate'),term=num('c_term');
+    var loan=price*(1-down/100);
+    var pi=pmt(loan,rate,term);
+    var pmi=down<20?loan*0.005/12:0;
+    var total=pi+pmi+price*num('c_tax')/100/12+num('c_ins')/12+num('c_hoa');
+    var inc=num('c_inc')/12;
+    $('o_pi').textContent=usd(pi);
+    $('o_pmi').textContent=pmi?usd(pmi):'None';
+    $('o_total').textContent=usd(total);
+    $('o_ratio').textContent=inc?(total/inc*100).toFixed(1)+'%':'—';
+    $('o_ratio').style.color=inc&&total/inc>0.28?'var(--red)':'';
+    $('o_cash').textContent=usd(price*down/100+price*0.03);
+  }
+  function calcPts(){
+    var L=num('p_loan'),r0=num('p_r0'),r1=num('p_r1'),pts=num('p_pts'),yrs=num('p_yrs');
+    var cost=L*pts/100,save=pmt(L,r0,30)-pmt(L,r1,30);
+    $('p_cost').textContent=usd(cost);
+    $('p_save').textContent=usd(save);
+    if(save>0){var m=cost/save;$('p_be').textContent=m<1?'< 1 mo':Math.ceil(m)+' mo ('+(m/12).toFixed(1)+' yrs)';}
+    else $('p_be').textContent='Never';
+    var net=save*yrs*12-cost;
+    $('p_net').textContent=usd(net);
+    $('p_net').style.color=net<0?'var(--red)':'var(--green)';
+  }
+  function calcBlend(){
+    var b1=num('b_b1'),r1=num('b_r1'),b2=num('b_b2'),r2=num('b_r2'),r3=num('b_r3');
+    var tot=b1+b2,i1=b1*r1/100+b2*r2/100,i2=tot*r3/100;
+    $('b_blend').textContent=tot?(i1/tot*100).toFixed(2)+'%':'—';
+    $('b_int1').textContent=usd(i1);
+    $('b_int2').textContent=usd(i2);
+    var d=i2-i1;
+    $('b_diff').textContent=(d>=0?'Keep saves ':'Refi saves ')+usd(Math.abs(d));
+    $('b_diff').style.fontSize='17px';
+  }
+  [['calcPiti',calcPiti],['calcPts',calcPts],['calcBlend',calcBlend]].forEach(function(c){
+    var el=$(c[0]); if(!el) return;
+    el.addEventListener('input',c[1]); el.addEventListener('change',c[1]); c[1]();
+  });
+</script>
+</body>
+</html>

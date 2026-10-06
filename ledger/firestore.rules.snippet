@@ -1,0 +1,20 @@
+    // --- Ledger (private planner) -----------------------------------------
+    // Paste inside `match /databases/{database}/documents { ... }` next to the
+    // existing blocks. Documents hold AES-GCM ciphertext only. The id is a
+    // 128-bit value derived from the passphrase, so it can't be listed or
+    // guessed; there is no list and no delete, and `rev` must advance by one.
+    match /ledger/{id} {
+      function ok() {
+        return request.resource.data.keys().hasOnly(['v', 'salt', 'iv', 'ct', 'rev', 'ts'])
+          && request.resource.data.v == 1
+          && request.resource.data.salt is string && request.resource.data.salt.size() <= 32
+          && request.resource.data.iv is string && request.resource.data.iv.size() <= 24
+          && request.resource.data.ct is string && request.resource.data.ct.size() <= 900000
+          && request.resource.data.rev is int
+          && request.resource.data.ts is int;
+      }
+      allow get: if id.size() == 32;
+      allow create: if id.size() == 32 && ok() && request.resource.data.rev == 1;
+      allow update: if ok() && request.resource.data.rev == resource.data.rev + 1;
+      allow list, delete: if false;
+    }

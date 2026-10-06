@@ -1,0 +1,69 @@
+rules_version = '2';
+
+// Full rules file for the bourbonffldraft project: paste the whole thing into
+// Firebase console -> Firestore -> Rules. The pick'em blocks are unchanged.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- Draft Order Pick'em (unchanged) ---------------------------------
+    match /entries/{entry} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /config/settings {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // --- Prescott Home Tour ----------------------------------------------
+    // Still no login, but only the shapes the site actually writes are
+    // accepted: seven known houses, known fields, capped sizes. Notes and
+    // photos can be added or deleted, never edited in place.
+    function isHouse(h) {
+      return h in ['quintero', 'lavalley', 'pyrite', 'idylwild', 'banning', 'quartz', 'ponderosa'];
+    }
+    function str(v, max) {
+      return v is string && v.size() <= max;
+    }
+    function incoming() {
+      return request.resource.data;
+    }
+
+    match /prescott/plan {
+      allow read: if true;
+      allow write: if incoming().keys().hasOnly(['order', 'day', 'booked', 'depart', 'sunStart', 'dwell', 'lunch', 'updatedBy', 'ts'])
+        && incoming().order is list && incoming().order.size() <= 4
+        && incoming().day is map && incoming().day.size() <= 4
+        && incoming().booked is map && incoming().booked.size() <= 4
+        && str(incoming().updatedBy, 24);
+    }
+
+    match /prescott/{house}/notes/{id} {
+      allow read, delete: if isHouse(house);
+      allow create: if isHouse(house)
+        && incoming().keys().hasOnly(['by', 'text', 'ts'])
+        && str(incoming().by, 24)
+        && str(incoming().text, 4000)
+        && incoming().ts is int;
+    }
+
+    match /prescott/{house}/photos/{id} {
+      allow read, delete: if isHouse(house);
+      allow create: if isHouse(house)
+        && incoming().keys().hasOnly(['by', 'caption', 'data', 'ts'])
+        && str(incoming().by, 24)
+        && str(incoming().caption, 140)
+        && str(incoming().data, 900000)
+        && incoming().ts is int;
+    }
+
+    match /prescott/{house}/scores/{person} {
+      allow read: if isHouse(house);
+      allow write: if isHouse(house)
+        && incoming().keys().hasOnly(['by', 'scores', 'ts'])
+        && str(incoming().by, 24)
+        && incoming().scores is map && incoming().scores.size() <= 8
+        && incoming().ts is int;
+    }
+  }
+}

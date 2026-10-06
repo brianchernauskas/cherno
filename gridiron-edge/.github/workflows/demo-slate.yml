@@ -1,0 +1,53 @@
+# Refreshes demo/slate.json — the snapshot the app runs on for visitors with no odds key.
+#
+# Needs one secret: ODDS_API_KEY. Settings → Secrets and variables → Actions → New
+# repository secret. The key is only ever read by the step below; it is never written
+# into the committed snapshot.
+#
+# Cost: 3 credits per league per run, so 6 a run, ~52 a month at this cadence, against
+# a 500-credit free tier. Drop a cron line to halve it.
+
+name: demo slate
+
+on:
+  schedule:
+    # Wednesday morning UTC: the full NFL week and the Saturday college slate are posted.
+    - cron: '17 12 * * 3'
+    # Saturday morning UTC: refreshes Sunday/Monday NFL and catches college line moves.
+    - cron: '17 12 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: demo-slate
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Pull a fresh slate
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: node tools/refresh-demo.mjs
+
+      - name: Commit if it changed
+        run: |
+          if git diff --quiet -- demo/slate.json; then
+            echo "Snapshot unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add demo/slate.json
+          git commit -m "Refresh demo slate"
+          git push
