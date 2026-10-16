@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Photonics Playbook</title>
+<meta name="description" content="A personal field guide to photonics in 2026: optical interconnect, co-packaged optics, optical compute and quantum, the supply chain, deals, sourcing and business opportunities.">
+<style>
+  :root{
+    --ink:#0f1b2d; --ink2:#334155; --muted:#64748b; --line:#e2e8f0;
+    --bg:#f6f8fb; --card:#ffffff;
+    --aws:#ff9900; --aws-d:#c77700;
+    --azure:#0089d6; --azure-d:#005ba1;
+    --gcp:#ea4335; --gcp-d:#b5261a;
+    --accent:#0e7490; --accent-d:#155e75; --violet:#7c3aed;
+    --green:#16a34a; --amber:#d97706; --red:#dc2626;
+    --inform:#2563eb; --optimize:#16a34a; --operate:#0e7490;
+    --shadow:0 1px 3px rgba(15,27,45,.08),0 8px 24px rgba(15,27,45,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Layout */
+  .wrap{display:flex;min-height:100vh}
+  nav.side{width:270px;flex:0 0 270px;background:#0f1b2d;color:#cbd5e1;position:sticky;top:0;height:100vh;
+    overflow-y:auto;padding:22px 0}
+  nav.side .brand{padding:0 22px 16px;border-bottom:1px solid #1e293b;margin-bottom:10px}
+  nav.side .brand h1{font-size:16px;margin:0 0 4px;color:#fff;line-height:1.3}
+  nav.side .brand span{font-size:12px;color:#7c8aa5;letter-spacing:.03em}
+  nav.side button{display:block;width:100%;text-align:left;background:none;border:none;color:#cbd5e1;
+    padding:10px 22px;font-size:14px;cursor:pointer;border-left:3px solid transparent;font-family:inherit}
+  nav.side button:hover{background:#16233a;color:#fff}
+  nav.side button.active{background:#16233a;color:#fff;border-left-color:var(--accent)}
+  nav.side .num{display:inline-block;width:22px;color:#5b6b86;font-variant-numeric:tabular-nums}
+  nav.side button.active .num{color:var(--accent)}
+  nav.side .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b86;padding:16px 22px 6px}
+
+  main{flex:1;min-width:0;max-width:1000px;margin:0 auto;padding:40px 48px 120px}
+  section.page{display:none;animation:fade .25s ease}
+  section.page.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h2.title{font-size:30px;line-height:1.2;margin:0 0 6px}
+  .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:8px}
+  .lede{font-size:18px;color:var(--ink2);margin:0 0 28px;max-width:70ch}
+  h3{font-size:21px;margin:34px 0 12px;padding-top:6px}
+  h4{font-size:16px;margin:22px 0 8px;color:var(--ink)}
+  p{margin:0 0 14px;max-width:74ch}
+  ul,ol{max-width:74ch;padding-left:22px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  .muted{color:var(--muted)}
+
+  /* Cards & callouts */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0;box-shadow:var(--shadow)}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+  .coach{border-left:4px solid var(--accent);background:linear-gradient(90deg,#e0f2f7,#fff 60%);
+    border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .coach .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-d);display:block;margin-bottom:4px}
+  .analogy{border-left:4px solid var(--amber);background:linear-gradient(90deg,#fffbeb,#fff 60%);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .analogy .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:4px}
+  .warn{border-left:4px solid var(--red);background:linear-gradient(90deg,#fef2f2,#fff 60%);border-radius:0 12px 12px 0;padding:16px 20px;margin:18px 0}
+  .warn .tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:4px}
+  .keyterm{background:#e0f2f7;border-radius:6px;padding:1px 6px;font-weight:600;color:var(--accent-d);white-space:nowrap}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#0f1b2d;color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:#f8fafc}
+  td.aws{color:var(--aws-d);font-weight:600}
+  td.azure{color:var(--azure-d);font-weight:600}
+  td.gcp{color:var(--gcp-d);font-weight:600}
+  .scroller{overflow-x:auto}
+
+  /* Pills */
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin:2px 4px 2px 0}
+  .pill.aws{background:#fff3e0;color:var(--aws-d)}
+  .pill.azure{background:#e3f2fd;color:var(--azure-d)}
+  .pill.gcp{background:#fdecea;color:var(--gcp-d)}
+  .pill.g{background:#dcfce7;color:#166534}
+  .pill.inform{background:#dbeafe;color:#1d4ed8}
+  .pill.optimize{background:#dcfce7;color:#166534}
+  .pill.operate{background:#ede9fe;color:#5b21b6}
+
+  /* Infographic pieces */
+  .pyramid{display:flex;flex-direction:column;align-items:center;gap:6px;margin:18px 0}
+  .pyramid .row{color:#fff;border-radius:8px;padding:12px 16px;text-align:center;font-weight:600;box-shadow:var(--shadow)}
+  .pyramid .r1{width:55%;background:#0e7490}
+  .pyramid .r2{width:72%;background:#0f766e}
+  .pyramid .r3{width:88%;background:#2563eb}
+  .pyramid .r4{width:100%;background:#0f1b2d}
+  .pyramid small{display:block;font-weight:400;opacity:.85;font-size:12px}
+
+  .stack{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+  .stack .lvl{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px;box-shadow:var(--shadow)}
+  .stack .pct{flex:0 0 88px;font-weight:800;font-size:20px;color:var(--accent)}
+  .stack .bar{flex:1;height:14px;background:#e0f2f7;border-radius:999px;overflow:hidden}
+  .stack .bar i{display:block;height:100%;background:linear-gradient(90deg,#0f766e,#0e7490)}
+  @media(max-width:560px){.stack .lvl{flex-wrap:wrap}.stack .bar{flex:1 1 100%;order:3}}
+
+  .timeline{position:relative;margin:22px 0 22px 8px;padding-left:26px;border-left:2px solid var(--line)}
+  .timeline .step{position:relative;margin-bottom:20px}
+  .timeline .step::before{content:"";position:absolute;left:-33px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent)}
+  .timeline .step h4{margin:0 0 3px}
+  .timeline .when{font-size:12px;color:var(--accent-d);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+  @media(max-width:820px){.statrow{grid-template-columns:1fr 1fr}}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+  .stat .big{font-size:30px;font-weight:800;line-height:1}
+  .stat .lbl{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+  .matrix{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border-radius:12px;overflow:hidden;margin:18px 0;box-shadow:var(--shadow)}
+  .matrix .q{background:#fff;padding:16px}
+  .matrix .q h4{margin:0 0 4px}
+  .matrix .q.hi{background:#f0fdf4}
+  .matrix .q.lo{background:#fef2f2}
+  @media(max-width:560px){.matrix{grid-template-columns:1fr}}
+
+  .checklist{list-style:none;padding-left:0;max-width:74ch}
+  .checklist li{padding-left:30px;position:relative;margin:8px 0}
+  .checklist li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--green);font-weight:800;
+    background:#dcfce7;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px}
+
+  .glossary dt{font-weight:700;margin-top:14px;color:var(--ink)}
+  .glossary dd{margin:2px 0 0;color:var(--ink2)}
+  .glossary dl{max-width:78ch}
+
+  /* The FinOps lifecycle: three phases */
+  .cycle{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:10px;margin:20px 0}
+  .cycle .ph{border-radius:14px;padding:18px;color:#fff;box-shadow:var(--shadow)}
+  .cycle .ph h4{margin:0 0 4px;color:#fff;font-size:18px}
+  .cycle .ph p{margin:0;font-size:14px;opacity:.92}
+  .cycle .ph .q{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+  .cycle .inf{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+  .cycle .opt{background:linear-gradient(135deg,#16a34a,#15803d)}
+  .cycle .ope{background:linear-gradient(135deg,#0e7490,#5b21b6)}
+  .cycle .arrow{display:grid;place-items:center;color:var(--muted);font-size:22px;font-weight:700}
+  .cycle-back{text-align:center;font-size:13px;color:var(--muted);margin:-8px 0 18px}
+  @media(max-width:820px){.cycle{grid-template-columns:1fr}.cycle .arrow{transform:rotate(90deg);height:18px}}
+
+  /* Allocation spectrum */
+  .spectrum{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:20px 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .spectrum div{padding:14px 14px 16px;background:#fff;border-right:1px solid var(--line)}
+  .spectrum div:last-child{border-right:none}
+  .spectrum b{display:block;font-size:14px;margin-bottom:4px}
+  .spectrum span{font-size:13px;color:var(--ink2);display:block}
+  .spectrum .s1{border-top:5px solid #cbd5e1}
+  .spectrum .s2{border-top:5px solid #99f6e4}
+  .spectrum .s3{border-top:5px solid #14b8a6}
+  .spectrum .s4{border-top:5px solid #115e59}
+  @media(max-width:820px){.spectrum{grid-template-columns:1fr 1fr}.spectrum div{border-bottom:1px solid var(--line)}}
+  @media(max-width:480px){.spectrum{grid-template-columns:1fr}}
+
+  .formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0f1b2d;color:#e2e8f0;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:14.5px;overflow-x:auto;white-space:nowrap}
+  .formula b{color:#5eead4;font-weight:600}
+
+  .pagenav{display:flex;justify-content:space-between;margin-top:48px;padding-top:20px;border-top:1px solid var(--line);gap:12px}
+  .pagenav button{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 18px;cursor:pointer;
+    font-family:inherit;font-size:14px;color:var(--ink2);box-shadow:var(--shadow);max-width:48%}
+  .pagenav button:hover{border-color:var(--accent);color:var(--accent)}
+  .pagenav button b{display:block;color:var(--ink);font-size:14px}
+  .pagenav button span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+
+  .mobilebar{display:none}
+  @media(max-width:820px){
+    nav.side{display:none}
+    main{padding:20px 18px 100px}
+    .mobilebar{display:block;position:sticky;top:0;background:#0f1b2d;padding:12px 16px;z-index:20;margin:-20px -18px 18px}
+    .mobilebar select{width:100%;padding:10px;border-radius:8px;border:none;font-size:15px}
+  }
+  .fn{font-size:12.5px;color:var(--muted);margin-top:8px}
+  /* House-guide additions */
+  .pill.money{background:#dbeafe;color:#1d4ed8}
+  .pill.hunt{background:#fef3c7;color:#92400e}
+  .pill.deal{background:#ccfbf1;color:#115e59}
+  .pill.own{background:#ede9fe;color:#5b21b6}
+  .cycle .c1{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+  .cycle .c2{background:linear-gradient(135deg,#d97706,#b45309)}
+  .cycle .c3{background:linear-gradient(135deg,#0f766e,#115e59)}
+  .calc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+  .calc h4{margin:0 0 12px}
+  .calc .in{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 16px}
+  .calc label{font-size:12.5px;color:var(--muted);font-weight:600;display:block}
+  .calc input,.calc select{width:100%;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:15px;color:var(--ink);background:#f8fafc}
+  .calc input:focus,.calc select:focus{outline:2px solid var(--accent);outline-offset:1px;background:#fff}
+  .calc .outs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px}
+  .calc .o{background:#ecfeff;border-radius:10px;padding:12px 14px}
+  .calc .o b{display:block;font-size:22px;color:var(--accent-d);font-variant-numeric:tabular-nums}
+  .calc .o span{font-size:12px;color:var(--muted)}
+  .calc .note{font-size:13px;color:var(--ink2);margin:12px 0 0}
+  .flag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:#fef3c7;color:#92400e;margin-left:6px;vertical-align:middle}
+  .flag.new{background:#dcfce7;color:#166534}
+  @media print{nav.side,.mobilebar,.pagenav{display:none}section.page{display:block!important;page-break-after:always}main{padding:0}}
+
+  /* Photonics additions */
+  .chain{display:flex;flex-direction:column;gap:6px;margin:20px 0}
+  .chain .link{display:grid;grid-template-columns:150px 1fr 1.2fr;gap:14px;align-items:start;background:#fff;border:1px solid var(--line);border-left:5px solid var(--c,var(--accent));border-radius:10px;padding:12px 16px;box-shadow:var(--shadow)}
+  .chain .link b{font-size:14px;color:var(--ink)}
+  .chain .link span{font-size:13.5px;color:var(--ink2)}
+  .chain .link em{font-style:normal;font-size:13px;color:var(--muted)}
+  .chain .dn{text-align:center;color:var(--muted);font-size:13px;line-height:1}
+  @media(max-width:820px){.chain .link{grid-template-columns:1fr;gap:4px}}
+  .ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:20px 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .ladder div{background:#fff;padding:14px 14px 16px;border-right:1px solid var(--line);position:relative}
+  .ladder div:last-child{border-right:none}
+  .ladder b{display:block;font-size:14px;margin-bottom:2px}
+  .ladder .d{font-size:12px;font-weight:700;color:var(--accent-d);text-transform:uppercase;letter-spacing:.05em}
+  .ladder span{display:block;font-size:13px;color:var(--ink2);margin-top:4px}
+  .ladder .m{margin-top:8px;font-size:12px;font-weight:700}
+  .ladder .cu{color:#b45309}.ladder .op{color:var(--accent-d)}
+  .ladder .l1{border-top:5px solid #f59e0b}.ladder .l2{border-top:5px solid #22d3ee}.ladder .l3{border-top:5px solid #0e7490}.ladder .l4{border-top:5px solid #7c3aed}
+  @media(max-width:820px){.ladder{grid-template-columns:1fr 1fr}.ladder div{border-bottom:1px solid var(--line)}}
+  @media(max-width:480px){.ladder{grid-template-columns:1fr}}
+  .meter{display:inline-flex;gap:3px;vertical-align:middle}
+  .meter i{width:10px;height:10px;border-radius:2px;background:#e2e8f0;display:inline-block}
+  .meter i.on{background:var(--accent)}
+  .lens{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+  .lens div{border-radius:14px;padding:18px;color:#fff;box-shadow:var(--shadow)}
+  .lens h4{margin:0 0 4px;color:#fff;font-size:18px}
+  .lens p{margin:0;font-size:14px;opacity:.93}
+  .lens .q{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.82;margin-bottom:6px}
+  .lens .a{background:linear-gradient(135deg,#0e7490,#155e75)}
+  .lens .b{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
+  .lens .c{background:linear-gradient(135deg,#334155,#0f1b2d)}
+  @media(max-width:820px){.lens{grid-template-columns:1fr}}
+  .src{font-size:13px;color:var(--ink2)}
+  .src li{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="side">
+    <div class="brand">
+      <h1>The Photonics Playbook</h1>
+      <span>A PERSONAL FIELD GUIDE • OCT 2026</span>
+    </div>
+    <div class="grp">Foundations</div>
+    <button data-p="0" class="active"><span class="num">00</span>Start Here</button>
+    <button data-p="1"><span class="num">01</span>Photonics 101</button>
+    <button data-p="2"><span class="num">02</span>Why Now: The I/O Wall</button>
+    <div class="grp">The Market</div>
+    <button data-p="3"><span class="num">03</span>The Interconnect Ladder</button>
+    <button data-p="4"><span class="num">04</span>Co-Packaged Optics</button>
+    <button data-p="5"><span class="num">05</span>Optical Switching &amp; Fiber</button>
+    <button data-p="6"><span class="num">06</span>Optical Compute</button>
+    <button data-p="7"><span class="num">07</span>Photonic Quantum</button>
+    <div class="grp">The Supply Chain</div>
+    <button data-p="8"><span class="num">08</span>The Value Chain</button>
+    <button data-p="9"><span class="num">09</span>Chokepoints &amp; Risk</button>
+    <button data-p="10"><span class="num">10</span>Deals &amp; Money</button>
+    <div class="grp">In the Field</div>
+    <button data-p="11"><span class="num">11</span>Buying Photonics</button>
+    <button data-p="12"><span class="num">12</span>Business Opportunities</button>
+    <button data-p="13"><span class="num">13</span>The Investor's Lens</button>
+    <div class="grp">Reference</div>
+    <button data-p="14"><span class="num">14</span>Glossary, Watch List &amp; Sources</button>
+  </nav>
+
+  <main>
+    <div class="mobilebar">
+      <select id="msel"></select>
+    </div>
+
+    <!-- ============ 0 START HERE ============ -->
+    <section class="page show" id="p0">
+      <div class="kicker">Start here</div>
+      <h2 class="title">Photonics: moving and computing with light</h2>
+      <p class="lede">AI clusters have hit a wall that has nothing to do with how fast a GPU can do math. The wall is moving data between chips. Light is how the industry is climbing over it, and that shift is creating a market, a supply crunch and a sourcing problem all at once.</p>
+
+      <div class="coach">
+        <span class="tag">Coach's opening note</span>
+        <p style="margin:0">You already know this market from the buyer's side without calling it photonics. Every 400G or 800G transceiver line on a hyperscaler or network bill, every "optics" SKU on a switch quote, every lead-time escalation on a cluster build: that is photonics. This guide gives you the physics in plain English, the map of who makes what, where the chokepoints are, and where someone with a sourcing background can make money.</p>
+      </div>
+
+      <h3>The mental model: three businesses, three clocks</h3>
+      <div class="lens">
+        <div class="a"><span class="q">Now · revenue today</span><h4>Move data with light</h4><p>Optical interconnect: transceivers, co-packaged optics, optical switches, fiber. Billions in annual sales, growing fast, supply constrained.</p></div>
+        <div class="b"><span class="q">Next · 2028 and beyond</span><h4>Compute with light</h4><p>Optical processors that do the matrix math of AI in light. Promising lab results, well-funded startups, no volume product yet.</p></div>
+        <div class="c"><span class="q">Later · 2030s</span><h4>Quantum with light</h4><p>Photonic quantum computers. One public company, several unicorns, fault tolerance still unproven.</p></div>
+      </div>
+      <div class="analogy"><span class="tag">Analogy: the highway, the engine, the spaceship</span><p style="margin:0">Interconnect is the highway between factories: unglamorous, already congested, and paid for by everyone who ships anything. Optical compute is a new kind of engine that might be far more efficient, if anyone can build one that runs reliably. Photonic quantum is a spaceship. If you are deciding where to spend time and money, the highway is where the traffic is.</p></div>
+
+      <h3>How to use this guide</h3>
+      <p>Sections build from physics to market to supply chain to "what do I do with this." Same three signposts as the other playbooks:</p>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">How a sourcing professional actually uses the concept.</p></div>
+      <div class="analogy"><span class="tag">Analogy</span><p style="margin:0">A plain-English comparison to something familiar.</p></div>
+      <div class="warn"><span class="tag">Watch out</span><p style="margin:0">A trap, a hype claim, or a place buyers and investors lose money.</p></div>
+
+      <h3>The market in one glance</h3>
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--accent)">~$8B</div><div class="lbl">AI-cluster optics sales, 2025</div></div>
+        <div class="stat"><div class="big" style="color:var(--accent)">~$20B</div><div class="lbl">Forecast for 2030</div></div>
+        <div class="stat"><div class="big" style="color:var(--violet)">&gt;30%</div><div class="lbl">Laser supply short of demand (Lumentum)</div></div>
+        <div class="stat"><div class="big" style="color:#0f1b2d">$3.5B</div><div class="lbl">Marvell's price for Celestial AI</div></div>
+      </div>
+      <p class="fn">Optics sales: LightCounting, "Optics for AI Clusters," March 2026 (Ethernet transceivers 100G+ plus CPO, scale-out and scale-up). Laser gap: Lumentum CEO, July 2026. Celestial AI: Marvell 10-Q, total purchase consideration. Figures current as of mid-October 2026; this market moves quarterly.</p>
+
+      <div class="pagenav">
+        <span></span>
+        <button data-goto="1"><span>Next</span><b>01 · Photonics 101 →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 1 PHOTONICS 101 ============ -->
+    <section class="page" id="p1">
+      <div class="kicker">Foundations</div>
+      <h2 class="title">Photonics 101: just enough physics</h2>
+      <p class="lede">You do not need a physics degree to follow this market. You need to know five components, three materials and one number: energy per bit.</p>
+
+      <h3>Why light beats copper</h3>
+      <div class="scroller"><table>
+        <thead><tr><th></th><th>Electrons in copper</th><th>Photons in glass</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Distance</strong></td><td>Signal degrades fast. At 200 Gb/s per lane, passive copper reaches only a couple of meters.</td><td>Barely degrades over meters, kilometers, even oceans.</td></tr>
+          <tr><td><strong>Bandwidth per wire</strong></td><td>One signal per wire pair.</td><td>Many colors (wavelengths) share one fiber, each carrying its own signal.</td></tr>
+          <tr><td><strong>Heat</strong></td><td>Resistance turns signal into heat, and it gets worse as speed rises.</td><td>Light in a waveguide makes almost no heat. The heat is in converting to and from electrical.</td></tr>
+          <tr><td><strong>Interference</strong></td><td>Wires crosstalk and pick up noise.</td><td>Light beams pass through each other undisturbed.</td></tr>
+          <tr><td><strong>Weakness</strong></td><td>None of the conversion cost; cheap and simple for short runs.</td><td>Every link needs a laser, a modulator and a detector. Conversions cost power, money and reliability.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="analogy"><span class="tag">Analogy: shouting down a hallway versus a flashlight</span><p style="margin:0">Copper is shouting: fine across a room, useless across a building, and everyone in the hallway hears everyone else. Fiber is a flashlight with Morse code: it carries for miles, and you can run a dozen colored flashlights down the same hallway without confusion. The catch is that someone has to turn your words into flashes and back again at each end. That translation step is where most of the cost, power and failure in photonics lives.</p></div>
+
+      <h3>The five parts of every optical link</h3>
+      <div class="grid g2">
+        <div class="card"><h4>1. Laser</h4><p style="margin:0">Makes the light. Almost always made of <span class="keyterm">indium phosphide</span> (InP) or, for short links, gallium arsenide VCSELs. Silicon cannot make light efficiently, which is why lasers are the industry's biggest chokepoint.</p></div>
+        <div class="card"><h4>2. Modulator</h4><p style="margin:0">Encodes data onto the light by switching or shaping it billions of times a second. Can be built in silicon, InP, or thin-film lithium niobate. Speed and power of the modulator set the link's performance.</p></div>
+        <div class="card"><h4>3. Waveguide and fiber</h4><p style="margin:0">Carries the light: tiny waveguides etched on a chip, then optical fiber between chips, racks and buildings. Attaching fiber to a chip precisely and cheaply is a surprisingly hard manufacturing step.</p></div>
+        <div class="card"><h4>4. Photodetector</h4><p style="margin:0">Turns light back into an electrical signal at the far end. Usually germanium on silicon. The least troublesome part.</p></div>
+        <div class="card"><h4>5. DSP and driver electronics</h4><p style="margin:0">The electronic chips that clean up, drive and decode the signal. A big share of a transceiver's power and cost. Marvell, Broadcom and Credo dominate. Removing or shrinking the DSP is the whole idea behind LPO and CPO.</p></div>
+        <div class="card"><h4>Put together: the transceiver</h4><p style="margin:0">A pluggable transceiver is all five in a module the size of a pack of gum that slides into a switch port. Hyperscalers buy them by the million. This is the product line that dominates photonics revenue today.</p></div>
+      </div>
+
+      <h3>The materials, and why they matter commercially</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Material</th><th>Good at</th><th>Commercial reality</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Silicon (silicon photonics, SiPho)</strong></td><td>Waveguides, modulators, detectors, all in standard chip fabs</td><td>Cheap at scale, rides the semiconductor industry. Cannot make light, so it always needs an InP laser attached.</td></tr>
+          <tr><td><strong>Indium phosphide (InP)</strong></td><td>Lasers, fast modulators</td><td>Small, brittle wafers; few suppliers; raw indium mostly refined in China. The bottleneck of 2026.</td></tr>
+          <tr><td><strong>Gallium arsenide (GaAs VCSELs)</strong></td><td>Cheap short-reach lasers</td><td>Used in short multimode links. Also had shortages in 2023 to 2025.</td></tr>
+          <tr><td><strong>Thin-film lithium niobate (TFLN)</strong></td><td>Very fast, low-power modulators</td><td>Rising star for 400G-per-lane optics and optical computing (Q.ANT uses it). Early manufacturing scale.</td></tr>
+          <tr><td><strong>Silicon nitride (SiN)</strong></td><td>Very low-loss waveguides</td><td>Popular in quantum photonics and sensing.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>The one number: energy per bit</h3>
+      <p>Everything in data-center photonics is ultimately judged in <span class="keyterm">picojoules per bit</span> (pJ/bit): how much energy it takes to move one bit. Lower is better. A product that moves the same data for less power lets the operator put more GPUs inside the same power envelope, and power, not floor space, is what limits AI data centers now.</p>
+      <div class="formula"><b>Link power (watts)</b> = energy per bit (pJ/bit) × data rate (bits/s) × 10⁻¹²</div>
+      <p class="muted">Example: a 1.6 Tb/s link at 15 pJ/bit burns 24 watts. Cut it to 5 pJ/bit and it burns 8 watts. Across hundreds of thousands of links, that difference is measured in megawatts.</p>
+
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">When a vendor pitches you a photonics product, three questions cut through most of the marketing: <strong>What is the pJ/bit, measured how?</strong> <strong>Where is the laser, and can I replace it?</strong> <strong>Who else can make this, in what volume?</strong> The first is performance, the second is reliability and serviceability, and the third is your supply risk.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="0"><span>Previous</span><b>← 00 · Start Here</b></button>
+        <button data-goto="2"><span>Next</span><b>02 · Why Now: The I/O Wall →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 2 WHY NOW ============ -->
+    <section class="page" id="p2">
+      <div class="kicker">Foundations</div>
+      <h2 class="title">Why now: the I/O wall</h2>
+      <p class="lede">Photonics has been "about to change computing" for twenty years. What finally changed is AI: models too big for one chip, clusters of hundreds of thousands of GPUs, and a power bill that makes every wasted watt a competitive problem.</p>
+
+      <h3>Three forces converging</h3>
+      <div class="grid g3">
+        <div class="card"><h4>1. Copper is running out of reach</h4><p style="margin:0">Each time signaling speed doubles, the distance copper can carry it shrinks. At 200 Gb/s per lane, passive copper is limited to a couple of meters, roughly one rack. Anything farther needs optics.</p></div>
+        <div class="card"><h4>2. GPUs must act as one machine</h4><p style="margin:0">Training a frontier model means thousands of GPUs exchanging data constantly. The bigger the "scale-up" domain that behaves like one giant GPU, the better. That domain is now outgrowing a single rack.</p></div>
+        <div class="card"><h4>3. Power is the binding constraint</h4><p style="margin:0">Data centers are capped by grid connections, not land. Optics that burn less power free up megawatts for compute. That is why Nvidia, Broadcom and every hyperscaler care.</p></div>
+      </div>
+
+      <h3>Scale-up, scale-out, scale-across</h3>
+      <p>Three network tiers, three different photonics markets. You will hear these terms in every vendor briefing.</p>
+      <div class="scroller"><table>
+        <thead><tr><th>Tier</th><th>What it connects</th><th>Today</th><th>Photonics opportunity</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Scale-up</strong></td><td>GPUs inside one tightly coupled domain (Nvidia's NVLink, AMD's UALink-style fabrics)</td><td>Mostly copper inside a rack</td><td>Biggest future prize. Optical I/O chiplets and CPO on the GPU itself (Ayar Labs, Celestial AI/Marvell, Lightmatter).</td></tr>
+          <tr><td><strong>Scale-out</strong></td><td>Racks to racks across the data hall (InfiniBand, Ethernet)</td><td>Pluggable transceivers, millions per year</td><td>Largest market today. Pluggables now, CPO switches arriving 2026.</td></tr>
+          <tr><td><strong>Scale-across</strong></td><td>Data centers to data centers, campus and metro</td><td>Coherent optics (400ZR, 800ZR)</td><td>Growing as single training jobs span multiple sites. Ciena, Cisco/Acacia, Marvell, Nokia.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Follow the capex</h3>
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--accent)">$115-135B</div><div class="lbl">Meta 2026 capex guide (vs $72B in 2025)</div></div>
+        <div class="stat"><div class="big" style="color:var(--accent)">2.7% → 4.1%</div><div class="lbl">Optics share of top-5 cloud capex, 2025 to 2031</div></div>
+        <div class="stat"><div class="big" style="color:var(--violet)">$8.2B</div><div class="lbl">Nvidia networking revenue, one quarter (Q3 FY26)</div></div>
+        <div class="stat"><div class="big" style="color:#0f1b2d">+162%</div><div class="lbl">Nvidia networking growth, year on year</div></div>
+      </div>
+      <p class="fn">Capex and optics share: LightCounting via Lightwave, March 2026. Nvidia networking: company figures cited in its February 2026 CPO webinar coverage.</p>
+      <div class="analogy"><span class="tag">Analogy: the factory and the forklifts</span><p style="margin:0">A GPU is a machine in a factory. For years the industry bought faster machines. Now the machines sit idle waiting for forklifts to bring parts. Optics are better forklifts. When buyers spend a growing slice of capex on forklifts, it is because the machines are already fast enough and the waiting is what costs money.</p></div>
+      <div class="warn"><span class="tag">Watch out: this is a derivative of AI capex</span><p style="margin:0">Almost all of the near-term growth depends on hyperscaler AI spending. LightCounting already expects growth to moderate from 2027, with the possibility of a flat quarter or two as shortages ease. If AI capex pauses, optics orders fall faster than GPU orders, because customers burn through inventory first. Any business plan here needs to survive a down year.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="1"><span>Previous</span><b>← 01 · Photonics 101</b></button>
+        <button data-goto="3"><span>Next</span><b>03 · The Interconnect Ladder →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 3 INTERCONNECT LADDER ============ -->
+    <section class="page" id="p3">
+      <div class="kicker">The market</div>
+      <h2 class="title">The interconnect ladder: from pluggables to optics on the chip</h2>
+      <p class="lede">The whole market is one long migration: moving the conversion from electrical to optical closer and closer to the processor. Each rung saves power and adds integration risk.</p>
+
+      <div class="ladder">
+        <div class="l1"><span class="d">Rung 1</span><b>Pluggable (DSP)</b><span>Standard transceiver with a DSP chip inside, plugged into the switch faceplate.</span><span class="m cu">Today's volume. Most flexible.</span></div>
+        <div class="l2"><span class="d">Rung 2</span><b>LPO / LRO</b><span>Linear pluggable: drops or halves the DSP and lets the switch chip drive the optics.</span><span class="m op">Lower power, tighter interop.</span></div>
+        <div class="l3"><span class="d">Rung 3</span><b>NPO / CPO</b><span>Optical engines on or beside the switch package. Lasers in a separate replaceable module.</span><span class="m op">Shipping in switches 2025-26.</span></div>
+        <div class="l4"><span class="d">Rung 4</span><b>Optical I/O</b><span>Optical chiplets on the GPU or accelerator package itself for scale-up.</span><span class="m op">Pilots now, volume late decade.</span></div>
+      </div>
+
+      <h3>Rung by rung</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Approach</th><th>Power</th><th>Serviceability</th><th>Vendor lock-in</th><th>Who leads</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Pluggable with DSP</strong> (800G, 1.6T, 3.2T next)</td><td>Highest. Roughly 25 W for a high-end module, per Nvidia.</td><td>Best. Pull and replace in seconds.</td><td>Lowest. Multi-source agreements (MSAs) define form factors; many suppliers.</td><td>Innolight, Eoptolink, Coherent, Accelink, Lumentum, Molex, CIG</td></tr>
+          <tr><td><strong>Linear pluggable (LPO) / linear receive (LRO)</strong></td><td>Meaningfully lower than DSP pluggables</td><td>Same as pluggable</td><td>Higher. Works only when switch SerDes and optics are tuned together.</td><td>Same module makers; LPO MSA published a spec</td></tr>
+          <tr><td><strong>Near-packaged optics (NPO)</strong></td><td>Lower still</td><td>Partial. Engines sit on the board, not the faceplate.</td><td>Moderate</td><td>LightCounting says the industry currently favors NPO as a stepping stone</td></tr>
+          <tr><td><strong>Co-packaged optics (CPO)</strong></td><td>65-70% less optics power than pluggables (Broadcom); up to 5x less (Nvidia). Vendor claims.</td><td>Lasers are field-replaceable; the optical engines are not.</td><td>High. Optics come with the switch.</td><td>Nvidia, Broadcom; TSMC COUPE packaging underneath both</td></tr>
+          <tr><td><strong>Optical I/O chiplets</strong></td><td>Lowest pJ/bit of all</td><td>Engine is part of the processor package</td><td>Highest. Chosen at chip design time.</td><td>Ayar Labs, Marvell (Celestial AI), Lightmatter, AMD (Enosemi), Nvidia in-house</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="analogy"><span class="tag">Analogy: the plug-in GPS versus the built-in nav</span><p style="margin:0">A pluggable is the GPS you stick on the dashboard: any brand works, swap it when it breaks, but it uses its own power and cables. CPO is the navigation built into the dashboard: cleaner, cheaper to run, better integrated, and when it fails, it is a dealer visit and you are on the carmaker's upgrade schedule. Most fleets will run both for years.</p></div>
+
+      <h3>Speed generations: the treadmill</h3>
+      <div class="timeline">
+        <div class="step"><span class="when">2023-2025</span><h4>800G pluggables everywhere</h4><p>The workhorse of the first AI build-out. Shortages of InP lasers and VCSELs constrained shipments from 2023 through 2025.</p></div>
+        <div class="step"><span class="when">2025-2026</span><h4>1.6T ramps; 200 Gb/s per lane</h4><p>Innolight's Q1 2026 revenue grew 207% year over year on 1.6T shipments. First CPO switches built on 200G lanes ship.</p></div>
+        <div class="step"><span class="when">2027-2028</span><h4>3.2T and 400 Gb/s per lane</h4><p>Broadcom's fourth-generation CPO targets 400G per channel. TFLN and plasmonic modulators (Marvell bought Polariton for this) compete to get there efficiently.</p></div>
+        <div class="step"><span class="when">2028+</span><h4>Optics inside the scale-up domain</h4><p>Nvidia's Rubin Ultra NVL576 brings optics, including optical circuit switching, into rack-to-rack scale-up, with volume expected from 2028.</p></div>
+      </div>
+
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">The buyer's real decision is not "pluggable or CPO" in the abstract. It is <strong>which tier, which generation, and how much lock-in you will accept for how much power savings</strong>. Expect most enterprise and neocloud buyers to stay on pluggables for scale-out through 2027, with CPO appearing first where they buy a whole Nvidia or Broadcom-based reference design.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="2"><span>Previous</span><b>← 02 · Why Now: The I/O Wall</b></button>
+        <button data-goto="4"><span>Next</span><b>04 · Co-Packaged Optics →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 4 CPO ============ -->
+    <section class="page" id="p4">
+      <div class="kicker">The market</div>
+      <h2 class="title">Co-packaged optics: the 2026 inflection</h2>
+      <p class="lede">After a decade of skepticism, CPO switches from Nvidia and Broadcom are shipping. Whether CPO becomes the default or stays a niche depends mostly on one question buyers care about more than physics: what happens when something breaks.</p>
+
+      <h3>The two playbooks</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Nvidia: CPO as part of the AI factory</h4>
+          <ul style="margin:0">
+            <li><strong>Quantum-X Photonics</strong> (InfiniBand): 115 Tb/s, 144 ports of 800G, liquid cooled. Shipping H1 2026.</li>
+            <li><strong>Spectrum-X Photonics</strong> (Ethernet): SN6810 at 102 Tb/s and SN6800 at 409 Tb/s (512 ports of 800G). H2 2026.</li>
+            <li>Claims up to 5x lower optics power, 10x network resiliency, 13x laser reliability (company figures).</li>
+            <li>Early adopters named: CoreWeave, Lambda, TACC.</li>
+            <li>Supply partners: TSMC, Coherent, Lumentum, Corning, Foxconn, SENKO.</li>
+          </ul></div>
+        <div class="card"><h4>Broadcom: CPO as better Ethernet</h4>
+          <ul style="margin:0">
+            <li><strong>Tomahawk 6-Davisson</strong>: 102.4 Tb/s, 200G per lane, Broadcom's third CPO generation, after TH5-Bailly. Sampling from October 2025.</li>
+            <li>Claims about 70% lower optical interconnect power than pluggables.</li>
+            <li>Field-replaceable external laser modules (ELSFP).</li>
+            <li>Meta testing: over one million 400G-equivalent port hours with no link flaps on the prior generation.</li>
+            <li>Fourth generation in development at 400G per lane.</li>
+          </ul></div>
+      </div>
+      <p class="fn">Both rely on TSMC's COUPE (Compact Universal Photonic Engine), which stacks an electronic chip on a photonic chip using SoIC-X 3D packaging. TSMC packaging capacity is therefore a shared dependency.</p>
+
+      <h3>The reliability argument, both directions</h3>
+      <div class="matrix">
+        <div class="q hi"><h4>Why CPO could be more reliable</h4><p style="margin:0">Fewer connectors and fewer separate modules mean fewer things to wiggle loose or wear out. Lasers, the part most likely to fail, sit in a replaceable module away from the hot switch chip. Broadcom and Micas Networks report millions of flap-free port hours in testing.</p></div>
+        <div class="q lo"><h4>Why buyers still hesitate</h4><p style="margin:0">An optical engine failure on a CPO switch may mean replacing the switch or a whole tray. Operations teams know how to swap pluggables; CPO needs new spares strategies, new tooling, and trust in vendor failure data that is still mostly vendor-reported.</p></div>
+        <div class="q"><h4>The interop question</h4><p style="margin:0">With pluggables, optics from many vendors work in one switch. With CPO, the optics are the switch vendor's. That concentrates supply on fewer companies.</p></div>
+        <div class="q"><h4>The upgrade question</h4><p style="margin:0">Pluggables let you upgrade optics independently. CPO ties the optics refresh to the switch refresh, which suits hyperscalers who replace whole systems on a cycle, and suits enterprises less.</p></div>
+      </div>
+
+      <div class="analogy"><span class="tag">Analogy: soldered RAM in a laptop</span><p style="margin:0">Soldered memory makes laptops thinner, faster and cheaper to build, and it also means you can never upgrade or swap a bad stick. Most consumers accepted that trade. Fleet managers with ten thousand machines thought harder. CPO is the same trade for data-center networking, and hyperscalers are the fleet managers.</p></div>
+
+      <h3>Market size: wide range, same direction</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Source</th><th>Scope</th><th>Forecast</th></tr></thead>
+        <tbody>
+          <tr><td>IDTechEx</td><td>Total CPO (switches plus optical I/O)</td><td>Over $20B by 2036, 37% CAGR from 2026</td></tr>
+          <tr><td>Fortune Business Insights</td><td>CPO market</td><td>About $256M in 2025</td></tr>
+          <tr><td>LightCounting</td><td>Transceivers plus CPO for AI clusters</td><td>About $8B (2025) to $20B (2030); says CPO for scale-up "can exceed" its forecast</td></tr>
+        </tbody>
+      </table></div>
+      <div class="warn"><span class="tag">Watch out: market-size reports</span><p style="margin:0">CPO forecasts differ by 10x or more depending on whether they count only the optical engines, whole switches, or optical I/O on accelerators. Never quote one without its scope. For decisions, follow unit shipments and named customer deployments, not report headlines.</p></div>
+
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">If you advise a buyer evaluating CPO switches, the contract is where the reliability debate gets settled. Ask for <strong>failure-rate commitments on the optical engines</strong>, <strong>on-site spares of laser modules at the vendor's cost</strong>, <strong>a defined remedy if the engine fails</strong> (tray swap, not a ticket), and <strong>field data from deployments at least as large as yours</strong>. Vendors who believe their reliability claims will sign up to them.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="3"><span>Previous</span><b>← 03 · The Interconnect Ladder</b></button>
+        <button data-goto="5"><span>Next</span><b>05 · Optical Switching &amp; Fiber →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 5 OCS & FIBER ============ -->
+    <section class="page" id="p5">
+      <div class="kicker">The market</div>
+      <h2 class="title">Optical switching and fiber: the quieter growth stories</h2>
+      <p class="lede">Two adjacent markets get less attention than CPO but matter just as much to data-center economics: switches that route light without converting it, and fiber that moves light faster.</p>
+
+      <h3>Optical circuit switches (OCS)</h3>
+      <p>A normal network switch converts light to electrons, decides where each packet goes, and converts back. An <span class="keyterm">optical circuit switch</span> skips all that: tiny mirrors or other elements physically redirect beams of light from one fiber to another. It cannot inspect packets, but it uses a fraction of the power, does not care about data rate, and survives several speed generations.</p>
+      <div class="analogy"><span class="tag">Analogy: a railroad switchyard</span><p style="margin:0">A packet switch is a sorting facility that opens every box. An OCS is a railroad switchyard that throws a lever and routes the whole train. It is slower to reconfigure, but it never has to unload anything, and it works for any train speed.</p></div>
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--accent)">&gt;$8B</div><div class="lbl">OCS market by 2030 (Cignal AI)</div></div>
+        <div class="stat"><div class="big" style="color:var(--accent)">&gt;30%</div><div class="lbl">Annual growth, 2026-2030</div></div>
+        <div class="stat"><div class="big" style="color:var(--violet)">2028</div><div class="lbl">Nvidia NVL576 OCS volume begins</div></div>
+        <div class="stat"><div class="big" style="color:#0f1b2d">20+</div><div class="lbl">OCS suppliers profiled</div></div>
+      </div>
+      <ul>
+        <li><strong>Google</strong> is the only volume user today, in its TPU networks, and is shifting from in-house builds to suppliers. It has placed orders with <strong>Lumentum</strong> (R300, a 300x300 port switch), <strong>Coherent</strong> and <strong>Huber+Suhner</strong>.</li>
+        <li><strong>Nvidia</strong> plans OCS in Rubin Ultra NVL576 for scale-up, which would create a second large market from 2028.</li>
+        <li>Technologies compete: MEMS mirrors, liquid crystal, piezoelectric, robotic fiber patching, and silicon photonics startups.</li>
+      </ul>
+      <p class="fn">Cignal AI, Optical Circuit Switching Market 2Q26 report, July 2026.</p>
+
+      <h3>Fiber itself is changing</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Hollow-core fiber</h4><p style="margin:0">Light travels through air in the fiber's center rather than glass, which cuts latency by about a third and lowers signal loss. Microsoft planned 15,000 km across Azure and has partnered with Corning and Heraeus Covantis to scale production. For latency-sensitive links between data centers, this can stretch how far apart sites can be and still act as one cluster.</p></div>
+        <div class="card"><h4>Fiber count explosion</h4><p style="margin:0">AI data halls need many times the fiber of a cloud data hall. Corning, connector makers like SENKO and Huber+Suhner, and fiber-management vendors are seeing record demand. Unglamorous, high-volume, and easy to underestimate in a cluster budget.</p></div>
+      </div>
+
+      <h3>Coherent optics for scale-across</h3>
+      <p>When a training job spans two or more buildings or campuses, links run kilometers to tens of kilometers. That is the domain of <span class="keyterm">coherent</span> pluggables (400ZR, 800ZR/ZR+), which encode data in the light's phase and polarization as well as its brightness. LightCounting reports cloud companies cannot get enough 800ZR/ZR+ modules. Ciena, Cisco (Acacia), Marvell and Nokia lead.</p>
+
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">Cluster bills of materials routinely undercount fiber, connectors, patching and OCS. These categories are commodity-looking but lead-time sensitive. A sourcing lead who locks fiber and connectivity early, with the same rigor as GPUs, prevents the classic "GPUs arrived, cables did not" delay.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="4"><span>Previous</span><b>← 04 · Co-Packaged Optics</b></button>
+        <button data-goto="6"><span>Next</span><b>06 · Optical Compute →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 6 OPTICAL COMPUTE ============ -->
+    <section class="page" id="p6">
+      <div class="kicker">The market</div>
+      <h2 class="title">Optical compute: doing the math in light</h2>
+      <p class="lede">The most exciting idea in the field and the furthest from revenue. Light can perform the core operation of neural networks almost for free. The hard part is everything around that operation.</p>
+
+      <h3>How it works, in one paragraph</h3>
+      <p>Neural networks spend most of their time multiplying large grids of numbers together (<span class="keyterm">matrix multiplication</span>). Encode the numbers as the brightness or phase of light, pass the light through a mesh of tunable elements, and interference does the multiplying and adding as the light travels. The answer arrives at the speed of light, and the passive optics burn almost no energy.</p>
+      <div class="analogy"><span class="tag">Analogy: the prism versus the calculator</span><p style="margin:0">A prism splits white light into colors instantly, with no power, because the physics does the work. An optical processor is a very elaborate, programmable prism that "splits" input data into an answer. The problem is that you have to type the question into the prism (convert digital data into light) and read the answer back out (convert light into digital), and those two steps are slow, power hungry and imprecise.</p></div>
+
+      <h3>The hard problems</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Conversion overhead</h4><p style="margin:0">Data starts and ends in electronics. The digital-to-analog and analog-to-digital converters at each end can eat most of the energy the optics saved.</p></div>
+        <div class="card"><h4>Precision</h4><p style="margin:0">Optics is analog. Noise and drift limit precision to roughly what low-bit AI inference can tolerate, which narrows the use cases.</p></div>
+        <div class="card"><h4>Memory and nonlinearity</h4><p style="margin:0">Light cannot easily be stored, and the nonlinear steps of a neural network are hard to do optically. Most designs bounce back to electronics between layers.</p></div>
+        <div class="card"><h4>Moving target</h4><p style="margin:0">GPUs improve every year. An optical chip has to beat the GPU that will exist when it ships, with a software stack developers will actually use.</p></div>
+      </div>
+
+      <h3>Who is trying</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Company</th><th>Approach</th><th>Status (as of 2026)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Neurophos</strong> (Austin)</td><td>Metamaterial modulators, compute-in-memory "OPU"</td><td>$110M Series A (Jan 2026) led by Gates Frontier, with Microsoft's M12. Pilot with Terakraft planned 2027; first systems early 2028. Claims up to 100x performance (unverified).</td></tr>
+          <tr><td><strong>Q.ANT</strong> (Stuttgart)</td><td>Thin-film lithium niobate photonic NPU</td><td>$80M Series A (Nov 2025); Jülich Supercomputing Centre partnership; NPU 2 servers expected H1 2026.</td></tr>
+          <tr><td><strong>Optalysys</strong> (UK)</td><td>Optical acceleration of fully homomorphic encryption</td><td>£23M Series A extension; UK national security fund participated. A niche where optics' strengths fit well.</td></tr>
+          <tr><td><strong>Opticore</strong> (MIT spinout)</td><td>Time-multiplexed optical processing unit</td><td>About $14.5M seed. Research-stage claims of 100x efficiency.</td></tr>
+          <tr><td><strong>Lightmatter</strong></td><td>Started with the Envise optical compute chip</td><td>Commercial focus is now the Passage interconnect family (M1000, L200). The leading optical compute pioneer making its money moving data is itself a market signal.</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="warn"><span class="tag">Watch out: performance claims</span><p style="margin:0">"100x faster than a GPU" usually compares the optical core alone against a full GPU, at low precision, on a hand-picked workload, before conversion overhead. Ask what end-to-end tokens per second per watt looks like on a real model, at what precision, against which GPU generation. If the answer is a simulation, the product is still a research project.</p></div>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">Treat optical compute as an option, not a plan. The earliest real business here is likely in specialist niches (encrypted computing, signal processing, scientific HPC centers like Jülich) before general AI inference. If you track one milestone, track Neurophos and Q.ANT shipping systems to paying customers and publishing independent benchmarks.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="5"><span>Previous</span><b>← 05 · Optical Switching &amp; Fiber</b></button>
+        <button data-goto="7"><span>Next</span><b>07 · Photonic Quantum →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 7 QUANTUM ============ -->
+    <section class="page" id="p7">
+      <div class="kicker">The market</div>
+      <h2 class="title">Photonic quantum: the long bet</h2>
+      <p class="lede">Of all the ways to build a quantum computer, photons have one big practical advantage: they can be made in ordinary semiconductor fabs and mostly run at room temperature. They also have one big problem: photons are hard to make on demand and easy to lose.</p>
+
+      <h3>Why photons for quantum</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Advantages</h4><ul style="margin:0"><li>Manufactured with existing chip and photonics fabs (PsiQuantum builds with GlobalFoundries)</li><li>Room-temperature operation for much of the system</li><li>Naturally networkable over fiber</li></ul></div>
+        <div class="card"><h4>Challenges</h4><ul style="margin:0"><li>Reliable single-photon sources and detectors</li><li>Every bit of loss in a chip or fiber destroys information</li><li>Error correction at the scale needed for useful work is still unproven</li></ul></div>
+      </div>
+
+      <h3>The players</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Company</th><th>Where it stands</th></tr></thead>
+        <tbody>
+          <tr><td><strong>PsiQuantum</strong> (US)</td><td>$1B Series E at $7B valuation (Sept 2025), Nvidia's venture arm participating. Building utility-scale sites in Brisbane (due late 2027) and Chicago.</td></tr>
+          <tr><td><strong>Xanadu</strong> (Canada)</td><td>Listed on Nasdaq and TSX as XNDU via SPAC in March 2026; the first public pure-play photonic quantum company.</td></tr>
+          <tr><td><strong>Photonic Inc.</strong> (Canada)</td><td>Raised over $200M in 2026, more than $350M total; demonstrated quantum teleportation over TELUS fiber.</td></tr>
+          <tr><td><strong>Quandela, ORCA, Aegiq, QuiX, Sparrow Quantum</strong> (Europe)</td><td>Smaller systems, components, single-photon sources. ORCA plans a universal single-photon system in 2026.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="analogy"><span class="tag">Analogy: early aviation</span><p style="margin:0">Photonic quantum today is like aircraft around 1910: real machines fly, the principles are sound, the funding is real, and nobody can yet carry paying passengers across an ocean. Investing at this stage is a bet on which design wins, not on near-term revenue.</p></div>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">For your purposes, quantum matters mainly as a <strong>demand driver for the same supply chain</strong>: low-loss photonic chips, single-photon detectors, cryogenic and laser components, specialty fiber. A supplier qualified for quantum photonics is often also qualified for data-center photonics. That overlap is a useful lens for the supply-chain business ideas later.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="6"><span>Previous</span><b>← 06 · Optical Compute</b></button>
+        <button data-goto="8"><span>Next</span><b>08 · The Value Chain →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 8 VALUE CHAIN ============ -->
+    <section class="page" id="p8">
+      <div class="kicker">The supply chain</div>
+      <h2 class="title">The value chain: from indium to the data hall</h2>
+      <p class="lede">Every optical link in an AI cluster passes through roughly eight layers of suppliers. Knowing who sits at each layer, and which layers are thin, is the core of understanding this market and the core of any sourcing strategy for it.</p>
+
+      <div class="chain">
+        <div class="link" style="--c:#b45309"><b>1. Raw materials</b><span>Indium (zinc-refining byproduct), germanium, high-purity silica for fiber</span><em>China refines about 69% of primary indium. Thin, concentrated, export-controlled.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#d97706"><b>2. Substrates and epi</b><span>InP and GaAs wafers, epitaxial layers. AXT (Tongmei in China), Sumitomo, Yunnan Germanium, San'an; a Japanese leader expanding</span><em>Moving from 3-inch to 6-inch InP wafers; years to scale.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#7c3aed"><b>3. Lasers and III-V chips</b><span>Lumentum, Coherent (most high-speed datacom lasers), Broadcom, Mitsubishi, Sumitomo; Chinese challengers like Yuanjie</span><em>The 2026 chokepoint. Nvidia invested $4B, with purchase commitments, to secure it.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#0e7490"><b>4. Silicon photonics foundry</b><span>TSMC (COUPE), Tower Semiconductor, GlobalFoundries (Fotonix), Intel; Samsung entering</span><em>Tower has $1.3B of 2027 SiPho revenue under contract with prepayments.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#155e75"><b>5. Advanced packaging and assembly</b><span>TSMC, ASE, Amkor, Fabrinet; fiber attach specialists</span><em>CPO lives or dies here. Advanced packaging capacity is tight across AI.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#0891b2"><b>6. DSPs and electronics</b><span>Marvell, Broadcom, Credo, MaxLinear; drivers and TIAs</span><em>LPO and CPO threaten the DSP's share, so DSP makers are buying photonics companies.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#334155"><b>7. Modules, engines and switches</b><span>Modules: Innolight, Eoptolink, Coherent, Accelink, Molex, CIG, Lumentum. Engines and CPO: Nvidia, Broadcom, Ayar Labs, Marvell, Lightmatter. Switches: Nvidia, Arista, Cisco, Celestica</span><em>Chinese vendors hold the top two module spots.</em></div>
+        <div class="dn">▼</div>
+        <div class="link" style="--c:#0f1b2d"><b>8. Buyers</b><span>Hyperscalers (Google, Microsoft, Amazon, Meta, Oracle), neoclouds (CoreWeave, Lambda), sovereign AI, HPC centers, enterprises</span><em>The top five cloud providers dominate demand and set the standards.</em></div>
+      </div>
+
+      <h3>Where the money and power sit</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Layer</th><th>Concentration</th><th>Pricing power in 2026</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lasers</strong></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Very high</td><td>Two Western leaders, demand far above supply, multi-year fab builds</td></tr>
+          <tr><td><strong>Advanced packaging</strong></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>High</td><td>TSMC dominant; shared with GPU and HBM packaging demand</td></tr>
+          <tr><td><strong>SiPho foundry</strong></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td>Rising</td><td>Customers prepaying to reserve wafers</td></tr>
+          <tr><td><strong>DSPs</strong></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>High but threatened</td><td>Few suppliers, but LPO and CPO reduce DSP content</td></tr>
+          <tr><td><strong>Pluggable modules</strong></td><td><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td>Moderate</td><td>Many assemblers; margins depend on getting lasers</td></tr>
+          <tr><td><strong>Fiber and connectivity</strong></td><td><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td>Moderate, lead-time driven</td><td>Volume surge, few specialty fiber makers</td></tr>
+        </tbody>
+      </table></div>
+      <p class="fn">Concentration ratings are this guide's judgment from public market structure, not measured market shares.</p>
+
+      <div class="analogy"><span class="tag">Analogy: the hourglass</span><p style="margin:0">The chain is an hourglass. Lots of raw-material sources at the top and lots of buyers at the bottom, squeezed through a narrow waist of a few laser fabs and a few packaging lines. Whoever controls the waist sets terms for everyone above and below. In 2026 the waist is lasers and packaging.</p></div>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">Use a Kraljic lens. Lasers and CPO engines are <strong>bottleneck and strategic items</strong>: secure supply, accept price, build relationships, consider capacity reservations. Fiber, connectors and commodity pluggables are closer to <strong>leverage items</strong>: compete them, multi-source, negotiate hard. Mixing those strategies up is the most common mistake buyers make in this category.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="7"><span>Previous</span><b>← 07 · Photonic Quantum</b></button>
+        <button data-goto="9"><span>Next</span><b>09 · Chokepoints &amp; Risk →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 9 CHOKEPOINTS ============ -->
+    <section class="page" id="p9">
+      <div class="kicker">The supply chain</div>
+      <h2 class="title">Chokepoints and risk</h2>
+      <p class="lede">The defining fact of photonics in 2026 is scarcity. Demand jumped from telecom volumes to AI volumes in about three years, and the supply chain beneath it moves on a five-year clock.</p>
+
+      <h3>Chokepoint 1: indium phosphide lasers</h3>
+      <div class="statrow">
+        <div class="stat"><div class="big" style="color:var(--red)">&gt;30%</div><div class="lbl">Lumentum shipping below demand</div></div>
+        <div class="stat"><div class="big" style="color:var(--accent)">$4B</div><div class="lbl">Nvidia into Lumentum and Coherent (Mar 2026)</div></div>
+        <div class="stat"><div class="big" style="color:var(--violet)">~69%</div><div class="lbl">China's share of primary indium (2025)</div></div>
+        <div class="stat"><div class="big" style="color:#0f1b2d">2028</div><div class="lbl">Lumentum's 5th fab ramps (Greensboro, NC)</div></div>
+      </div>
+      <p>Lumentum's CEO said in July 2026 that the InP shortage will be worse than the recent memory shortage: telecom customers once bought lasers in the hundreds, AI customers now want hundreds of millions. Coherent's 6-inch InP line yields more than four times the devices of a 3-inch line at under half the cost, and it expects to more than double capacity again by the end of 2027. Analysts quoted by TrendForce expect the imbalance to last beyond 2027. LightCounting is more optimistic about transceivers specifically, expecting shortages to ease by late 2026.</p>
+      <div class="warn"><span class="tag">Watch out: who is telling you about the shortage</span><p style="margin:0">Laser makers' valuations depend on the shortage persisting, and analysts often echo them. Buyers' interest is the opposite. The truth for planning purposes: assume constrained laser supply through 2027 and plan allocation protection, but do not sign long take-or-pay commitments at peak prices without price-adjustment or step-down terms.</p></div>
+
+      <h3>Chokepoint 2: China, on both ends</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Upstream: materials</h4><p style="margin:0">China placed indium under export controls in February 2025, and US data show unwrought indium exports fell 72% year over year to September 2025. InP substrates from AXT's China subsidiary needed export permits. Substrate wafers for the Nvidia-funded fabs are not made in the US in meaningful volume.</p></div>
+        <div class="card"><h4>Downstream: modules</h4><p style="margin:0">The world's two largest optical transceiver vendors are Chinese: Innolight ($5.3B revenue in 2025, up 61%) and Eoptolink ($3.5B, up 189%). Accelink is fourth. Most US and Japanese module makers exited by 2020. US hyperscalers rely heavily on these suppliers, many with production outside China.</p></div>
+      </div>
+      <p class="fn">Indium data: USGS via Tom's Hardware, July 2026. Module rankings: LightCounting, May 2026.</p>
+
+      <h3>Chokepoint 3: advanced packaging</h3>
+      <p>Both Nvidia and Broadcom CPO run through TSMC's COUPE packaging, which competes for the same advanced-packaging capacity as GPUs and HBM memory. Outside TSMC, ASE and Amkor are the main alternatives. Nvidia has made a $1.5B prepayment to Amkor, which has expanded its Peoria, Arizona campus plan to about $12B.</p>
+
+      <h3>Risk register</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Risk</th><th>Likelihood (2026-27)</th><th>Impact on a buyer</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Laser allocation cuts</strong></td><td>High</td><td>Cluster delays; idle GPUs waiting for optics</td><td>Allocation commitments in contract, early forecasts, second-source qualification</td></tr>
+          <tr><td><strong>China export controls or tariffs</strong></td><td>Medium-high</td><td>Price jumps, sudden supply loss on modules or materials</td><td>Map country of origin by tier, qualify non-China module sources, tariff pass-through caps</td></tr>
+          <tr><td><strong>Big buyers locking capacity</strong></td><td>High</td><td>Smaller buyers get leftover allocation</td><td>Buy through reference designs or OEMs with allocation, pool demand, prepay selectively</td></tr>
+          <tr><td><strong>Technology transition</strong> (LPO, CPO, 3.2T)</td><td>Certain, timing unclear</td><td>Stranded inventory, wrong-generation commitments</td><td>Shorter commitments on fast-moving SKUs, technology refresh clauses</td></tr>
+          <tr><td><strong>AI capex pause</strong></td><td>Low-medium</td><td>Sudden oversupply; buyer leverage returns</td><td>Avoid take-or-pay at peak, include volume flexibility</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="coach"><span class="tag">Coach's note: the Arizona angle</span><p style="margin:0">You live in the middle of the US build-out of this chain. TSMC's Arizona fabs, Amkor's Peoria packaging campus (Apple, Nvidia and TSMC as named customers, over 3,500 jobs planned), Intel in Chandler, and a CHIPS-funded ecosystem around them. Photonics is not yet a named product line at Amkor Arizona, but advanced packaging is the layer CPO depends on, and supplier relationships in that ecosystem are a local asset for any of the business ideas in section 12.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="8"><span>Previous</span><b>← 08 · The Value Chain</b></button>
+        <button data-goto="10"><span>Next</span><b>10 · Deals &amp; Money →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 10 DEALS ============ -->
+    <section class="page" id="p10">
+      <div class="kicker">The supply chain</div>
+      <h2 class="title">Deals and money: who is buying what</h2>
+      <p class="lede">Follow the deals and a clear pattern appears. Chip companies are buying photonics capability so they can sell complete connectivity, and the largest buyer, Nvidia, is paying suppliers in advance to guarantee its share.</p>
+
+      <h3>Acquisitions</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Date</th><th>Buyer → Target</th><th>Price</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>May 2025</td><td>AMD → Enosemi</td><td>Undisclosed</td><td>AMD gets in-house photonic IC design for CPO on its accelerators</td></tr>
+          <tr><td>Sep 2025</td><td>Ciena → Nubis Communications</td><td>$270M cash</td><td>Optical engines plus active copper for inside the data center</td></tr>
+          <tr><td>Feb 2026 (closed)</td><td>Marvell → Celestial AI</td><td>$3.5B total consideration</td><td>Photonic Fabric for scale-up; Marvell targets a $1B run rate by Q4 fiscal 2029</td></tr>
+          <tr><td>Apr 2026</td><td>Credo → DustPhotonics</td><td>About $1.3B incl. earnout</td><td>DSP maker adds silicon photonics transceivers</td></tr>
+          <tr><td>Apr 2026</td><td>Marvell → Polariton</td><td>Undisclosed</td><td>Plasmonic modulators to reach 3.2T and beyond</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Strategic investments and prepayments</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Date</th><th>Deal</th><th>Size</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>Mar 2026</td><td>Nvidia into Lumentum and Coherent, with purchase commitments and capacity rights</td><td>$2B each</td><td>Largest buyer securing the laser chokepoint</td></tr>
+          <tr><td>Recent</td><td>Nvidia prepayment to Amkor (Peoria, AZ campus)</td><td>$1.5B</td><td>Packaging capacity is worth paying for years ahead</td></tr>
+          <tr><td>May 2026</td><td>Tower Semiconductor SiPho contracts for 2027</td><td>$1.3B, $290M prepaid</td><td>Customers reserving silicon photonics wafers</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Venture rounds and listings</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Company</th><th>Segment</th><th>Latest</th><th>Valuation / total</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ayar Labs</strong></td><td>Optical I/O (TeraPHY)</td><td>$500M Series E, Mar 2026, led by Neuberger Berman; Nvidia, AMD, MediaTek, Alchip</td><td>$3.75B; $870M raised</td></tr>
+          <tr><td><strong>Lightmatter</strong></td><td>Interconnect (Passage)</td><td>$400M Series D, Oct 2024</td><td>$4.4B; about $850M raised</td></tr>
+          <tr><td><strong>PsiQuantum</strong></td><td>Photonic quantum</td><td>$1B Series E, Sep 2025</td><td>$7B</td></tr>
+          <tr><td><strong>Neurophos</strong></td><td>Optical compute</td><td>$110M Series A, Jan 2026</td><td>$118M raised</td></tr>
+          <tr><td><strong>Q.ANT</strong></td><td>Optical compute</td><td>$80M Series A, Nov 2025</td><td>n/a</td></tr>
+          <tr><td><strong>Photonic Inc.</strong></td><td>Photonic quantum</td><td>Over $200M in 2026</td><td>Over $350M raised</td></tr>
+          <tr><td><strong>Xanadu</strong></td><td>Photonic quantum</td><td>Public via SPAC, Mar 2026 (XNDU)</td><td>Public market</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="analogy"><span class="tag">Analogy: buying the farm to guarantee the harvest</span><p style="margin:0">When a restaurant chain gets big enough, it stops trusting the produce market and starts buying farms or prepaying growers. Nvidia's $4B into laser makers and $1.5B to Amkor is the chain buying the farm. Every smaller buyer now competes for what is left at the produce market.</p></div>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">Three patterns to remember. <strong>First</strong>, DSP and networking chip companies (Marvell, Credo, Ciena, AMD) are buying photonics so they are not displaced by CPO. <strong>Second</strong>, startups focused purely on interconnect are getting acquired at billions; optical compute startups are still raising Series A. <strong>Third</strong>, prepayments and capacity rights are now normal in this category, which tells you what smaller buyers will be asked for.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="9"><span>Previous</span><b>← 09 · Chokepoints &amp; Risk</b></button>
+        <button data-goto="11"><span>Next</span><b>11 · Buying Photonics →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 11 BUYING ============ -->
+    <section class="page" id="p11">
+      <div class="kicker">In the field</div>
+      <h2 class="title">Buying photonics: the sourcing playbook</h2>
+      <p class="lede">For most buyers, optics show up as line items under networking or as part of a cluster bill of materials. That hides a strategic category with shortage dynamics, technology transitions and real lock-in decisions. This is where a procurement lens adds the most value.</p>
+
+      <h3>The categories inside "optics"</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Sub-category</th><th>Typical buyer</th><th>Kraljic position</th><th>Strategy</th></tr></thead>
+        <tbody>
+          <tr><td>Pluggable transceivers (800G, 1.6T)</td><td>Hyperscalers, neoclouds, enterprises</td><td>Strategic now (shortage), leverage later</td><td>Qualify 2-3 vendors, allocation terms, avoid peak-price take-or-pay</td></tr>
+          <tr><td>CPO switches</td><td>Neoclouds, hyperscalers on Nvidia/Broadcom designs</td><td>Strategic</td><td>Negotiate as a system: reliability SLAs, spares, refresh terms</td></tr>
+          <tr><td>Coherent DCI optics (ZR/ZR+)</td><td>Multi-site AI operators</td><td>Bottleneck</td><td>Long-lead planning, framework agreements</td></tr>
+          <tr><td>Fiber, cabling, connectors</td><td>Everyone, often via contractors</td><td>Leverage</td><td>Compete hard, but lock lead times early</td></tr>
+          <tr><td>OCS</td><td>Google today; others later</td><td>Strategic, emerging</td><td>Pilot with exit options</td></tr>
+          <tr><td>Lasers, InP, components</td><td>Module makers and OEMs</td><td>Bottleneck</td><td>Capacity reservations, prepayments, second-source development</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Calculator: what CPO power savings are worth</h3>
+      <div class="calc" id="calcCpo">
+        <h4>Optics power: pluggable versus co-packaged</h4>
+        <div class="in">
+          <label>Optical ports (800G-equivalent)<input id="c_ports" type="number" value="100000" min="0" step="1000"></label>
+          <label>Pluggable watts per port<input id="c_w" type="number" value="15" min="0" step="0.5"></label>
+          <label>CPO power reduction (%)<input id="c_red" type="number" value="65" min="0" max="100" step="1"></label>
+          <label>Facility PUE<input id="c_pue" type="number" value="1.3" min="1" step="0.05"></label>
+          <label>Electricity ($/kWh)<input id="c_kwh" type="number" value="0.08" min="0" step="0.01"></label>
+          <label>All-in kW per GPU<input id="c_gpu" type="number" value="1.5" min="0.1" step="0.1"></label>
+          <label>Years<input id="c_yrs" type="number" value="5" min="1" step="1"></label>
+        </div>
+        <div class="outs">
+          <div class="o"><b id="o_plug">0</b><span>Pluggable optics power (MW)</span></div>
+          <div class="o"><b id="o_save">0</b><span>Facility power freed (MW, incl. PUE)</span></div>
+          <div class="o"><b id="o_year">0</b><span>Energy cost saved per year</span></div>
+          <div class="o"><b id="o_tot">0</b><span>Energy saved over the period</span></div>
+          <div class="o"><b id="o_gpus">0</b><span>GPUs that freed power could run</span></div>
+        </div>
+        <p class="note">Illustrative only. Defaults use vendor-claimed savings (Broadcom 65-70%) and a rough per-port figure; Nvidia cites about 25 W for a high-end pluggable. The real value is usually the GPUs you can fit under a fixed power cap, not the electricity bill.</p>
+      </div>
+      <div class="coach"><span class="tag">Coach's note</span><p style="margin:0">Run the defaults and notice the shape of the answer: the energy bill savings are modest next to a cluster's cost, but the megawatts freed translate into hundreds of additional GPUs inside a fixed grid connection. That reframes CPO from a cost decision into a capacity decision, and it is the argument vendors will make. Your job is to price the lock-in and reliability risk against it.</p></div>
+
+      <h3>Contract terms that matter in this category</h3>
+      <ul class="checklist">
+        <li><strong>Allocation protection:</strong> a committed share of supply during shortage, not just "best efforts."</li>
+        <li><strong>Lead-time commitments</strong> with remedies, tied to your forecast cadence.</li>
+        <li><strong>Price adjustment both ways:</strong> indexing or step-downs as shortages ease, so peak pricing is not locked for years.</li>
+        <li><strong>Volume flexibility:</strong> the right to reduce or defer if AI capex slows.</li>
+        <li><strong>Reliability and failure-rate commitments</strong> (FIT rates, link flap metrics) with credits or replacements.</li>
+        <li><strong>Field-replaceable laser spares</strong> held on site, vendor funded, for CPO.</li>
+        <li><strong>Technology refresh rights:</strong> move commitments to the next generation (1.6T to 3.2T, pluggable to CPO) without penalty.</li>
+        <li><strong>Interoperability and MSA compliance</strong> for pluggables, and no "vendor-coded optics only" restrictions without price protection.</li>
+        <li><strong>Country-of-origin disclosure</strong> by tier, plus tariff pass-through caps and export-control contingency plans.</li>
+        <li><strong>Last-time-buy and end-of-life notice</strong> long enough to redesign.</li>
+      </ul>
+      <div class="warn"><span class="tag">Watch out: vendor-coded optics</span><p style="margin:0">Switch vendors have long locked their gear to their own branded optics, at large markups over the same modules sold by the original manufacturer. CPO extends that lock-in by design. When a vendor's CPO pitch includes "and you no longer need to buy transceivers," model what you currently pay for vendor-coded pluggables. Sometimes CPO is cheaper; sometimes the markup simply moved into the switch price.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="10"><span>Previous</span><b>← 10 · Deals &amp; Money</b></button>
+        <button data-goto="12"><span>Next</span><b>12 · Business Opportunities →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 12 OPPORTUNITIES ============ -->
+    <section class="page" id="p12">
+      <div class="kicker">In the field</div>
+      <h2 class="title">Business opportunities for a sourcing operator</h2>
+      <p class="lede">Building photonic chips takes hundreds of millions of dollars and PhD teams. The buyers of photonics, and the startups trying to reach volume, have a different gap: commercial and supply-chain expertise. That gap is where an experienced sourcing leader fits.</p>
+
+      <h3>Four options, compared</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Option</th><th>Who pays</th><th>Capital needed</th><th>Fit with a hyperscaler / Boeing / Intel / Army background</th><th>Scalability</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. AI networking sourcing advisory</strong></td><td>Neoclouds, colos, sovereign AI, large enterprises</td><td><span class="meter"><i class="on"></i><i></i><i></i><i></i><i></i></span></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Moderate</td></tr>
+          <tr><td><strong>2. Supplier qualification and risk service</strong></td><td>Photonics companies, OEMs, large buyers</td><td><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>High</td></tr>
+          <tr><td><strong>3. Defense go-to-market for photonics startups</strong></td><td>Startups (retainer plus success fee)</td><td><span class="meter"><i class="on"></i><i></i><i></i><i></i><i></i></span></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Moderate</td></tr>
+          <tr><td><strong>4. Fractional procurement leadership</strong></td><td>Funded startups scaling to production</td><td><span class="meter"><i class="on"></i><i></i><i></i><i></i><i></i></span></td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Low, but equity upside</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>1. AI networking sourcing advisory</h3>
+      <div class="card">
+        <p><strong>The offer:</strong> help buyers of AI clusters source the network well. Pluggable versus CPO decisions with TCO models, vendor selection across Nvidia's integrated stack and open Ethernet ecosystems, allocation and lead-time strategy during the laser shortage, contract terms from section 11, and multi-sourcing plans that avoid single-vendor lock-in.</p>
+        <p><strong>Best clients:</strong> neoclouds and GPU-as-a-service providers, colocation operators building AI halls, sovereign and national AI projects, universities and HPC centers, and large enterprises building private AI clusters. Hyperscalers mostly do this in house.</p>
+        <p><strong>Why it works:</strong> hyperscaler and AI contracting experience transfers directly, and very few advisors combine commercial depth with fluency in this technology.</p>
+        <p style="margin:0"><strong>Risk:</strong> overlaps with what an employer consulting firm sells. See the conflict note below.</p>
+      </div>
+
+      <h3>2. Supplier qualification and supply-chain risk service</h3>
+      <div class="card">
+        <p><strong>The offer:</strong> audit and qualify photonics suppliers (lasers, substrates, fiber attach, packaging, module assembly), map tier-2 and tier-3 concentration and country-of-origin risk, and support second-source development and reshoring decisions.</p>
+        <p><strong>Best clients:</strong> photonics companies needing qualified second sources, module makers diversifying away from China-linked inputs, and large buyers who must show supply-chain resilience to boards or government programs.</p>
+        <p style="margin:0"><strong>Why it works:</strong> aerospace-grade supplier management and cyber-risk programs across hundreds of suppliers are rare in a market that grew up selling to telecom. It scales with hired auditors and repeatable methods, and Arizona's semiconductor cluster is on the doorstep.</p>
+      </div>
+
+      <h3>3. Defense and government go-to-market</h3>
+      <div class="card">
+        <p><strong>The offer:</strong> help photonics startups sell to the Defense Department and civil agencies: SBIR/STTR strategy, prime-contractor partnering, ITAR and export-compliance readiness, and contracting vehicles.</p>
+        <p><strong>Why the demand exists:</strong> photonics fits defense needs (secure communications, low-power edge processing, sensing, quantum networking), and government money is already present in the sector, from CHIPS funding to the UK national security fund in Optalysys.</p>
+        <p style="margin:0"><strong>Why it works:</strong> West Point, Army officer service and Boeing's defense exposure give credibility most commercial consultants lack.</p>
+      </div>
+
+      <h3>4. Fractional procurement leadership</h3>
+      <div class="card">
+        <p><strong>The offer:</strong> serve as part-time head of procurement for three or four funded photonics or AI hardware startups: foundry and packaging agreements, capacity reservations, long-term supply agreements, contract manufacturing, and building the first procurement processes.</p>
+        <p style="margin:0"><strong>Why it works:</strong> startups like Neurophos (building toward first systems in 2028) or a Series B interconnect company face the exact capacity fights Nvidia is winning with prepayments, with a fraction of the leverage. Compensation often includes equity, giving exposure to the sector without investing personal capital.</p>
+      </div>
+
+      <h3>Other ideas worth a look</h3>
+      <ul>
+        <li><strong>Optics spares and lifecycle management</strong> for neoclouds: forecasting failures, managing RMAs, holding spares pools across customers.</li>
+        <li><strong>Secondary market for optics:</strong> testing, recertifying and reselling transceivers as clusters upgrade generations. Shortages make this more valuable.</li>
+        <li><strong>Benchmarking data:</strong> anonymized pricing, lead-time and contract-term benchmarks for AI networking, sold by subscription. Hard to start, very sticky once it exists.</li>
+        <li><strong>Content and community:</strong> a newsletter or briefing on AI networking procurement builds the audience for any of the above at almost no cost.</li>
+      </ul>
+
+      <h3>A first 90 days, whichever option</h3>
+      <div class="timeline">
+        <div class="step"><span class="when">Days 1-30</span><h4>Get fluent and visible</h4><p>Finish this guide's sources, follow LightCounting, Cignal AI and OFC coverage, and publish two or three short pieces on optics sourcing. Talk to 10 people who buy or sell AI networking.</p></div>
+        <div class="step"><span class="when">Days 31-60</span><h4>Test the offer</h4><p>Pick the option with the strongest conversations. Write a one-page offer and run it past five target buyers. Ask what they would pay and what they buy today instead.</p></div>
+        <div class="step"><span class="when">Days 61-90</span><h4>Land one paid pilot</h4><p>A fixed-fee, narrow engagement: an optics contract review, a supplier risk map, or a CPO decision model. One reference client is worth more than any plan.</p></div>
+      </div>
+
+      <div class="warn"><span class="tag">Watch out: employment agreements first</span><p style="margin:0">Before doing any of this alongside a full-time role, read the employment agreement's non-compete, outside-activity and conflict-of-interest clauses. Option 1 in particular may compete with a consulting employer. The same idea can also be pitched as a new practice inside the firm, which builds the expertise with an existing brand and client base behind it.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="11"><span>Previous</span><b>← 11 · Buying Photonics</b></button>
+        <button data-goto="13"><span>Next</span><b>13 · The Investor's Lens →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 13 INVESTOR ============ -->
+    <section class="page" id="p13">
+      <div class="kicker">In the field</div>
+      <h2 class="title">The investor's lens</h2>
+      <p class="lede">A map of where public-market exposure to photonics sits, by layer. This is orientation, not a recommendation: valuations in this sector already price in a lot of AI growth, and it can fall hard when capex sentiment turns.</p>
+
+      <h3>Public companies by layer</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>Layer</th><th>Companies (ticker)</th><th>Photonics share of the business</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lasers and components</strong></td><td>Lumentum (LITE), Coherent (COHR), AXT (AXTI)</td><td>High</td></tr>
+          <tr><td><strong>Modules and manufacturing</strong></td><td>Innolight (300308.SZ), Eoptolink (300502.SZ), Fabrinet (FN)</td><td>High</td></tr>
+          <tr><td><strong>SiPho foundry and packaging</strong></td><td>Tower (TSEM), GlobalFoundries (GFS), TSMC (TSM), Amkor (AMKR)</td><td>Low to moderate, rising at Tower</td></tr>
+          <tr><td><strong>DSPs and connectivity chips</strong></td><td>Marvell (MRVL), Credo (CRDO), Broadcom (AVGO)</td><td>Moderate at Marvell and Credo; a slice at Broadcom</td></tr>
+          <tr><td><strong>Systems and networking</strong></td><td>Nvidia (NVDA), Ciena (CIEN), Arista (ANET), Cisco (CSCO)</td><td>Low share, high influence</td></tr>
+          <tr><td><strong>Fiber and connectivity</strong></td><td>Corning (GLW)</td><td>Moderate</td></tr>
+          <tr><td><strong>Photonic quantum</strong></td><td>Xanadu (XNDU)</td><td>Pure play, early stage</td></tr>
+        </tbody>
+      </table></div>
+      <p class="fn">Lightmatter, Ayar Labs, PsiQuantum, Neurophos and Q.ANT are private. Ticker list for orientation only; check current listings before acting.</p>
+
+      <h3>Signals worth tracking</h3>
+      <div class="grid g2">
+        <div class="card"><h4>Demand signals</h4><ul style="margin:0"><li>Hyperscaler capex guidance each quarter</li><li>Nvidia networking revenue line</li><li>LightCounting quarterly optics updates</li><li>Named CPO deployments beyond the early adopters</li></ul></div>
+        <div class="card"><h4>Supply signals</h4><ul style="margin:0"><li>Lumentum and Coherent capacity and lead-time commentary</li><li>6-inch InP yield progress</li><li>China export-control actions on indium and gallium</li><li>Prepayments and capacity deals at Tower, Amkor, TSMC</li></ul></div>
+      </div>
+      <div class="analogy"><span class="tag">Analogy: selling shovels in a gold rush</span><p style="margin:0">The classic advice is to sell shovels. Photonics companies are the shovel sellers of the AI gold rush, and the market knows it, so shovel stocks are priced like gold mines. The useful question is not whether demand is real, but whether it is already in the price, and what happens to shovel orders when the miners have enough shovels.</p></div>
+      <div class="warn"><span class="tag">Watch out</span><p style="margin:0">Not financial advice. Optical component stocks have a long history of boom-and-bust cycles tied to telecom and cloud ordering. Inventory corrections can cut revenue sharply even when end demand is healthy.</p></div>
+
+      <div class="pagenav">
+        <button data-goto="12"><span>Previous</span><b>← 12 · Business Opportunities</b></button>
+        <button data-goto="14"><span>Next</span><b>14 · Glossary, Watch List &amp; Sources →</b></button>
+      </div>
+    </section>
+
+    <!-- ============ 14 REFERENCE ============ -->
+    <section class="page" id="p14">
+      <div class="kicker">Reference</div>
+      <h2 class="title">Glossary, watch list and sources</h2>
+      <p class="lede">The vocabulary you will hear in vendor briefings, the dates that will tell you how the market is going, and where every figure in this guide came from.</p>
+
+      <h3>Glossary</h3>
+      <div class="glossary"><dl>
+        <dt>800G / 1.6T / 3.2T</dt><dd>Transceiver speeds in gigabits or terabits per second. Each generation doubles bandwidth per port.</dd>
+        <dt>CPO (co-packaged optics)</dt><dd>Optical engines in the same package as a switch or processor chip, removing most of the copper path and the pluggable module.</dd>
+        <dt>COUPE</dt><dd>TSMC's Compact Universal Photonic Engine, the 3D packaging platform under Nvidia's and Broadcom's CPO.</dd>
+        <dt>Coherent optics</dt><dd>Longer-reach optics that encode data in phase and polarization; used between data centers (400ZR, 800ZR).</dd>
+        <dt>DSP</dt><dd>Digital signal processor inside a transceiver that cleans and decodes the signal; a large share of module power.</dd>
+        <dt>ELSFP</dt><dd>External laser small form-factor pluggable: a replaceable laser module that feeds light to CPO engines.</dd>
+        <dt>EML</dt><dd>Electro-absorption modulated laser, a common high-speed InP laser in datacom; one of the scarcest parts in 2026.</dd>
+        <dt>Hollow-core fiber</dt><dd>Fiber that guides light through air, cutting latency by about a third.</dd>
+        <dt>InP (indium phosphide)</dt><dd>The semiconductor that makes datacom lasers. Its supply is the industry's main bottleneck.</dd>
+        <dt>Link flap</dt><dd>A link briefly dropping and reconnecting; disruptive in AI training jobs and a key reliability metric for optics.</dd>
+        <dt>LPO / LRO</dt><dd>Linear pluggable optics / linear receive optics: pluggables that remove all or part of the DSP to save power.</dd>
+        <dt>MSA</dt><dd>Multi-source agreement: an industry spec that lets many vendors make interchangeable modules.</dd>
+        <dt>NPO</dt><dd>Near-packaged optics: optical engines on the board close to the chip, a step short of CPO.</dd>
+        <dt>OCS</dt><dd>Optical circuit switch: redirects light between fibers without converting to electrical signals.</dd>
+        <dt>Optical I/O chiplet</dt><dd>A small optical chip packaged next to a GPU or accelerator to give it optical connections directly.</dd>
+        <dt>pJ/bit</dt><dd>Picojoules per bit, the efficiency yardstick for interconnect.</dd>
+        <dt>Scale-up / scale-out / scale-across</dt><dd>GPUs within a tightly coupled domain / racks across a data hall / data centers across a region.</dd>
+        <dt>SerDes</dt><dd>Serializer/deserializer, the circuit that sends high-speed signals off a chip; 200G per lane is current, 400G is next.</dd>
+        <dt>SiPho (silicon photonics)</dt><dd>Optical components built in standard silicon chip fabs.</dd>
+        <dt>TFLN</dt><dd>Thin-film lithium niobate, a material for very fast, efficient modulators.</dd>
+        <dt>VCSEL</dt><dd>Vertical-cavity surface-emitting laser, a cheap GaAs laser for short links.</dd>
+      </dl></div>
+
+      <h3>Watch list: dates that will tell the story</h3>
+      <div class="timeline">
+        <div class="step"><span class="when">H2 2026</span><h4>Spectrum-X Photonics ships</h4><p>Nvidia's Ethernet CPO switches reach customers. Watch who deploys beyond CoreWeave, Lambda and TACC.</p></div>
+        <div class="step"><span class="when">March 2027</span><h4>OFC 2027</h4><p>The industry's main optics conference. Expect 3.2T, 400G-per-lane and second-generation CPO announcements.</p></div>
+        <div class="step"><span class="when">2027</span><h4>Laser capacity checkpoints</h4><p>Coherent's next InP capacity doubling by end-2027; Tower's $1.3B of contracted SiPho revenue; PsiQuantum's Brisbane system due late 2027; Neurophos pilot with Terakraft.</p></div>
+        <div class="step"><span class="when">2028</span><h4>Scale-up goes optical</h4><p>Nvidia Rubin Ultra NVL576 with OCS in volume; Lumentum's fifth fab ramps; Neurophos targets first systems; Marvell's Celestial AI revenue ramps toward $500M run rate by Q4 fiscal 2028.</p></div>
+      </div>
+
+      <h3>Cheat sheet</h3>
+      <ul class="checklist">
+        <li>Three businesses: <strong>move</strong> data (now), <strong>compute</strong> with light (next), <strong>quantum</strong> (later).</li>
+        <li>The constraint is <strong>moving data and power</strong>, not GPU math.</li>
+        <li>The migration: pluggable → LPO → NPO/CPO → optical I/O on the chip.</li>
+        <li>The chokepoints: <strong>InP lasers</strong>, <strong>advanced packaging</strong>, and <strong>China</strong> at both ends.</li>
+        <li>The pattern: chip companies buy photonics; Nvidia prepays suppliers.</li>
+        <li>The buyer's questions: pJ/bit, where is the laser, who else can make it.</li>
+        <li>The opportunity for a sourcing operator: buyers and startups need commercial and supply-chain expertise more than physics.</li>
+      </ul>
+
+      <h3>Sources</h3>
+      <ul class="src">
+        <li><a href="https://www.lightwaveonline.com/home/article/55362899/ai-scale-up-raises-the-stakes-for-transceivers-and-cpo-adoption" target="_blank" rel="noopener">Lightwave: LightCounting "Optics for AI Clusters" (Mar 2026)</a></li>
+        <li><a href="https://mail.lightcounting.com/newsletter/en/may-2026-optical-vendor-landscape-376" target="_blank" rel="noopener">LightCounting: optical vendor landscape (May 2026)</a></li>
+        <li><a href="https://www.tomshardware.com/tech-industry/semiconductors/lumentum-ceo-says-the-indium-phosphide-shortage-will-become-worse-than-memory" target="_blank" rel="noopener">Tom's Hardware: Lumentum CEO on the InP shortage (Jul 2026)</a></li>
+        <li><a href="https://trendforce.com/news/2026/08/06/news-inp-shortage-emerges-as-ai-optical-interconnect-bottleneck/" target="_blank" rel="noopener">TrendForce: InP shortage as AI optics bottleneck (Aug 2026)</a></li>
+        <li><a href="https://news.bloomberglaw.com/artificial-intelligence/nvidia-to-invest-4-billion-in-data-center-optics-companies-1" target="_blank" rel="noopener">Bloomberg: Nvidia to invest $4B in optics companies (Mar 2026)</a></li>
+        <li><a href="https://fintool.com/news/nvidia-cpo-webinar-ai-factories" target="_blank" rel="noopener">Fintool: Nvidia CPO webinar coverage (Feb 2026)</a></li>
+        <li><a href="https://www.storagereview.com/news/broadcom-ships-tomahawk-6-davisson-cpo-ethernet-switch-doubling-bandwidth-to-102-4-tb-s-for-ai-fabrics?amp" target="_blank" rel="noopener">StorageReview: Broadcom Tomahawk 6-Davisson (Oct 2025)</a></li>
+        <li><a href="https://convergedigest.com/broadcom-validates-1m-flap-free-cpo-port-hours-in-meta-testing/" target="_blank" rel="noopener">Converge Digest: Broadcom CPO testing at Meta (Oct 2025)</a></li>
+        <li><a href="https://www.onartificialintelligence.com/articles/34467/co-packaged-optics-race-strategic-approaches-from-nvidia-and-broadcom" target="_blank" rel="noopener">IDTechEx: Nvidia vs Broadcom CPO strategies</a></li>
+        <li><a href="https://www.cambridgenetwork.co.uk/news/new-idtechex-report-co-packaged-optics-cpo-2026-2036" target="_blank" rel="noopener">IDTechEx: CPO 2026-2036 forecast</a></li>
+        <li><a href="https://cignal.ai/2026/07/ocs-market-to-top-8-billion-by-2030/" target="_blank" rel="noopener">Cignal AI: OCS market to top $8B by 2030 (Jul 2026)</a></li>
+        <li><a href="https://fiberbroadband.org/2026/04/02/microsoft-scales-up-hollow-core-fiber-production/" target="_blank" rel="noopener">Fiber Broadband Association: Microsoft hollow-core fiber (Apr 2026)</a></li>
+        <li><a href="https://convergedigest.com/lightmatter-shows-its-114-tbps-photonic-superchip-and-64-tbps-cpo/" target="_blank" rel="noopener">Converge Digest: Lightmatter Passage M1000 and L200</a></li>
+        <li><a href="https://www.sec.gov/Archives/edgar/data/0001835632/000183563226000025/mrvl-20260801.htm" target="_blank" rel="noopener">Marvell 10-Q: Celestial AI acquisition</a></li>
+        <li><a href="https://evertiq.com/news/2026-02-03-marvell-completes-acquisition-of-celestial-ai" target="_blank" rel="noopener">Evertiq: Marvell completes Celestial AI acquisition</a></li>
+        <li><a href="https://www.datacenterdynamics.com/en/news/credo-technology-group-acquires-dustphotonics-in-13bn-cash-and-stock-deal/" target="_blank" rel="noopener">DCD: Credo acquires DustPhotonics (Apr 2026)</a></li>
+        <li><a href="https://www.datacenterdynamics.com/en/news/marvell-acquires-silicon-photonics-device-startup-polariton-technologies-to-advance-optical-scaling/" target="_blank" rel="noopener">DCD: Marvell acquires Polariton (Apr 2026)</a></li>
+        <li><a href="https://www.datacenterdynamics.com/en/news/ciena-to-buy-optical-tech-firm-nubis-in-270m-ai-data-center-push/" target="_blank" rel="noopener">DCD: Ciena to buy Nubis (Sep 2025)</a></li>
+        <li><a href="https://techcrunch.com/2025/05/28/amd-buys-silicon-photonics-startup-enosemi-to-fuel-its-ai-ambitions" target="_blank" rel="noopener">TechCrunch: AMD buys Enosemi (May 2025)</a></li>
+        <li><a href="https://ir.towerjazz.com/news-releases/news-release-details/tower-semiconductor-signs-customer-contracts-13-billion-silicon" target="_blank" rel="noopener">Tower Semiconductor: $1.3B SiPho contracts for 2027 (May 2026)</a></li>
+        <li><a href="https://thenextweb.com/news/amkor-arizona-phase-2-advanced-packaging-12bn" target="_blank" rel="noopener">The Next Web: Amkor Arizona campus to $12B</a></li>
+        <li><a href="https://pulse2.com/ayar-labs-500-million-series-e-raised-at-3-75-billion-valuation-for-optics-solutions-for-ai-scale-up" target="_blank" rel="noopener">Pulse 2.0: Ayar Labs $500M Series E (Mar 2026)</a></li>
+        <li><a href="https://siliconangle.com/2026/01/22/chip-startup-neurophos-gets-110m-replace-electrons-photons-accelerate-ai-compute/" target="_blank" rel="noopener">SiliconANGLE: Neurophos $110M (Jan 2026)</a></li>
+        <li><a href="https://startupsmagazine.co.uk/optalysys-secures-23m-to-advance-photonic-computing" target="_blank" rel="noopener">Startups Magazine: Optalysys £23M</a></li>
+        <li><a href="https://www.techspot.com/news/109433-psiquantum-raises-1-billion-hits-7-billion-valuation.html" target="_blank" rel="noopener">TechSpot: PsiQuantum $1B at $7B (Sep 2025)</a></li>
+        <li><a href="https://dealroom.co/news/129929-photonic-quantum-computing-accelerates-xanadu-lists-photonic-inc-raises/" target="_blank" rel="noopener">Dealroom: Xanadu lists, Photonic Inc raises (2026)</a></li>
+      </ul>
+      <p class="fn">Compiled October 2026. Vendor performance and reliability figures are company claims unless noted. Not investment, legal or engineering advice.</p>
+
+      <div class="pagenav">
+        <button data-goto="13"><span>Previous</span><b>← 13 · The Investor's Lens</b></button>
+        <button data-goto="0"><span>Back to</span><b>00 · Start Here ↺</b></button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  var pages = document.querySelectorAll('section.page');
+  var btns = document.querySelectorAll('nav.side button[data-p]');
+  var labels = ['00 · Start Here','01 · Photonics 101','02 · Why Now: The I/O Wall','03 · The Interconnect Ladder','04 · Co-Packaged Optics','05 · Optical Switching & Fiber','06 · Optical Compute','07 · Photonic Quantum','08 · The Value Chain','09 · Chokepoints & Risk','10 · Deals & Money','11 · Buying Photonics','12 · Business Opportunities',"13 · The Investor's Lens",'14 · Glossary, Watch List & Sources'];
+
+  var msel = document.getElementById('msel');
+  labels.forEach(function(l,i){var o=document.createElement('option');o.value=i;o.textContent=l;msel.appendChild(o);});
+  msel.addEventListener('change',function(){go(parseInt(this.value));});
+
+  function go(n, noScroll){
+    if(!document.getElementById('p'+n)) return;
+    pages.forEach(function(p){p.classList.remove('show');});
+    document.getElementById('p'+n).classList.add('show');
+    btns.forEach(function(b){b.classList.toggle('active', b.getAttribute('data-p')==String(n));});
+    if(msel) msel.value = n;
+    if(location.hash!=='#'+n) history.replaceState(null,'','#'+n);
+    if(!noScroll) window.scrollTo({top:0,behavior:'smooth'});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){go(parseInt(b.getAttribute('data-p')));});});
+  document.querySelectorAll('[data-goto]').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();go(parseInt(b.getAttribute('data-goto')));});
+  });
+  if(location.hash) go(parseInt(location.hash.slice(1)), true);
+  window.addEventListener('hashchange',function(){var n=parseInt(location.hash.slice(1));var el=document.getElementById('p'+n);if(el&&!el.classList.contains('show'))go(n);});
+
+  // ---- CPO power calculator ----
+  function $(id){return document.getElementById(id);}
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)?v:0;}
+  function usd(x){
+    var a=Math.abs(x);
+    if(a>=1e6) return '$'+(x/1e6).toFixed(2)+'M';
+    return '$'+Math.round(x).toLocaleString('en-US');
+  }
+  function calcCpo(){
+    var ports=num('c_ports'), w=num('c_w'), red=Math.min(Math.max(num('c_red'),0),100)/100;
+    var pue=Math.max(num('c_pue'),1), kwh=num('c_kwh'), gpu=num('c_gpu'), yrs=Math.max(num('c_yrs'),0);
+    var plugMW=ports*w/1e6;
+    var savedMW=plugMW*red*pue;
+    var perYear=savedMW*1000*8760*kwh;
+    $('o_plug').textContent=plugMW.toFixed(2);
+    $('o_save').textContent=savedMW.toFixed(2);
+    $('o_year').textContent=usd(perYear);
+    $('o_tot').textContent=usd(perYear*yrs);
+    $('o_gpus').textContent=gpu>0?Math.floor(savedMW*1000/gpu).toLocaleString('en-US'):'n/a';
+  }
+  (function(){var el=$('calcCpo'); if(!el) return; el.addEventListener('input',calcCpo); el.addEventListener('change',calcCpo); calcCpo();})();
+</script>
+</body>
+</html>

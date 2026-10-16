@@ -16,6 +16,7 @@ no auth gate and no Proxima branding.
 | Maui Guide | [maui-guide](https://github.com/brianchernauskas/maui-guide) | Travel |
 | Europe 2026 | *no repo* — secret gist via htmlpreview | Travel |
 | House Buying Playbook | [house-buying-playbook](https://github.com/brianchernauskas/house-buying-playbook) | Home |
+| Photonics Playbook | *in this repo* (`photonics-playbook/`) | Markets |
 | Brian Saves Billions | *no repo* — Lovable/React on Netlify | Professional |
 
 ## Adding a site
